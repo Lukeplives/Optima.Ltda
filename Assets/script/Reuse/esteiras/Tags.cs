@@ -1,0 +1,19 @@
+using System;
+public class Tags
+{
+    /**
+     * <summary>
+     * Belt tag
+     * </summary>
+     */
+    public static string Belt = "Belt";
+
+    /**
+     * <summary>
+     * Item tag
+     * </summary>
+     */
+    public static string Ferro = "Ferro";
+
+    public static string Cobre = "Cobre";
+}

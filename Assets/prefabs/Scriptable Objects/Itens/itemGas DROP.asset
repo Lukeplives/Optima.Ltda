@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da316344269c6724998184e385ef44b3, type: 3}
   m_Name: itemGas DROP
   m_EditorClassIdentifier: 
-  prefabItem: {fileID: 373794347663381789, guid: 9f1f102ea1c9c9947ab4d98923b4e262, type: 3}
+  lootsprite: {fileID: 8928031033918332290, guid: 9094471b6d790fc409599eb5acb21e77, type: 3}
+  lootname: gasolina
+  dropChance: 60
   upGas: 5
   upFerro: 0
   "upPe\xE7as": 0
-  dropChance: 60
+  tipo: 1

@@ -43,8 +43,8 @@ public class Inimigo : MonoBehaviour
         startTimeBtwShots = settings.startTimeBtwShots;
 
         prefabInimigo = settings.prefabInimigo;
-        spawnPosition = settings.spawnPosition;
-        spawnDelay = settings.spawnDelay;
+        //spawnPosition = settings.spawnPosition;
+        //spawnDelay = settings.spawnDelay;
 
 
         if (player != null)

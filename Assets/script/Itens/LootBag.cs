@@ -31,7 +31,12 @@ public class LootBag : MonoBehaviour
         if (itemDroppado != null)
         {
             GameObject itemGameObject = Instantiate(prefabDropada, SpawnPosition, Quaternion.identity);
-            itemGameObject.GetComponent<Item>().prefabItem = itemDroppado.prefabItem;
+            Item itemScript = itemGameObject.GetComponent<Item>();
+            if(itemScript != null)
+            {
+                itemScript.Initialize(itemDroppado);
+            }
+
         }
     }
 }

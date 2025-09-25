@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da316344269c6724998184e385ef44b3, type: 3}
   m_Name: itemFerro
   m_EditorClassIdentifier: 
-  prefabItem: {fileID: 373794347663381789, guid: 9e6abc8b05da87d40a3b81e1ca3471ae, type: 3}
+  lootsprite: {fileID: -8870327549414350, guid: c183836ccf4f79b4d8f334f655a8012a, type: 3}
+  lootname: Ferro
+  dropChance: 0
   upGas: 0
   upFerro: 40
   "upPe\xE7as": 0
-  dropChance: 0
+  tipo: 0

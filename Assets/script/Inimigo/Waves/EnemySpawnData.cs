@@ -1,7 +1,8 @@
 using System.Numerics;
 using UnityEngine;
 
-public class EnemySpawnData : MonoBehaviour
+[System.Serializable]
+public class EnemySpawnData
 {
     public enum SpawnSide
     {
@@ -13,6 +14,7 @@ public class EnemySpawnData : MonoBehaviour
     public float spawnDelay;
     public UnityEngine.Vector2 customPos;
     public SpawnSide lado;
+    
 
 
 }

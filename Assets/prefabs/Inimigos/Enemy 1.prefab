@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6352207730423665705}
   - component: {fileID: 5304890220059795179}
   - component: {fileID: 1676058613574829424}
-  - component: {fileID: -3324746622941124044}
   - component: {fileID: -5457432657510802628}
   - component: {fileID: 8318623253215222661}
   - component: {fileID: 6881578884213485069}
@@ -115,22 +114,6 @@ MonoBehaviour:
   prefabInimigo: {fileID: 4701457152990384429}
   spawnPosition: {x: 0, y: 0}
   player: {fileID: 6083878722191991859, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
---- !u!114 &-3324746622941124044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4701457152990384429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b2a973b7c856442b1130076edabf93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
-  spawnDelay: 1.5
-  customPos: {x: 0, y: 0}
-  lado: 0
 --- !u!114 &-5457432657510802628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaff01528d153554383830d914d5d171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabDropada: {fileID: 373794347663381789, guid: 67e45040aa3a5e54aa496f44b4f815ad, type: 3}
+  prefabDropada: {fileID: 6488188299671690963, guid: 87d11cab9fd331f42b9054a0722ebaa7, type: 3}
   lootList:
   - {fileID: 11400000, guid: 6a7c673303c8a954b8aecfb5bec6abcc, type: 2}
   - {fileID: 11400000, guid: 1a319d1fad5870949be1bbf6b647854f, type: 2}

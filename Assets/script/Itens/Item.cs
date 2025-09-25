@@ -3,7 +3,6 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemSettings settings;
-    public GameObject prefabItem;
     public float upGas;
     public int upFerro;
     
@@ -29,7 +28,22 @@ public class Item : MonoBehaviour
         upFerro = settings.upFerro;
         upPeças = settings.upPeças;
 
-        prefabItem = settings.prefabItem;
+
+
+       
+    }
+
+    public void Initialize(ItemSettings newSettings)
+    {
+        settings = newSettings;
+
+        upGas = settings.upGas;
+        upFerro = settings.upFerro;
+        upPeças = settings.upPeças;
+
+        
+        GetComponent<SpriteRenderer>().sprite = settings.lootsprite;
+
     }
 
     // Update is called once per frame
@@ -38,29 +52,27 @@ public class Item : MonoBehaviour
 
     }
 
-    public void OnMouseDown()
+     void OnMouseDown()
     {
-        
-        switch (recurso)
+        Debug.Log("Clicou");
+        switch(settings.tipo)
         {
-            case TipoItem.Ferro:
-                gameManager.QtdFerro += upFerro;
+            case ItemSettings.TipoItem.Ferro:
+                gameManager.QtdFerro += upFerro;    
                 Destroy(gameObject);
+            break;
 
-                break;
-            case TipoItem.Gas:
+            case ItemSettings.TipoItem.Gas:
                 gameManager.QtdComb += upGas;
                 Destroy(gameObject);
+            break;
 
-                break;
-            case TipoItem.Peça:
+            case ItemSettings.TipoItem.Peça:
                 player.hp += 40;
                 player.peçasNum++;
                 Destroy(gameObject);
-                break;
-            default:
-                return;
-
+            break;
         }
+
     }
 }

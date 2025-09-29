@@ -3,33 +3,28 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemSettings settings;
+    private SpriteRenderer spriteRenderer;
     public float upGas;
     public int upFerro;
     
     public int upPeças;
-    private GameManager gameManager ;
+
+    private ItemSettings.TipoItem tipo;
+    private GameManager gameManager;
      private Submarino player;
 
-    public enum TipoItem
-    {
-        Ferro,
-        Gas,
-        Peça
-    }
 
-    public TipoItem recurso;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public ItemSettings.TipoItem recurso;
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
-        player = FindFirstObjectByType<Submarino>();
         gameManager = FindFirstObjectByType<GameManager>();
 
-        upGas = settings.upGas;
-        upFerro = settings.upFerro;
-        upPeças = settings.upPeças;
-
-
-
+        recurso = settings.tipo;
        
     }
 
@@ -40,9 +35,16 @@ public class Item : MonoBehaviour
         upGas = settings.upGas;
         upFerro = settings.upFerro;
         upPeças = settings.upPeças;
+        tipo = settings.tipo;
 
-        
-        GetComponent<SpriteRenderer>().sprite = settings.lootsprite;
+        if (spriteRenderer != null && settings.lootsprite != null)
+        {
+            spriteRenderer.sprite = settings.lootsprite;
+        }
+        player = FindFirstObjectByType<Submarino>();
+        gameManager = FindFirstObjectByType<GameManager>();
+
+
 
     }
 
@@ -54,7 +56,7 @@ public class Item : MonoBehaviour
 
      void OnMouseDown()
     {
-        Debug.Log("Clicou");
+
         switch(settings.tipo)
         {
             case ItemSettings.TipoItem.Ferro:

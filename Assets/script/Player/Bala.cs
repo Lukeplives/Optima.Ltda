@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
-    private Transform alvo;
+
     [Header("Referências")]
+
     [SerializeField] private Rigidbody2D rb;
+    private Transform alvo;
+
+
 
 
 
@@ -12,14 +16,27 @@ public class Bala : MonoBehaviour
     [SerializeField] private float balaVelocidade = 5f;
     public int danoBala = 1;
 
-    /*public enum DanoExtra
+    public enum TipoDeBala
     {
-        metralhadora,
-        sniper,
-        bombardeira
+        Metralhadora,
+        Bombardeira,
+        Sniper,
+
     }
 
-    public DanoExtra tipos;*/
+    [Header("Tipo da bala")]
+    public TipoDeBala tipo;
+
+    [Header("Configs bala Explosiva")]
+    public float raioExplosão;
+    public int danoExplosão;
+    public LayerMask enemyMask;
+    [SerializeField] GameObject efeitoExplosao;
+
+
+
+
+
     public void SetTarget(Transform _alvo)
     {
         alvo = _alvo;
@@ -43,8 +60,54 @@ public class Bala : MonoBehaviour
         {
             danoBala *= 2;
         }*/
-        other.gameObject.GetComponent<Inimigo>().TomaDano(danoBala);
+
+        Inimigo inimigo = other.gameObject.GetComponent<Inimigo>();
+        if (inimigo != null)
+        {
+            inimigo.TomaDano(danoBala);
+        }
+
+        //OnHit(other);
+        switch (tipo)
+        {
+            case TipoDeBala.Bombardeira:
+                Explodir();
+                
+                break;
+
+        }
+
         Destroy(gameObject);
+    }
+
+    private void Explodir()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, raioExplosão, enemyMask);
+        foreach (Collider2D hit in hits)
+        {
+
+            Inimigo inimigo = hit.GetComponent<Inimigo>();
+            inimigo.TomaDano(danoExplosão);
+        }
+
+        if (efeitoExplosao != null)
+        {
+            Instantiate(efeitoExplosao, transform.position, Quaternion.identity);
+        }
+    }
+
+    /*protected virtual void OnHit(Collision2D other)
+    {
+
+    }*/
+    
+        private void OnDrawGizmosSelected()
+    {
+        if (tipo == TipoDeBala.Bombardeira)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, raioExplosão);
+        }
     }
 
 }

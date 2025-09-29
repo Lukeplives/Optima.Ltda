@@ -1,51 +1,34 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class BalaBombardeira : MonoBehaviour
-{
-    private Transform alvo;
-    [Header("Referências")]
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private GameObject exploZona;
+public class BalaBombardeira : Bala
+{/*
+    [Header("Explosão")]
+    [SerializeField] private float raioExplosão = 3f;
+    [SerializeField] private int danoExplosão = 2;
+    public LayerMask enemyMask;
 
-
-    [Header("Atributos")]
-    [SerializeField] private float balaVelocidade = 5f;
-    public int danoBala = 1;
-    
-
-    public void SetTarget(Transform _alvo)
+    protected override void OnHit(Collision2D other)
     {
-        alvo = _alvo;
-    }
-    private void FixedUpdate()
-    {
-        if (!alvo)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, raioExplosão, enemyMask);
+        foreach (Collider2D hit in hits)
         {
-            return;
+            Inimigo inimigo = hit.GetComponent<Inimigo>();
+            if (inimigo != null)
+            {
+                inimigo.TomaDano(danoExplosão);
+            }
         }
-        Vector2 direction = (alvo.position - transform.position).normalized;
-
-        rb.linearVelocity = direction * balaVelocidade;
 
 
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnDrawGizmosSelected()
     {
-        other.gameObject.GetComponent<Inimigo>().TomaDano(danoBala);
-        Explode();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, raioExplosão);
     }
 
-    private void Explode()
-    {
-        exploZona.SetActive(true);
-        Instantiate(exploZona, transform.position, Quaternion.identity);
-
-        Destroy(gameObject, exploZona.GetComponent<ZonadeExplosão>().exploDuração);
-
-    }
-    
-
+*/
 
 }

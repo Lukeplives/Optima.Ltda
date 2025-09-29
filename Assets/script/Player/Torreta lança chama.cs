@@ -1,88 +1,85 @@
 using UnityEngine;
 using UnityEditor;
 
-public class TorretaBombardeira : MonoBehaviour
+public class Torretalançachama : MonoBehaviour
 {
- public TorretaSettings settings;
-    [Header("Referencias de Obj")]
+    [Header("Referencias de OBJ")]
+    public TorretaSettings settings;
     [SerializeField] private Transform turretRotationPoint;
     public LayerMask enemyMask;
-    public GameObject balaPrefab;
     [SerializeField] private Transform firingPoint;
+    private Building torretaBuild;
+    private Transform target;
+
+    public GameObject efeitoChama;
 
 
     [Header("Atributos")]
+
+    [SerializeField] private float raioChama;
+    [SerializeField] private float danoPorSegundo;
+    [SerializeField] private float tempoDeVida;
     public float targetingRange = 5f;
     public float rotationSpeed = 5f;
-    public float bps = 1f; //Balas por segundo
-    public  float tempoDeVida;
-    public int danoTorreta;
-
 
     private float timeUntilFire;
-    private Transform target;
 
-    /*private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
-    }*/
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        torretaBuild = GetComponent<Building>();
+        
         enemyMask = settings.enemyMask;
-        balaPrefab = settings.balaPrefab;
+        //balaPrefab = settings.balaPrefab;
 
 
-        danoTorreta = settings.danoTorreta;
+        //danoTorreta = settings.danoTorreta;
         targetingRange = settings.targetingRange;
         rotationSpeed = settings.rotationSpeed;
-        bps = settings.bps;
+        //bps = settings.bps;
         tempoDeVida = settings.tempoDeVida;
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-        tempoDeVida -= 1 * Time.deltaTime;
+        tempoDeVida -= Time.deltaTime;
         if (tempoDeVida <= 0)
         {
+            if (torretaBuild.originTile != null)
+                torretaBuild.originTile.isOccupied = false;
             Destroy(gameObject);
         }
 
-        if (target == null)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(firingPoint.position, raioChama, enemyMask);
+        foreach (Collider2D hit in hits)
         {
-            FindTarget();
-            return;
-        }
-        RotateTowardsTarget();
-
-        if (!CheckTargetIsInRange())
-        {
-            target = null;
-        }
-        else
-        {
-            timeUntilFire += Time.deltaTime;
-            if (timeUntilFire >= 1f / bps)
+            Inimigo inimigo = hit.GetComponent<Inimigo>();
+            if (inimigo != null)
             {
-                Shoot();
-                timeUntilFire = 0f;
+                efeitoChama.SetActive(true);
+                inimigo.TomaDano((int)(danoPorSegundo * Time.deltaTime));
             }
         }
+        if (hits == null)
+        {
+            efeitoChama.SetActive(false);
+        }
+
+        if (target == null)
+            {
+                FindTarget();
+                return;
+            }
+        RotateTowardsTarget();
+        
+
     }
 
 
-    private void Shoot()
-    {
-        GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
-        BalaBombardeira balaScript = balaObj.GetComponent<BalaBombardeira>();
-        balaScript.danoBala = danoTorreta;
-        balaScript.SetTarget(target);
-    }
 
-    private void FindTarget()
+     private void FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
         if (hits.Length > 0)
@@ -97,9 +94,18 @@ public class TorretaBombardeira : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
-
     private bool CheckTargetIsInRange()
     {
         return Vector2.Distance(target.position, transform.position) <= targetingRange;
+    }
+
+    
+    private void OnDrawGizmosSelected()
+    {
+        Handles.color = Color.cyan;
+        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(firingPoint.position, raioChama);
     }
 }

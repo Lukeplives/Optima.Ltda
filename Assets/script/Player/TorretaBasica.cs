@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
+using TMPro;
 
 public class TorretaBasica : MonoBehaviour
 {
@@ -21,9 +23,20 @@ public class TorretaBasica : MonoBehaviour
     public float tempoDeVida;
     public int danoTorreta;
 
+    public int munMax;
+    public int munAtual;
+
 
     private float timeUntilFire;
     private Transform target;
+
+
+
+    [Header("UI")]
+    public GameObject ammoUIPrefab;
+
+    private TMP_Text ammoText;
+
 
     private void OnDrawGizmosSelected()
     {
@@ -42,12 +55,28 @@ public class TorretaBasica : MonoBehaviour
         rotationSpeed = settings.rotationSpeed;
         bps = settings.bps;
         tempoDeVida = settings.tempoDeVida;
+
+        munMax = settings.munMax;
+        munAtual = munMax;
+
+
+        if (ammoUIPrefab != null)
+        {
+            GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            uiObject.transform.SetParent(transform);
+
+
+            ammoText = uiObject.GetComponentInChildren<TMP_Text>();
+
+
+            ammoText.text = $"{munAtual} / {munMax}";
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        tempoDeVida -= 1 * Time.deltaTime;
+        /*tempoDeVida -= 1 * Time.deltaTime;
         if (torretaBuild.originTile != null)
         {
              if (tempoDeVida <= 0)
@@ -56,7 +85,7 @@ public class TorretaBasica : MonoBehaviour
             torretaBuild.originTile = null;
             Destroy(gameObject);
         }
-        }
+        }*/
        
 
         if (target == null)
@@ -84,10 +113,27 @@ public class TorretaBasica : MonoBehaviour
 
     private void Shoot()
     {
+        if (munAtual <= 0) { return; }
         GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
+
         balaScript.danoBala = danoTorreta;
         balaScript.SetTarget(target);
+
+        munAtual--;
+        ammoText.text = $"{munAtual} / {munMax}";
+        
+
+        if (munAtual <= 0)
+        {
+            if (torretaBuild.originTile != null)
+            {
+                torretaBuild.originTile.isOccupied = false;
+                torretaBuild.originTile = null;
+
+            }
+            Destroy(gameObject);
+        }
     }
 
     private void FindTarget()

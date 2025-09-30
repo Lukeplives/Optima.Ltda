@@ -3896,6 +3896,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -8870327549414350, guid: c183836ccf4f79b4d8f334f655a8012a, type: 3}
+    - target: {fileID: 1840368564449569237, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2515573942393477639, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.495
@@ -4148,6 +4152,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -379
       objectReference: {fileID: 0}
+    - target: {fileID: 8911522713013598858, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8911522713013598858, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8948108061851870401, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4165,6 +4177,7 @@ PrefabInstance:
     - {fileID: 2771646865485744468, guid: 132952ef8d8787c478919e68133df699, type: 3}
     - {fileID: 6144081634656009623, guid: 132952ef8d8787c478919e68133df699, type: 3}
     - {fileID: 2761310302088157524, guid: 132952ef8d8787c478919e68133df699, type: 3}
+    - {fileID: 5000705248990458545, guid: 132952ef8d8787c478919e68133df699, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 132952ef8d8787c478919e68133df699, type: 3}

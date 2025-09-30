@@ -14,6 +14,8 @@ public class TorretaSettings : ScriptableObject
     public float tempoDeVida;
     public int danoTorreta;
 
+    public int munMax;
+
 
     [Header("Referencias de Obj")]
 

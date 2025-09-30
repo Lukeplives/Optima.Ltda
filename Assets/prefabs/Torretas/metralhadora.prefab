@@ -266,6 +266,9 @@ MonoBehaviour:
   bps: 1
   tempoDeVida: 25
   danoTorreta: 0
+  munMax: 0
+  munAtual: 0
+  ammoUIPrefab: {fileID: 7131644061773033375, guid: 24cb5e6419f3da94a8889e4855bd4ef4, type: 3}
 --- !u!114 &5577869450679567921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +284,7 @@ MonoBehaviour:
   torretaSettings: {fileID: 11400000, guid: 70a7894a78d37454d9e7aaddf7ef030b, type: 2}
   custoRec: 20
   custoComb: 5
+  originTile: {fileID: 0}
 --- !u!50 &-7425286808470548956
 Rigidbody2D:
   serializedVersion: 5

@@ -19,7 +19,8 @@ MonoBehaviour:
   bps: 0.5
   tempoDeVida: 30
   danoTorreta: 25
+  munMax: 30
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  balaPrefab: {fileID: 3038097420431131993, guid: 36ea224256043374280fdd313407f837, type: 3}
+  balaPrefab: {fileID: 3038097420431131993, guid: 2d1775ffedf1cfc4e8d4052c085cd728, type: 3}

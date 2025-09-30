@@ -261,12 +261,14 @@ MonoBehaviour:
     m_Bits: 64
   balaPrefab: {fileID: 3038097420431131993, guid: 2d1775ffedf1cfc4e8d4052c085cd728, type: 3}
   firingPoint: {fileID: 5138256532615241328}
-  torretaBuild: {fileID: 0}
   targetingRange: 0
   rotationSpeed: 200
   bps: 0
   tempoDeVida: 0
   danoTorreta: 0
+  munMax: 0
+  munAtual: 0
+  ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
 --- !u!114 &5577869450679567921
 MonoBehaviour:
   m_ObjectHideFlags: 0

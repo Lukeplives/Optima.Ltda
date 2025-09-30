@@ -268,7 +268,7 @@ MonoBehaviour:
   danoTorreta: 0
   munMax: 0
   munAtual: 0
-  ammoUIPrefab: {fileID: 7131644061773033375, guid: 24cb5e6419f3da94a8889e4855bd4ef4, type: 3}
+  ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
 --- !u!114 &5577869450679567921
 MonoBehaviour:
   m_ObjectHideFlags: 0

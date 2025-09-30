@@ -19,6 +19,7 @@ MonoBehaviour:
   bps: 1
   tempoDeVida: 1000
   danoTorreta: 0
+  munMax: 500
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Torreta
   - Projetil Inimigo
+  - Belt
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Defesas
     uniqueID: 3676718727
+    locked: 0
+  - name: UI
+    uniqueID: 842894981
     locked: 0
   m_RenderingLayers:
   - Default

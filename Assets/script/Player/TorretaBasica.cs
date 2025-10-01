@@ -26,6 +26,8 @@ public class TorretaBasica : MonoBehaviour
     public int munMax;
     public int munAtual;
 
+    [SerializeField] private bool munInfinita;
+
 
     private float timeUntilFire;
     private Transform target;
@@ -55,37 +57,33 @@ public class TorretaBasica : MonoBehaviour
         rotationSpeed = settings.rotationSpeed;
         bps = settings.bps;
         tempoDeVida = settings.tempoDeVida;
-
-        munMax = settings.munMax;
-        munAtual = munMax;
-
-
-        if (ammoUIPrefab != null)
-        {
-            GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
-            uiObject.transform.SetParent(transform);
+        munInfinita = settings.munInfinita;
+        
 
 
-            ammoText = uiObject.GetComponentInChildren<TMP_Text>();
+            munMax = settings.munMax;
+            munAtual = munMax;
 
 
-            ammoText.text = $"{munAtual} / {munMax}";
+            if (ammoUIPrefab != null)
+            {
+                GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+                uiObject.transform.SetParent(transform);
+
+
+                ammoText = uiObject.GetComponentInChildren<TMP_Text>();
+
+
+                ammoText.text = $"{munAtual} / {munMax}";
+            
         }
+        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        /*tempoDeVida -= 1 * Time.deltaTime;
-        if (torretaBuild.originTile != null)
-        {
-             if (tempoDeVida <= 0)
-        {
-            torretaBuild.originTile.isOccupied = false;
-            torretaBuild.originTile = null;
-            Destroy(gameObject);
-        }
-        }*/
+
        
 
         if (target == null)

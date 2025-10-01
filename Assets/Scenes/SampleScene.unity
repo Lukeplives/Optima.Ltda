@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerposition: {fileID: 1143125490}
   waves:
-  - {fileID: 11400000, guid: 6587284f9d5281d4a99e79cf24aadf53, type: 2}
+  - {fileID: 11400000, guid: 8dad158ee8293e442a05b9617ca0591c, type: 2}
   leftSpawnPoint: {fileID: 32086986}
   rightSpawnPoint: {fileID: 416942771}
   upperRightSpawnPoint: {fileID: 1894639756}
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000874626db
+  m_ApplyToSortingLayers: 00000000874626db858e3d32
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1603,6 +1603,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2240296651865274770, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3143114537486732375, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.24
@@ -1702,6 +1706,14 @@ PrefabInstance:
     - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: bps
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
+      propertyPath: munMax
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
+      propertyPath: munInfinita
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7698064700230337699, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: m_Enabled
@@ -4158,7 +4170,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 8911522713013598858, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_RenderMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8948108061851870401, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_IsActive
@@ -4178,6 +4190,7 @@ PrefabInstance:
     - {fileID: 6144081634656009623, guid: 132952ef8d8787c478919e68133df699, type: 3}
     - {fileID: 2761310302088157524, guid: 132952ef8d8787c478919e68133df699, type: 3}
     - {fileID: 5000705248990458545, guid: 132952ef8d8787c478919e68133df699, type: 3}
+    - {fileID: 110524877367501458, guid: 132952ef8d8787c478919e68133df699, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 132952ef8d8787c478919e68133df699, type: 3}

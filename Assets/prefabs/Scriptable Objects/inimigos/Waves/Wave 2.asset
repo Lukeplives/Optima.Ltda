@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: Wave 2
   m_EditorClassIdentifier: 
   inimigosWave:
-  - {fileID: -8748634006967323285, guid: 3d1d8afbe34aa2d43a486737e96d2686, type: 3}
-  - {fileID: -8748634006967323285, guid: 3d1d8afbe34aa2d43a486737e96d2686, type: 3}
-  - {fileID: -8748634006967323285, guid: 3d1d8afbe34aa2d43a486737e96d2686, type: 3}
-  - {fileID: -8748634006967323285, guid: 3d1d8afbe34aa2d43a486737e96d2686, type: 3}
-  - {fileID: -3324746622941124044, guid: 9e794424095eb7e47b8999d7ded42a1f, type: 3}
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 2
+    customPos: {x: -10, y: 5}
+    lado: 0
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 2
+    customPos: {x: -10, y: 5}
+    lado: 0
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 2
+    customPos: {x: -10, y: 5}
+    lado: 0

@@ -15,6 +15,7 @@ public class TorretaSettings : ScriptableObject
     public int danoTorreta;
 
     public int munMax;
+    public bool munInfinita;
 
 
     [Header("Referencias de Obj")]

@@ -6,10 +6,10 @@ public class Inimigo : MonoBehaviour
 {
     public InimigoSettings settings;
     [Header("Atributos")]
-    [SerializeField] private float speed;
+    public float speed;
     [SerializeField] private float stoppingDistance;
     [SerializeField] private float retreatDistance;
-    [SerializeField] private int hitPoints;
+    public int hitPoints;
      private float timeBtwShots;
     [SerializeField] private float startTimeBtwShots;
     public float spawnDelay;
@@ -33,7 +33,7 @@ public class Inimigo : MonoBehaviour
 
     public Enum tipos;*/
 
-    void Start()
+    protected virtual void Start()
     {
         speed = settings.speed;
         stoppingDistance = settings.stoppingDistance;
@@ -64,7 +64,7 @@ public class Inimigo : MonoBehaviour
 
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (player != null)
         {
@@ -104,44 +104,5 @@ public class Inimigo : MonoBehaviour
         }
     } 
 
-    /*
-    public InimigoSettings settings;
-    public GameObject player;
-    public float speed;
-    [SerializeField] private int hitPoints = 2;
-
-    private float distance;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-        speed = settings.speed;
-        distance = settings.distance;
-        hitPoints = settings.hitPoints;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-    }
-
-    public void TomaDano(int dano)
-    {
-        hitPoints -= dano;
-
-        if (hitPoints <= 0)
-        {
-            
-            Destroy(gameObject);
-        }
-    }
     
-*/
 }

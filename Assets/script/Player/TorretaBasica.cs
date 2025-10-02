@@ -111,26 +111,28 @@ public class TorretaBasica : MonoBehaviour
 
     private void Shoot()
     {
-        if (munAtual <= 0) { return; }
+        if (!munInfinita && munAtual <= 0) { return; }
         GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
 
         balaScript.danoBala = danoTorreta;
         balaScript.SetTarget(target);
-
-        munAtual--;
-        ammoText.text = $"{munAtual} / {munMax}";
-        
-
-        if (munAtual <= 0)
+        if (!munInfinita)
         {
-            if (torretaBuild.originTile != null)
-            {
-                torretaBuild.originTile.isOccupied = false;
-                torretaBuild.originTile = null;
+            munAtual--;
+            ammoText.text = $"{munAtual} / {munMax}";
 
+
+            if (munAtual <= 0)
+            {
+                if (torretaBuild.originTile != null)
+                {
+                    torretaBuild.originTile.isOccupied = false;
+                    torretaBuild.originTile = null;
+
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
     }
 

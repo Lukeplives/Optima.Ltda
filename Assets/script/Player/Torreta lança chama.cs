@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using TMPro;
 
 public class Torretalançachama : MonoBehaviour
 {
@@ -22,6 +23,15 @@ public class Torretalançachama : MonoBehaviour
     public float targetingRange = 5f;
     public float rotationSpeed = 5f;
 
+    public int munMax;
+    private int munAtual;
+    [SerializeField] private float munGasta;
+    
+
+    [Header("UI")]
+    public GameObject ammoUIPrefab;
+    private TMP_Text ammoText;
+
     private float timeUntilFire;
 
 
@@ -29,40 +39,60 @@ public class Torretalançachama : MonoBehaviour
     void Start()
     {
         torretaBuild = GetComponent<Building>();
-        
+
         enemyMask = settings.enemyMask;
-        //balaPrefab = settings.balaPrefab;
 
-
-        //danoTorreta = settings.danoTorreta;
         targetingRange = settings.targetingRange;
         rotationSpeed = settings.rotationSpeed;
-        //bps = settings.bps;
         tempoDeVida = settings.tempoDeVida;
+
+        munAtual = munMax;
+
+        if (ammoUIPrefab != null)
+        {
+            GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            uiObject.transform.SetParent(transform);
+            ammoText = uiObject.GetComponentInChildren<TMP_Text>();
+            ammoText.text = $"{munAtual} / {munMax}";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        tempoDeVida -= Time.deltaTime;
-        if (tempoDeVida <= 0)
+        if (munAtual <= 0)
         {
             if (torretaBuild.originTile != null)
                 torretaBuild.originTile.isOccupied = false;
             Destroy(gameObject);
+            return;
         }
 
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(firingPoint.position, raioChama, enemyMask);
-        foreach (Collider2D hit in hits)
+
+        if (hits.Length > 0)
         {
-            Inimigo inimigo = hit.GetComponent<Inimigo>();
-            if (inimigo != null)
+            efeitoChama.SetActive(true);
+
+            foreach (Collider2D hit in hits)
             {
-                efeitoChama.SetActive(true);
-                inimigo.TomaDano((int)(danoPorSegundo * Time.deltaTime));
+                Inimigo inimigo = hit.GetComponent<Inimigo>();
+                if (inimigo != null)
+                {
+
+                    inimigo.TomaDano((int)(danoPorSegundo * Time.deltaTime));
+                }
+            }
+            
+
+            munAtual -= Mathf.CeilToInt(munGasta * Time.deltaTime);
+            if (ammoText != null)
+            {
+                ammoText.text = $"{munAtual} / {munMax}";
             }
         }
-        if (hits == null)
+        else
         {
             efeitoChama.SetActive(false);
         }

@@ -249,8 +249,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4518231697411706717}
   - component: {fileID: 6416127566995219935}
-  - component: {fileID: 5577869450679567921}
   - component: {fileID: -6405528688304343536}
+  - component: {fileID: 5577869450679567921}
   - component: {fileID: -7425286808470548956}
   m_Layer: 0
   m_Name: "Lan\xE7a Chamas"
@@ -330,22 +330,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5577869450679567921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7971306376598169753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbcc77a74102454eb3ec88fdfcccd20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  torretaSettings: {fileID: 11400000, guid: 48e19646c2625c441b4fb2ab8530214a, type: 2}
-  custoRec: 20
-  custoComb: 5
-  originTile: {fileID: 0}
 --- !u!114 &-6405528688304343536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +354,26 @@ MonoBehaviour:
   tempoDeVida: 0
   targetingRange: 1.5
   rotationSpeed: 5
+  munMax: 900
+  munAtual: 0
+  munGasta: 2
+  ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
+--- !u!114 &5577869450679567921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971306376598169753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbcc77a74102454eb3ec88fdfcccd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torretaSettings: {fileID: 11400000, guid: 48e19646c2625c441b4fb2ab8530214a, type: 2}
+  custoRec: 20
+  custoComb: 5
+  originTile: {fileID: 0}
 --- !u!50 &-7425286808470548956
 Rigidbody2D:
   serializedVersion: 5

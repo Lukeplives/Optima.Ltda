@@ -93,7 +93,7 @@ public class Inimigo : MonoBehaviour
         }
     }
     
-    public void TomaDano(int dano)
+    public virtual void TomaDano(int dano)
     {
         hitPoints -= dano;
 

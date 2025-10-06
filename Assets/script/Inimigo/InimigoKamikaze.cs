@@ -36,18 +36,10 @@ public class InimigoKamikaze : Inimigo
         }
     }
 
-    public void TomaDano(int dano)
+    public override void TomaDano(int dano)
     {
-        hitPoints -= dano;
-
-        if (hitPoints <= 0)
-        {
-            Destroy(gameObject);
-        if (GetComponent<LootBag>() != null)
-        {
-            GetComponent<LootBag>().InstanciaItem(transform.position);
-        }
-        }
+        base.TomaDano(dano);
+        Explodir();
     }
 
     private void Explodir()

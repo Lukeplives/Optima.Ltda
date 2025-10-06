@@ -4,8 +4,7 @@ using UnityEngine;
 public class InimigoSettings : ScriptableObject
 {
     public GameObject prefabInimigo;
-    //public float spawnDelay;
-    //public Vector2 spawnPosition;
+
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;

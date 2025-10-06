@@ -38,25 +38,7 @@ public class WaveSpawner : MonoBehaviour
         foreach (var spawnData in wave.inimigosWave)
         {
             Vector2 spawnPos = (Vector2)transform.position + spawnData.customPos;
-            /*if (spawnPos.x < 0)
-            {
-                spawnPos = leftSpawnPoint.position;
-                if (spawnPos.y >= 1)
-                {
-                    spawnPos = upperLeftSpawnPoint.position;
-                }
-                
 
-            }
-            else
-            {
-                spawnPos = rightSpawnPoint.position;
-                if (spawnPos.y >= 1)
-                {
-                    spawnPos = upperRightSpawnPoint.position;
-                }
-                
-            }*/
             
             GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
             Inimigo inimigoComponent = inimigoNovo.GetComponent<Inimigo>();

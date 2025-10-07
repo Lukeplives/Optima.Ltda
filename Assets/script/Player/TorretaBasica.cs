@@ -37,7 +37,7 @@ public class TorretaBasica : MonoBehaviour
     [Header("UI")]
     public GameObject ammoUIPrefab;
 
-    private TMP_Text ammoText;
+    private Slider ammoSlider;
 
 
     private void OnDrawGizmosSelected()
@@ -65,16 +65,17 @@ public class TorretaBasica : MonoBehaviour
             munAtual = munMax;
 
 
-            if (ammoUIPrefab != null)
-            {
-                GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
-                uiObject.transform.SetParent(transform);
+        if (ammoUIPrefab != null)
+        {
+            GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            uiObject.transform.SetParent(transform);
 
 
-                ammoText = uiObject.GetComponentInChildren<TMP_Text>();
+            ammoSlider = uiObject.GetComponentInChildren<Slider>();
 
 
-                ammoText.text = $"{munAtual} / {munMax}";
+            ammoSlider.maxValue = munMax;
+            ammoSlider.value = munAtual;
             
         }
         
@@ -120,7 +121,9 @@ public class TorretaBasica : MonoBehaviour
         if (!munInfinita)
         {
             munAtual--;
-            ammoText.text = $"{munAtual} / {munMax}";
+
+            ammoSlider.value = munAtual;
+
 
 
             if (munAtual <= 0)

@@ -182,10 +182,6 @@ MonoBehaviour:
   playerposition: {fileID: 1143125490}
   waves:
   - {fileID: 11400000, guid: 6587284f9d5281d4a99e79cf24aadf53, type: 2}
-  leftSpawnPoint: {fileID: 32086986}
-  rightSpawnPoint: {fileID: 416942771}
-  upperRightSpawnPoint: {fileID: 1894639756}
-  upperLeftSpawnPoint: {fileID: 225927400}
 --- !u!4 &49275154
 Transform:
   m_ObjectHideFlags: 0
@@ -1087,6 +1083,7 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
+  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -1094,7 +1091,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
-  m_Version: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2405,8 +2401,6 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2428,7 +2422,6 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
@@ -3041,8 +3034,6 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3064,7 +3055,6 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -4116,6 +4106,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 457
       objectReference: {fileID: 0}
+    - target: {fileID: 3477726611820299697, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1330837918}
+    - target: {fileID: 3477726611820299697, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: torretaSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 48e19646c2625c441b4fb2ab8530214a, type: 2}
     - target: {fileID: 3674901120002138523, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4188,6 +4186,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}
+    - target: {fileID: 5790648336314315771, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1330837918}
+    - target: {fileID: 5790648336314315771, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: torretaSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: a29b18b64912c3f4ea93b8d055c084c9, type: 2}
     - target: {fileID: 6488972988573548640, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.06277021
@@ -4224,6 +4230,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Contador de combust\xEDvel"
       objectReference: {fileID: 0}
+    - target: {fileID: 7888299815465643972, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1330837918}
+    - target: {fileID: 7888299815465643972, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: torretaSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 70a7894a78d37454d9e7aaddf7ef030b, type: 2}
     - target: {fileID: 7912971687506070742, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4256,6 +4270,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -379
       objectReference: {fileID: 0}
+    - target: {fileID: 8880570717961594783, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1330837918}
+    - target: {fileID: 8880570717961594783, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: torretaSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f589120059c3f6489598ec61fbd8216, type: 2}
     - target: {fileID: 8911522713013598858, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_Camera
       value: 

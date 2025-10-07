@@ -861,6 +861,7 @@ GameObject:
   - component: {fileID: 1724046722692542332}
   - component: {fileID: 2675257741165040666}
   - component: {fileID: 3425500666734108727}
+  - component: {fileID: 5790648336314315771}
   m_Layer: 5
   m_Name: Bombardeira
   m_TagString: Untagged
@@ -982,6 +983,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5790648336314315771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350419709433113904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0335f1b1e966b4847beb305568940dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torretaSettings: {fileID: 0}
+  gameManager: {fileID: 0}
+  corAtiva: {r: 1, g: 1, b: 1, a: 1}
+  corBloqueada: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &1400570816678339786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,6 +1827,7 @@ GameObject:
   - component: {fileID: 3608169184355150313}
   - component: {fileID: 2261258200817607935}
   - component: {fileID: 8776575976174364456}
+  - component: {fileID: 3477726611820299697}
   m_Layer: 5
   m_Name: "Lan\xE7a Chama"
   m_TagString: Untagged
@@ -1931,6 +1949,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3477726611820299697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744567289247772682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0335f1b1e966b4847beb305568940dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torretaSettings: {fileID: 0}
+  gameManager: {fileID: 0}
+  corAtiva: {r: 1, g: 1, b: 1, a: 1}
+  corBloqueada: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &2771646865485744468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2162,7 @@ GameObject:
   - component: {fileID: 1953122613172565165}
   - component: {fileID: 2790926196859024647}
   - component: {fileID: 206771774586244799}
+  - component: {fileID: 8880570717961594783}
   m_Layer: 5
   m_Name: Sniper
   m_TagString: Untagged
@@ -2249,6 +2284,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8880570717961594783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961782275757468343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0335f1b1e966b4847beb305568940dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torretaSettings: {fileID: 0}
+  gameManager: {fileID: 0}
+  corAtiva: {r: 1, g: 1, b: 1, a: 1}
+  corBloqueada: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &3006156875800222278
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4902,7 @@ GameObject:
   - component: {fileID: 4324725216846605300}
   - component: {fileID: 5907668088162697241}
   - component: {fileID: 7912971687506070742}
+  - component: {fileID: 7888299815465643972}
   m_Layer: 5
   m_Name: "Torreta b\xE1sica"
   m_TagString: Untagged
@@ -4972,6 +5024,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7888299815465643972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6595124148860484356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0335f1b1e966b4847beb305568940dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torretaSettings: {fileID: 0}
+  gameManager: {fileID: 0}
+  corAtiva: {r: 1, g: 1, b: 1, a: 1}
+  corBloqueada: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &6851898192998928746
 GameObject:
   m_ObjectHideFlags: 0

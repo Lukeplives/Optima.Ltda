@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 using TMPro;
+using UnityEngine.UI;
+
 
 public class Torretalançachama : MonoBehaviour
 {
@@ -30,7 +32,7 @@ public class Torretalançachama : MonoBehaviour
 
     [Header("UI")]
     public GameObject ammoUIPrefab;
-    private TMP_Text ammoText;
+    private Slider ammoSlider;
 
     private float timeUntilFire;
 
@@ -52,8 +54,9 @@ public class Torretalançachama : MonoBehaviour
         {
             GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
             uiObject.transform.SetParent(transform);
-            ammoText = uiObject.GetComponentInChildren<TMP_Text>();
-            ammoText.text = $"{munAtual} / {munMax}";
+            ammoSlider = uiObject.GetComponentInChildren<Slider>();
+            ammoSlider.maxValue = munMax;
+            ammoSlider.value = munAtual;
         }
     }
 
@@ -84,13 +87,11 @@ public class Torretalançachama : MonoBehaviour
                     inimigo.TomaDano((int)(danoPorSegundo * Time.deltaTime));
                 }
             }
-            
+
 
             munAtual -= Mathf.CeilToInt(munGasta * Time.deltaTime);
-            if (ammoText != null)
-            {
-                ammoText.text = $"{munAtual} / {munMax}";
-            }
+            ammoSlider.value = munAtual;
+
         }
         else
         {

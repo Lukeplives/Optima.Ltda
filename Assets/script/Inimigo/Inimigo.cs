@@ -24,14 +24,7 @@ public class Inimigo : MonoBehaviour
 
     public Transform player;
 
-    /*public enum Tipos
-    {
-        Basico,
-        Voador,
-        Grande
-    }
-
-    public Enum tipos;*/
+    public event Action onDeath;
 
     protected virtual void Start()
     {
@@ -43,8 +36,6 @@ public class Inimigo : MonoBehaviour
         startTimeBtwShots = settings.startTimeBtwShots;
 
         prefabInimigo = settings.prefabInimigo;
-        //spawnPosition = settings.spawnPosition;
-        //spawnDelay = settings.spawnDelay;
 
 
         if (player != null)
@@ -100,6 +91,7 @@ public class Inimigo : MonoBehaviour
         if (hitPoints <= 0)
         {
             GetComponent<LootBag>().InstanciaItem(transform.position);
+            onDeath?.Invoke();
             Destroy(gameObject);
         }
     } 

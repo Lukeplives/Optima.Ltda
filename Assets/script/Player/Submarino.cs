@@ -19,7 +19,11 @@ public class Submarino : MonoBehaviour
     {
         //submarino.linearVelocity = new Vector2(subSpeed, 0);
         transform.Translate(Vector2.right * subSpeed * Time.deltaTime);
-        
+        if (hp <= 0)
+        {
+            hp = 0;
+            GameManager.Instance.PlayerDead(gameObject);
+        }
 
     }
 

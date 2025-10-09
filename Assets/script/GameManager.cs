@@ -5,8 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     [Header("Submarino")]
     private Building buildingToPlace;
     public GameObject grid;
@@ -21,11 +25,15 @@ public class GameManager : MonoBehaviour
     public int QtdFerro;
     public float QtdComb;
     [SerializeField] private float decrementoComb;
-    
+    public GameObject deathScreen;
+    private bool gameover = false;
+
+    [Header("Waves")]
     public WaveSpawner waveSpawner;
     public float timeBtwWaves;
 
     private int currentWave = 0;
+
 
     [Header("Dados do caminho")]
     public Transform startPoint;
@@ -35,13 +43,25 @@ public class GameManager : MonoBehaviour
     private float totalDistance;
 
 
+    void Awake()
+    {
+        Instance = this;
+        Time.timeScale = 1f;
+    }
     void Start()
     {
-        totalDistance = Vector3.Distance(startPoint.position, endPoint.position);
-        progressSlider.minValue = 0;
+        if (startPoint != null && submarino != null)
+        {
+                    totalDistance = Vector3.Distance(startPoint.position, endPoint.position);
+            progressSlider.minValue = 0;
         progressSlider.maxValue = totalDistance;
+        }
 
-        StartCoroutine(StartWaves());
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            StartCoroutine(StartWaves());
+        }
+
     }
 
     IEnumerator StartWaves()
@@ -91,20 +111,35 @@ public class GameManager : MonoBehaviour
 
 
             }
-            QtdComb -= decrementoComb * Time.deltaTime;
-
-
-            if (submarinoData.hp < 0 || QtdComb == 0)
+            if (QtdComb >= 0)
             {
+                QtdComb -= decrementoComb * Time.deltaTime;
+            }
+            else
+            {
+                QtdComb = 0;
+            }
+            
+
+
+            if (submarinoData.hp <= 0 || QtdComb <= 0)
+            {
+                submarinoData.hp = 0;
+                customCursor.gameObject.SetActive(false);
+                Cursor.visible = true;
                 Destroy(submarinoData.gameObject);
             }
 
         }
 
+        if (startPoint != null && submarino != null)
+        {
         float distanceTraveled = Vector3.Distance(startPoint.position, submarino.position);
 
         progressSlider.value = distanceTraveled;
-        
+        }
+
+
     }
 
     public void BuyBuilding(Building building)
@@ -123,7 +158,54 @@ public class GameManager : MonoBehaviour
         }
     }
 
- 
+    public void PlayerDead(GameObject player)
+    {
+        if (gameover) return;
+        gameover = true;
+        DisablePlayerComponents(player);
 
- 
+        Time.timeScale = 0f;
+
+        deathScreen.SetActive(true);
+    }
+
+    void DisablePlayerComponents(GameObject player)
+    {
+        MonoBehaviour[] scriptsPlayer = player.GetComponentsInChildren<MonoBehaviour>();
+        foreach (MonoBehaviour script in scriptsPlayer)
+        {
+            script.enabled = false;
+        }
+
+        Collider2D[] collidersPlayer = player.GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in collidersPlayer)
+        {
+            collider.enabled = false;
+        }
+
+        Rigidbody2D[] rbPlayer = player.GetComponentsInChildren<Rigidbody2D>();
+        foreach (Rigidbody2D rb in rbPlayer)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        SpriteRenderer[] spritesPlayer = player.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprites in spritesPlayer)
+        {
+            sprites.enabled = false;
+        }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
 }

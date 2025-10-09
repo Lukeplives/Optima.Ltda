@@ -13,9 +13,13 @@ public class Projetil : MonoBehaviour
     {
         dano = settings.dano;
         speed = settings.speed;
+        if (player != null)
+        {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         target = new Vector2(player.position.x, player.position.y);
+        }
+
     }
 
     // Update is called once per frame

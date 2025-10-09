@@ -72,7 +72,7 @@ public class Bala : MonoBehaviour
         {
             case TipoDeBala.Bombardeira:
                 Explodir();
-                
+
                 break;
 
         }
@@ -100,14 +100,19 @@ public class Bala : MonoBehaviour
     {
 
     }*/
-    
-        private void OnDrawGizmosSelected()
+
+    private void OnDrawGizmosSelected()
     {
         if (tipo == TipoDeBala.Bombardeira)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, raioExplosão);
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 
 }

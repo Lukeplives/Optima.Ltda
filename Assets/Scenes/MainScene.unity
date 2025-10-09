@@ -399,6 +399,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f1f102ea1c9c9947ab4d98923b4e262, type: 3}
+--- !u!1 &176276069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 846934636558027737, guid: 132952ef8d8787c478919e68133df699, type: 3}
+  m_PrefabInstance: {fileID: 6939678977052033595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &194867598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6687735767813222917, guid: 6dbbcb50f8f07144bb022a8312292905, type: 3}
@@ -1746,6 +1751,10 @@ PrefabInstance:
     - target: {fileID: 8460472850883830661, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: m_Name
       value: Submarino
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460472850883830661, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8490726196292798056, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: m_BodyType
@@ -3722,6 +3731,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1074504602}
     - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 176276069}
+    - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
       propertyPath: waveSpawner
       value: 
       objectReference: {fileID: 49275153}
@@ -3894,6 +3907,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}
+    - target: {fileID: 846934636558027737, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 847279456290733019, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 117
@@ -4230,6 +4247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Contador de combust\xEDvel"
       objectReference: {fileID: 0}
+    - target: {fileID: 7826515289051870776, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1330837918}
     - target: {fileID: 7888299815465643972, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: gameManager
       value: 
@@ -4294,6 +4315,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Metralhadora
       objectReference: {fileID: 0}
+    - target: {fileID: 9171228386188732803, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1330837918}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4647978115573405673, guid: 132952ef8d8787c478919e68133df699, type: 3}

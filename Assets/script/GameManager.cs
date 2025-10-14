@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public float timeBtwWaves;
 
     private int currentWave = 0;
+    public event Action AllWavesCompleted;
+    public BossController bigBoss;
 
 
     [Header("Dados do caminho")]
@@ -60,18 +62,37 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
             StartCoroutine(StartWaves());
+            AllWavesCompleted += () => bigBoss.StartBossFight();
         }
 
     }
 
     IEnumerator StartWaves()
     {
-        while (currentWave < waveSpawner.waves.Length)
+        /*while (currentWave < waveSpawner.waves.Length)
         {
             waveSpawner.StartWave(currentWave);
             yield return new WaitForSeconds(timeBtwWaves);
             currentWave++;
         }
+        AllWavesCompleted?.Invoke();*/
+
+        for (int i = 0; i < waveSpawner.waves.Length; i++)
+        {
+            bool waveTerminou = false;
+            Action waveHandler = () => waveTerminou = true;
+
+            waveSpawner.OnWaveCompleted += waveHandler;
+            waveSpawner.StartWave(i);
+
+            yield return new WaitUntil(() => waveTerminou);
+            waveSpawner.OnWaveCompleted -= waveHandler;
+
+            yield return new WaitForSeconds(timeBtwWaves);
+        }
+
+        Debug.Log("Waves finalizadas, começando boss");
+        AllWavesCompleted?.Invoke();
     }
 
 

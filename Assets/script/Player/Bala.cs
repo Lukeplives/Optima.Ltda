@@ -60,12 +60,20 @@ public class Bala : MonoBehaviour
         {
             danoBala *= 2;
         }*/
-
-        Inimigo inimigo = other.gameObject.GetComponent<Inimigo>();
-        if (inimigo != null)
+        var damageable = other.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            inimigo.TomaDano(danoBala);
+            damageable.TomaDano(danoBala);
         }
+        else
+        {
+            Inimigo inimigo = other.gameObject.GetComponent<Inimigo>();
+            if (inimigo != null)
+            {
+                inimigo.TomaDano(danoBala);
+            }
+        }
+
 
         //OnHit(other);
         switch (tipo)

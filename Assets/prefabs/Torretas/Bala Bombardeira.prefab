@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 539926235940163417}
   - component: {fileID: 4872684071531888107}
   m_Layer: 7
-  m_Name: bala bombardeira
+  m_Name: Bala Bombardeira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   efeitoExplosao: {fileID: 4096482172088701005, guid: b196fca9f07afcd49a9fd2aac7cd632a, type: 3}
-  "tempoExplos\xE3o": 0
 --- !u!50 &539926235940163417
 Rigidbody2D:
   serializedVersion: 5

@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d418c80b657abe840889a10e9de3c90a, type: 3}
-  m_Name: Inimigo Kamikaze
+  m_Name: Voador
   m_EditorClassIdentifier: 
-  prefabInimigo: {fileID: 4701457152990384429, guid: 47f5f116f3bc602498a87ff441de5b2d, type: 3}
-  speed: 0.5
-  stoppingDistance: 0
-  retreatDistance: 0
+  prefabInimigo: {fileID: 4701457152990384429, guid: 3d1d8afbe34aa2d43a486737e96d2686, type: 3}
+  spawnDelay: 0
+  spawnPosition: {x: 15, y: 2}
+  speed: 3
+  stoppingDistance: 7.5
+  retreatDistance: 3.25
   hitPoints: 75
-  startTimeBtwShots: 0
-  projetil: {fileID: 0}
+  startTimeBtwShots: 1
+  projetil: {fileID: 6435250657019572736, guid: dc16ed038d8403549b4391ff82b6de52, type: 3}

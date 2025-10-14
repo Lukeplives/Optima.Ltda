@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: -618248569
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.7800881, b: 0, a: 1}
+  m_Sprite: {fileID: 6180863289041739692, guid: a3053e2325ce0144d8996a0e3c4a7b91, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -269,7 +269,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.81592715, y: -0.02164704, z: 0}
-  m_LocalScale: {x: 0.5367942, y: 1.082352, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 558621409138680979}
@@ -319,8 +319,8 @@ SpriteRenderer:
   m_SortingLayerID: -618248569
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 1, g: 0.19916238, b: 0, a: 1}
+  m_Sprite: {fileID: -4080735812515489134, guid: 1bd400930ab59b54d83bfac3ba409d4e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -355,7 +355,6 @@ MonoBehaviour:
   targetingRange: 1.5
   rotationSpeed: 5
   munMax: 900
-  munAtual: 0
   munGasta: 2
   ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
 --- !u!114 &5577869450679567921

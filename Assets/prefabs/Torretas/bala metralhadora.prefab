@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 0.06132078, b: 0.9609418, a: 1}
   m_FlipX: 0
@@ -168,3 +168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 539926235940163417}
   balaVelocidade: 5
+  danoBala: 1
+  tipo: 0
+  "raioExplos\xE3o": 0
+  "danoExplos\xE3o": 0
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+  efeitoExplosao: {fileID: 0}

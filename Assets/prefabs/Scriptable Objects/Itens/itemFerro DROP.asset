@@ -16,6 +16,6 @@ MonoBehaviour:
   lootname: Ferro
   dropChance: 70
   upGas: 0
-  upFerro: 5
+  upFerro: 10
   "upPe\xE7as": 0
   tipo: 0

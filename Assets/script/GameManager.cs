@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         {
             bordas.position = new Vector2(submarino.position.x, 0);
 
-            numComb.text = QtdComb.ToString();
+            numComb.text = QtdComb.ToString("N0");
             numFerro.text = QtdFerro.ToString();
             numHP.text = submarinoData.hp.ToString();
 

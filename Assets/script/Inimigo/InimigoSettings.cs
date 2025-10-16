@@ -4,6 +4,20 @@ using UnityEngine;
 public class InimigoSettings : ScriptableObject
 {
     public GameObject prefabInimigo;
+    public enum SpawnSide
+    {
+        Left,
+        Right
+    }
+
+    public enum tipoInimigo
+    {
+        Terrestre,
+        Kamikaze,
+        Grande,
+        Voador
+    }
+    public SpawnSide lado;
 
     public float speed;
     public float stoppingDistance;

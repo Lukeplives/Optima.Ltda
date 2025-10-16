@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
@@ -14,6 +15,10 @@ public class WaveSpawner : MonoBehaviour
     private List<GameObject> inimigosVivos = new List<GameObject>();
     private bool waveAtiva = false;
     private int waveAtualIndex = 0;
+
+    [Header("Offsets spawn")]
+    public float offsetHorizontal;
+    public float offsetVertical;
 
     private void Update()
     {
@@ -45,8 +50,18 @@ public class WaveSpawner : MonoBehaviour
         inimigosVivos.Clear();
         foreach (var spawnData in wave.inimigosWave)
         {
-            Vector2 spawnPos = (Vector2)transform.position + spawnData.customPos;
-            GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
+            //Vector2 spawnPos = (Vector2)transform.position + spawnData.customPos;
+            if (spawnData.tipoInimigo == InimigoSettings.tipoInimigo.Voador)
+            {
+                Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
+            }else
+            {
+                Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
+            }
+
+
+
+                GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
 
             inimigosVivos.Add(inimigoNovo);
             Inimigo inimigoComponent = inimigoNovo.GetComponent<Inimigo>();
@@ -57,6 +72,20 @@ public class WaveSpawner : MonoBehaviour
             }
 
             yield return new WaitForSeconds(spawnData.spawnDelay);
+        }
+    }
+
+    private Vector2 CalcularSpawnPosition(InimigoSettings.SpawnSide lado, Vector2 customOffset)
+    {
+        Vector2 basePos = transform.position;
+        switch(lado)
+        {
+            case InimigoSettings.SpawnSide.Left:
+                return new Vector2(basePos.x - offsetHorizontal, basePos.y + offsetVertical);
+            case InimigoSettings.SpawnSide.Right:
+                return new Vector2(basePos.x + offsetHorizontal, basePos.y + offsetVertical);
+            default:
+                return basePos;
         }
     }
 

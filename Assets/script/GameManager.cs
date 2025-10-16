@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float decrementoComb;
     public GameObject deathScreen;
     private bool gameover = false;
+    public GameObject winScreen;
+    private bool gameWin = false;
 
     [Header("Waves")]
     public WaveSpawner waveSpawner;
@@ -134,9 +136,19 @@ public class GameManager : MonoBehaviour
 
         if (startPoint != null && submarino != null)
         {
-        float distanceTraveled = Vector3.Distance(startPoint.position, submarino.position);
+            float distanceTraveled = Vector3.Distance(startPoint.position, submarino.position);
 
-        progressSlider.value = distanceTraveled;
+            progressSlider.value = distanceTraveled;
+        }
+        
+        if(currentWave >= waveSpawner.waves.Length)
+        {
+            Time.timeScale = 0f;
+            winScreen.SetActive(true);
+            gameWin = true;  
+            customCursor.gameObject.SetActive(false);
+            Cursor.visible = true;
+            Destroy(submarinoData.gameObject); 
         }
 
 

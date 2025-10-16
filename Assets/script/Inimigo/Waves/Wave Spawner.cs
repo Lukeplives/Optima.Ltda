@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    
     [SerializeField] private Transform playerposition;
     public WaveData[] waves;
 
-
+    public event Action OnWaveCompleted;
 
     private List<GameObject> inimigosVivos = new List<GameObject>();
     private bool waveAtiva = false;
@@ -24,6 +25,7 @@ public class WaveSpawner : MonoBehaviour
         {
             waveAtiva = false;
             Debug.Log("Wave concluída");
+            OnWaveCompleted?.Invoke();
         }
 
     }

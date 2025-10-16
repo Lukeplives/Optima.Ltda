@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class TorretaBasica : MonoBehaviour
 {
     public TorretaSettings settings;
@@ -20,17 +21,20 @@ public class TorretaBasica : MonoBehaviour
     public float targetingRange = 5f;
     public float rotationSpeed = 5f;
     public float bps = 1f; //Balas por segundo
-    public float tempoDeVida;
+  
     public int danoTorreta;
 
     public int munMax;
     public int munAtual;
 
-    [SerializeField] private bool munInfinita;
+    public bool munInfinita;
+    public bool modoManual = false;
 
 
     private float timeUntilFire;
     private Transform target;
+
+    public bool podeAtirar = true;
 
 
 
@@ -56,7 +60,6 @@ public class TorretaBasica : MonoBehaviour
         targetingRange = settings.targetingRange;
         rotationSpeed = settings.rotationSpeed;
         bps = settings.bps;
-        tempoDeVida = settings.tempoDeVida;
         munInfinita = settings.munInfinita;
         
 
@@ -84,9 +87,37 @@ public class TorretaBasica : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (modoManual && munInfinita)
+        {
+            ControleManual();
+        }
+        else
+        {
+            AtirarAutomatico();
+        }
 
-       
 
+
+
+    }
+    private void ControleManual()
+    {
+        Vector3 posicaoMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        posicaoMouse.z = 0f;
+
+        Vector2 dir = posicaoMouse - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        turretRotationPoint.rotation = Quaternion.Euler(0, 0, angle-90);
+        timeUntilFire += Time.deltaTime;
+        if(Input.GetMouseButtonDown(0) && timeUntilFire >= 1f/bps)
+        {
+             Shoot();    
+            timeUntilFire = 0f;
+
+        }
+    }
+    private void AtirarAutomatico()
+    {
         if (target == null)
         {
             FindTarget();
@@ -108,16 +139,35 @@ public class TorretaBasica : MonoBehaviour
             }
         }
     }
+    
+    public void AlternarControleManual()
+    {
+        if (!munInfinita) { return; }
+        modoManual = !modoManual;
+        Debug.Log($"torreta {(modoManual ? "em controle manual" : "automático")}");
+        
+    }
 
 
     private void Shoot()
     {
-        if (!munInfinita && munAtual <= 0) { return; }
+        if (!munInfinita && munAtual <= 0 || !podeAtirar) { return; }
         GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
 
         balaScript.danoBala = danoTorreta;
-        balaScript.SetTarget(target);
+        if(modoManual && munInfinita)
+        {
+            Vector3 posMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            posMouse.z = 0f;
+            Vector2 dir = (posMouse - firingPoint.position).normalized;
+            balaScript.SetDirection(dir);
+        }
+        else
+        {
+            balaScript.SetTarget(target); 
+        }
+       
         if (!munInfinita)
         {
             munAtual--;

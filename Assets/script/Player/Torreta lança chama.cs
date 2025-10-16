@@ -28,6 +28,8 @@ public class Torretalançachama : MonoBehaviour
     public int munMax;
     private int munAtual;
     [SerializeField] private float munGasta;
+
+    [SerializeField] bool podeAtirar = true;
     
 
     [Header("UI")]

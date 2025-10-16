@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Collider2D))]
-public class BossWeakPoint : BossPart
+public class BossWeakPoint : BossPart, IDamageable
 {
     public BossController boss;
 
@@ -17,6 +17,7 @@ public class BossWeakPoint : BossPart
         base.TomaDano(qtdDano);
         if(boss != null)
         {
+            boss.DanoPontoFraco(qtdDano);
             boss.TomaDano(qtdDano);
         }
     }

@@ -53,6 +53,11 @@ MonoBehaviour:
   maxHP: 1500
   atualHP: 0
   fase: 0
+  tempoPEMAtivado: 0
+  tempoDeCarga: 0
+  danoParaCancelar: 0
+  tempoRecarga: 0
+  controleManualTorreta: {fileID: 0}
 --- !u!1 &4582205566376113118
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1500
   atualHP: 0
-  boss: {fileID: 0}
+  boss: {fileID: 8294254341302883065}
 --- !u!1 &7538586408465133331
 GameObject:
   m_ObjectHideFlags: 0

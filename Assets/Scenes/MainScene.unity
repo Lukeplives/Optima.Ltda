@@ -188,7 +188,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8d0525d66209da4995f545397efb0bc, type: 2}
   - {fileID: 11400000, guid: cecf9b4071b60234baf7ea72b575d6e3, type: 2}
   - {fileID: 11400000, guid: c90ce1d4d3e328344a1a110ca94ea92e, type: 2}
-  offsetHorizontal: 0
+  offsetHorizontal: 10
+  offsetVertical: 0
+  minAltura: 3
+  maxAltura: 7
 --- !u!4 &49275154
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,6 +1458,9 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 4f5d7a002a1d74a409591c1e859b3cc7, type: 2}
   offsetHorizontal: 10
+  offsetVertical: 0
+  minAltura: 3
+  maxAltura: 7
 --- !u!4 &814818986
 Transform:
   m_ObjectHideFlags: 0

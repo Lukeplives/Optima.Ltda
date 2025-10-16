@@ -20,6 +20,10 @@ public class WaveSpawner : MonoBehaviour
     public float offsetHorizontal;
     public float offsetVertical;
 
+    [Header("Altura dos inimigos voadores")]
+    public float minAltura = 3f;
+    public float maxAltura = 7f;
+
     private void Update()
     {
         if (playerposition != null)
@@ -50,18 +54,15 @@ public class WaveSpawner : MonoBehaviour
         inimigosVivos.Clear();
         foreach (var spawnData in wave.inimigosWave)
         {
-            //Vector2 spawnPos = (Vector2)transform.position + spawnData.customPos;
-            if (spawnData.tipoInimigo == InimigoSettings.tipoInimigo.Voador)
+
+            Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
+            if(spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Voador)
             {
-                Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
-            }else
-            {
-                Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
+                float alturaAleatoria = UnityEngine.Random.Range(minAltura, maxAltura);
+                spawnPos.y += alturaAleatoria;
             }
-
-
-
-                GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
+            
+            GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
 
             inimigosVivos.Add(inimigoNovo);
             Inimigo inimigoComponent = inimigoNovo.GetComponent<Inimigo>();

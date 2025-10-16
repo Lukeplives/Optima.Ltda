@@ -8,7 +8,8 @@ public class BossWeakPoint : BossPart, IDamageable
 
     private void Start()
     {
-        if (boss == null) { GetComponentInParent<BossController>(); }
+        if (boss == null) 
+        { boss = GetComponentInParent<BossController>(); }
 
     }
 
@@ -19,6 +20,7 @@ public class BossWeakPoint : BossPart, IDamageable
         {
             boss.DanoPontoFraco(qtdDano);
             boss.TomaDano(qtdDano);
+            Debug.Log("Tomou dano");
         }
     }
 }

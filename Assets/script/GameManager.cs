@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
     public Transform endPoint;
     public Slider progressSlider;
 
-    private float totalDistance;
+    private int totalEtapas;
+    private int etapasCompletas;
 
 
     void Awake()
@@ -54,12 +55,25 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if (startPoint != null && submarino != null)
+        if (waveSpawner == null)
         {
-                    totalDistance = Vector3.Distance(startPoint.position, endPoint.position);
-            progressSlider.minValue = 0;
-        progressSlider.maxValue = totalDistance;
+            waveSpawner = FindFirstObjectByType<WaveSpawner>();
         }
+
+        if (bigBoss == null)
+        {
+            bigBoss = FindFirstObjectByType<BossController>();
+        }
+
+        totalEtapas = waveSpawner.waves.Length + 1;
+        progressSlider.minValue = 0f;
+        progressSlider.maxValue = 1f;
+        progressSlider.value = 0f;
+        
+
+        waveSpawner.OnWaveCompleted += OnWaveCompleta;
+        bigBoss.OnBossDefeated += OnBossDerrotado;
+
 
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
@@ -71,13 +85,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartWaves()
     {
-        /*while (currentWave < waveSpawner.waves.Length)
-        {
-            waveSpawner.StartWave(currentWave);
-            yield return new WaitForSeconds(timeBtwWaves);
-            currentWave++;
-        }
-        AllWavesCompleted?.Invoke();*/
+
 
         for (int i = 0; i < waveSpawner.waves.Length; i++)
         {
@@ -155,12 +163,6 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (startPoint != null && submarino != null)
-        {
-            float distanceTraveled = Vector3.Distance(startPoint.position, submarino.position);
-
-            progressSlider.value = distanceTraveled;
-        }
         
         if(currentWave >= waveSpawner.waves.Length)
         {
@@ -239,6 +241,24 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    private void OnWaveCompleta()
+    {
+        etapasCompletas++;
+        AtualizarSlider();
+    }
+
+    private void OnBossDerrotado()
+    {
+        etapasCompletas++;
+        AtualizarSlider();
+    }
+
+    private void AtualizarSlider()
+    {
+        float progresso = (float)etapasCompletas / totalEtapas;
+        progressSlider.value = progresso;
     }
 
 }

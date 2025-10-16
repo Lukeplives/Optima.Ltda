@@ -18,6 +18,7 @@ public class InimigoSettings : ScriptableObject
         Voador
     }
     public SpawnSide lado;
+    public tipoInimigo tipo;
 
     public float speed;
     public float stoppingDistance;

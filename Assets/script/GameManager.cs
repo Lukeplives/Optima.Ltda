@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public event Action AllWavesCompleted;
     public BossController bigBoss;
 
+    public RadarWave radarWaveUi;
+
 
     [Header("Dados do caminho")]
     public Transform startPoint;
@@ -85,10 +87,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartWaves()
     {
-
+        
 
         for (int i = 0; i < waveSpawner.waves.Length; i++)
         {
+            radarWaveUi.AtualizarRadar(waveSpawner.waves[i]);
             bool waveTerminou = false;
             Action waveHandler = () => waveTerminou = true;
 

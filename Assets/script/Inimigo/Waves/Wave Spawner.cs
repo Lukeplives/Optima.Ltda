@@ -24,6 +24,8 @@ public class WaveSpawner : MonoBehaviour
     public float minAltura = 3f;
     public float maxAltura = 7f;
 
+    [Header("UI Radar")]
+    [SerializeField] RadarWave radarUI;
     private void Update()
     {
         if (playerposition != null)
@@ -50,6 +52,7 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave(WaveData wave)
     {
+        radarUI.AtualizarRadar(wave);
         waveAtiva = true;
         inimigosVivos.Clear();
         foreach (var spawnData in wave.inimigosWave)
@@ -68,7 +71,13 @@ public class WaveSpawner : MonoBehaviour
             Inimigo inimigoComponent = inimigoNovo.GetComponent<Inimigo>();
             if (inimigoComponent != null)
             {
-                inimigoComponent.onDeath += () => RemoverInimigo(inimigoNovo);
+                inimigoComponent.onDeath += () =>
+                {
+                    RemoverInimigo(inimigoNovo);
+
+                    radarUI.RemoverInimigo(inimigoComponent.tipoInimigo);
+
+                } ;
                 inimigoComponent.Initialize(spawnData.inimigo);
             }
 

@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &49275153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
   offsetVertical: 0
   minAltura: 3
   maxAltura: 7
+  radarUI: {fileID: 2012688999}
 --- !u!4 &49275154
 Transform:
   m_ObjectHideFlags: 0
@@ -1441,7 +1442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &814818985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   offsetVertical: 0
   minAltura: 3
   maxAltura: 7
+  radarUI: {fileID: 0}
 --- !u!4 &814818986
 Transform:
   m_ObjectHideFlags: 0
@@ -1574,8 +1576,32 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 3711162347608343409, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711162347608343409, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582205566376113118, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675396530573651426, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079939434384839837, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226695951282102610, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538586408465133331, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: maxHP
@@ -2612,6 +2638,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 9.961647}
   m_EdgeRadius: 0
+--- !u!1 &2012688997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 171252021177539601, guid: 132952ef8d8787c478919e68133df699, type: 3}
+  m_PrefabInstance: {fileID: 6939678977052033595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012688999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5808161157891424786, guid: 132952ef8d8787c478919e68133df699, type: 3}
+  m_PrefabInstance: {fileID: 6939678977052033595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012688997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ae933c6a5838246afd57b3cb6e6d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2045013705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2823,9 +2865,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 176276069}
     - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
+      propertyPath: radarWaveUi
+      value: 
+      objectReference: {fileID: 2012688999}
+    - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
       propertyPath: waveSpawner
       value: 
-      objectReference: {fileID: 814818985}
+      objectReference: {fileID: 49275153}
     - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
       propertyPath: customCursor
       value: 
@@ -3227,6 +3273,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}
+    - target: {fileID: 3793817979563121031, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4260863366654874217, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3251,6 +3301,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}
+    - target: {fileID: 4632291915768223641, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4708522436150855746, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.026147565
@@ -3303,6 +3357,14 @@ PrefabInstance:
       propertyPath: torretaSettings
       value: 
       objectReference: {fileID: 11400000, guid: a29b18b64912c3f4ea93b8d055c084c9, type: 2}
+    - target: {fileID: 5808161157891424786, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: radarPanel
+      value: 
+      objectReference: {fileID: 2012688997}
+    - target: {fileID: 5808161157891424786, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: tempoVisivel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6488972988573548640, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.06277021
@@ -3378,6 +3440,18 @@ PrefabInstance:
     - target: {fileID: 8035672674590396757, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -381.1731
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059129812712599211, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712744083691473357, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713548668330697700, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8776575976174364456, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

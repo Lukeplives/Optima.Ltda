@@ -14,6 +14,8 @@ public class Inimigo : MonoBehaviour
     [SerializeField] private float startTimeBtwShots;
     public float spawnDelay;
 
+    public InimigoSettings.tipoInimigo tipoInimigo;
+
     [Header("Referencias")]
 
     public GameObject projetil;
@@ -35,6 +37,9 @@ public class Inimigo : MonoBehaviour
         startTimeBtwShots = settings.startTimeBtwShots;
 
         prefabInimigo = settings.prefabInimigo;
+        tipoInimigo = settings.tipo;
+
+        
         //spawnPosition = settings.spawnPosition;
         //spawnDelay = settings.spawnDelay;
 
@@ -51,7 +56,7 @@ public class Inimigo : MonoBehaviour
     {
         settings = newSettings;
         hitPoints = settings.hitPoints;
-
+        
 
 
     }

@@ -96,6 +96,7 @@ public class Inimigo : MonoBehaviour
 
         if (hitPoints <= 0)
         {
+            
             onDeath?.Invoke();
             GetComponent<LootBag>().InstanciaItem(transform.position);
             Destroy(gameObject);

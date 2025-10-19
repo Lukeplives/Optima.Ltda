@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -33,6 +34,14 @@ public class BossController : MonoBehaviour
     private Coroutine pemCoroutine;
     public event Action OnBossDefeated;
 
+    void Start()
+    {
+        if(danoParaCancelar <= 0)
+        {
+            danoParaCancelar = 20;
+            Debug.Log("O burro esqueceu de setar o dano no inspetor cabeçao");
+        }
+    }
     void Awake()
     {
         atualHP = maxHP;
@@ -128,26 +137,6 @@ public class BossController : MonoBehaviour
             Debug.Log("Boss recarregando o PEM");
             yield return new WaitForSeconds(tempoDeCarga);
         }
-        /*TorretaBasica[] torretas = FindObjectsOfType<TorretaBasica>();
-        foreach (TorretaBasica torreta in torretas)
-        {
-            if (!torreta.munInfinita)
-            {
-                torreta.podeAtirar = false;
-                Debug.Log("Pem ativado");
-            }
-        }
-
-        yield return new WaitForSeconds(tempoPEMAtivado);
-
-        foreach (TorretaBasica torreta in torretas)
-        {
-            if (!torreta.munInfinita)
-            {
-                torreta.podeAtirar = true;
-
-            }
-        }*/
     }
 
     private IEnumerator CarregarPem()
@@ -176,22 +165,28 @@ public class BossController : MonoBehaviour
     private IEnumerator AtivarPem()
     {
         Debug.Log("PEM ativado");
-        TorretaBasica[] torretas = FindObjectsOfType<TorretaBasica>();
-        foreach (var torretasDesliga in torretas)
+
+        var torretasTotais = new List<TorretaBasica>(TorretaBasica.TodasTorretas);
+
+        foreach (var torretasDesliga in TorretaBasica.TodasTorretas)
         {
+            if (torretasDesliga == null) continue;
             if (!torretasDesliga.munInfinita)
             {
-                torretasDesliga.podeAtirar = false;
+                torretasDesliga.DesativarTorretaPEM();
             }
-
-            yield return new WaitForSeconds(tempoPEMAtivado);
-
-            foreach (var torretasAtiva in torretas)
-            {
-                torretasAtiva.podeAtirar = true;
-            }
-            Debug.Log("Pem terminou, torretas reativadas");
         }
+        
+        yield return new WaitForSeconds(tempoPEMAtivado);
+
+        torretasTotais = new List<TorretaBasica>(TorretaBasica.TodasTorretas);
+
+        foreach (var torretasAtiva in TorretaBasica.TodasTorretas)
+        {
+            if (torretasAtiva == null) continue;
+            torretasAtiva.ReativarTorreta();
+        }
+        Debug.Log("Pem terminou, torretas reativadas");
     }
     
     public void DanoPontoFraco(int dano)

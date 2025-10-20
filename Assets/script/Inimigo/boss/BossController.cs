@@ -176,6 +176,18 @@ public class BossController : MonoBehaviour
                 torretasDesliga.DesativarTorretaPEM();
             }
         }
+
+        var torretasChama = new List<Torretalançachama>(Torretalançachama.TodasTorretasChama);
+
+        foreach (var chamaDesliga in Torretalançachama.TodasTorretasChama)
+        {
+            if (chamaDesliga == null) continue;
+
+            if(chamaDesliga != null)
+            {
+                chamaDesliga.DesativarTorretaPEM();
+            }
+        }
         
         yield return new WaitForSeconds(tempoPEMAtivado);
 
@@ -185,6 +197,17 @@ public class BossController : MonoBehaviour
         {
             if (torretasAtiva == null) continue;
             torretasAtiva.ReativarTorreta();
+        }
+
+        torretasChama = new List<Torretalançachama>(Torretalançachama.TodasTorretasChama);
+        foreach(var chamaAtiva in Torretalançachama.TodasTorretasChama)
+        {
+            if (chamaAtiva == null) continue;
+
+            if(chamaAtiva != null)
+            {
+                chamaAtiva.ReativarTorreta();
+            }
         }
         Debug.Log("Pem terminou, torretas reativadas");
     }

@@ -59,7 +59,7 @@ public class WaveSpawner : MonoBehaviour
         {
 
             Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
-            if(spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Voador)
+            if(spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Voador || spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Kamikaze)
             {
                 float alturaAleatoria = UnityEngine.Random.Range(minAltura, maxAltura);
                 spawnPos.y += alturaAleatoria;

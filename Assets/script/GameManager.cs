@@ -161,7 +161,10 @@ public class GameManager : MonoBehaviour
                 submarinoData.hp = 0;
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
-                Destroy(submarinoData.gameObject);
+            if(submarinoData != null)
+            {
+                Destroy(submarinoData.gameObject); 
+            }
             }
 
         }
@@ -174,7 +177,11 @@ public class GameManager : MonoBehaviour
             gameWin = true;  
             customCursor.gameObject.SetActive(false);
             Cursor.visible = true;
-            Destroy(submarinoData.gameObject); 
+            if(submarinoData != null)
+            {
+                Destroy(submarinoData.gameObject); 
+            }
+            
         }
 
 

@@ -46,7 +46,7 @@ public class InimigoKamikaze : Inimigo
     {   if (explosionEffect != null)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            Destroy(explosionEffect, 0.5f);
+
         }
         Destroy(gameObject);
     }

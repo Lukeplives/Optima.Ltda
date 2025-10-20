@@ -188,8 +188,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8d0525d66209da4995f545397efb0bc, type: 2}
   - {fileID: 11400000, guid: cecf9b4071b60234baf7ea72b575d6e3, type: 2}
   - {fileID: 11400000, guid: c90ce1d4d3e328344a1a110ca94ea92e, type: 2}
-  offsetHorizontal: 0
+  offsetHorizontal: 10
   offsetVertical: 0
+  minAltura: 3
+  maxAltura: 7
+  radarUI: {fileID: 2012688999}
 --- !u!4 &49275154
 Transform:
   m_ObjectHideFlags: 0
@@ -1235,6 +1238,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
+      propertyPath: modoManual
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: munInfinita
       value: 1
       objectReference: {fileID: 0}
@@ -1452,7 +1459,10 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 4f5d7a002a1d74a409591c1e859b3cc7, type: 2}
   offsetHorizontal: 10
-  offsetVertical: 5
+  offsetVertical: 0
+  minAltura: 3
+  maxAltura: 7
+  radarUI: {fileID: 2012688999}
 --- !u!4 &814818986
 Transform:
   m_ObjectHideFlags: 0
@@ -1566,9 +1576,57 @@ PrefabInstance:
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 3711162347608343409, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711162347608343409, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4582205566376113118, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675396530573651426, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079939434384839837, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226695951282102610, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538586408465133331, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: maxHP
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: tempoDeCarga
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: tempoRecarga
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: tempoPEMAtivado
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: danoParaCancelar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: controleManualTorreta
+      value: 
+      objectReference: {fileID: 1876690644}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1987,6 +2045,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141192eb039d2124c8f4a916ba89e313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1876690643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1876690645}
+  - component: {fileID: 1876690644}
+  m_Layer: 0
+  m_Name: ControllerTorreta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1876690644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876690643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4a901279668d74891793f74b055770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1876690645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876690643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1883114057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2544,6 +2646,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 9.961647}
   m_EdgeRadius: 0
+--- !u!1 &2012688997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 171252021177539601, guid: 132952ef8d8787c478919e68133df699, type: 3}
+  m_PrefabInstance: {fileID: 6939678977052033595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012688999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5808161157891424786, guid: 132952ef8d8787c478919e68133df699, type: 3}
+  m_PrefabInstance: {fileID: 6939678977052033595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012688997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ae933c6a5838246afd57b3cb6e6d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2045013705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2754,6 +2872,10 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 176276069}
+    - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
+      propertyPath: radarWaveUi
+      value: 
+      objectReference: {fileID: 2012688999}
     - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
       propertyPath: waveSpawner
       value: 
@@ -3159,6 +3281,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}
+    - target: {fileID: 3793817979563121031, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4260863366654874217, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3183,6 +3309,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}
+    - target: {fileID: 4632291915768223641, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4708522436150855746, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.026147565
@@ -3235,6 +3365,14 @@ PrefabInstance:
       propertyPath: torretaSettings
       value: 
       objectReference: {fileID: 11400000, guid: a29b18b64912c3f4ea93b8d055c084c9, type: 2}
+    - target: {fileID: 5808161157891424786, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: radarPanel
+      value: 
+      objectReference: {fileID: 2012688997}
+    - target: {fileID: 5808161157891424786, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: tempoVisivel
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6488972988573548640, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.06277021
@@ -3311,6 +3449,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -381.1731
       objectReference: {fileID: 0}
+    - target: {fileID: 8059129812712599211, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712744083691473357, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713548668330697700, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8776575976174364456, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3377,6 +3527,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 358881190}
   - {fileID: 619394802}
+  - {fileID: 1876690645}
   - {fileID: 2394434861897316055}
   - {fileID: 6939678977052033595}
   - {fileID: 1886787174}

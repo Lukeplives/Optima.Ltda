@@ -264,11 +264,13 @@ MonoBehaviour:
   targetingRange: 0
   rotationSpeed: 200
   bps: 0
-  tempoDeVida: 0
   danoTorreta: 0
   munMax: 0
   munAtual: 0
   munInfinita: 0
+  modoManual: 0
+  podeAtirar: 1
+  "tempoRota\xE7\xE3oDesativada": 15
   ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
 --- !u!114 &5577869450679567921
 MonoBehaviour:

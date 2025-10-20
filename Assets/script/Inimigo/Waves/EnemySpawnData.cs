@@ -11,7 +11,6 @@ public class EnemySpawnData
     public InimigoSettings.SpawnSide lado;
 
     public InimigoSettings.tipoInimigo tipoInimigo;
-    
 
 
 }

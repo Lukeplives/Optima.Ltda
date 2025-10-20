@@ -271,6 +271,7 @@ MonoBehaviour:
   munInfinita: 0
   modoManual: 0
   podeAtirar: 1
+  "tempoRota\xE7\xE3oDesativada": 15
   ammoUIPrefab: {fileID: 0}
 --- !u!114 &5577869450679567921
 MonoBehaviour:

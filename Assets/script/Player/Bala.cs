@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bala : MonoBehaviour
@@ -68,7 +69,11 @@ public class Bala : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        var damageable = other.gameObject.GetComponent<IDamageable>();
+        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+        if(damageable == null)
+        {
+            damageable = other.gameObject.gameObject.GetComponentInParent<IDamageable>();
+        }
         if (damageable != null)
         {
             damageable.TomaDano(danoBala);

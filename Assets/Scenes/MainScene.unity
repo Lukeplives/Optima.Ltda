@@ -189,6 +189,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cecf9b4071b60234baf7ea72b575d6e3, type: 2}
   - {fileID: 11400000, guid: c90ce1d4d3e328344a1a110ca94ea92e, type: 2}
   offsetHorizontal: 0
+  offsetVertical: 0
 --- !u!4 &49275154
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,10 +1235,6 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
-      propertyPath: modoManual
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6958976979462982054, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
       propertyPath: munInfinita
       value: 1
       objectReference: {fileID: 0}
@@ -1455,6 +1452,7 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 4f5d7a002a1d74a409591c1e859b3cc7, type: 2}
   offsetHorizontal: 10
+  offsetVertical: 5
 --- !u!4 &814818986
 Transform:
   m_ObjectHideFlags: 0
@@ -1571,22 +1569,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
-      propertyPath: maxHP
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
-      propertyPath: tempoDeCarga
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
-      propertyPath: tempoRecarga
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
-      propertyPath: controleManualTorreta
-      value: 
-      objectReference: {fileID: 1876690644}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2005,50 +1987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141192eb039d2124c8f4a916ba89e313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1876690643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1876690645}
-  - component: {fileID: 1876690644}
-  m_Layer: 0
-  m_Name: ControllerTorreta
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1876690644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876690643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4a901279668d74891793f74b055770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1876690645
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876690643}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1883114057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3439,7 +3377,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 358881190}
   - {fileID: 619394802}
-  - {fileID: 1876690645}
   - {fileID: 2394434861897316055}
   - {fileID: 6939678977052033595}
   - {fileID: 1886787174}

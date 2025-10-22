@@ -1752,6 +1752,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 814818986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &965078112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1225318455306610356, guid: 132952ef8d8787c478919e68133df699, type: 3}
+  m_PrefabInstance: {fileID: 6939678977052033595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &993473293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2945,6 +2950,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
+      propertyPath: botaoModoTiro
+      value: 
+      objectReference: {fileID: 965078112}
+    - target: {fileID: 1371874510022015318, guid: af80044e522a4a84cab8dffe072b159c, type: 3}
       propertyPath: submarinoData
       value: 
       objectReference: {fileID: 1143125492}
@@ -3410,6 +3419,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1330837918}
     - target: {fileID: 5610325226134952488, guid: 132952ef8d8787c478919e68133df699, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1330837918}
+    - target: {fileID: 5663692965237675609, guid: 132952ef8d8787c478919e68133df699, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1330837918}

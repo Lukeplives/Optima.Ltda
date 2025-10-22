@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public RadarWave radarWaveUi;
 
+    [SerializeField] private GameObject botaoModoTiro;
+
 
     [Header("Dados do caminho")]
     public Transform startPoint;
@@ -80,7 +82,12 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
             StartCoroutine(StartWaves());
-            AllWavesCompleted += () => bigBoss.StartBossFight();
+            AllWavesCompleted += () =>
+            {
+                bigBoss.StartBossFight();
+                botaoModoTiro.SetActive(true);
+            }; 
+            
         }
 
     }
@@ -263,12 +270,25 @@ public class GameManager : MonoBehaviour
     {
         etapasCompletas++;
         AtualizarSlider();
+        botaoModoTiro.SetActive(false);
     }
 
     private void AtualizarSlider()
     {
         float progresso = (float)etapasCompletas / totalEtapas;
         progressSlider.value = progresso;
+    }
+
+    public void AlternarModoTiro()
+    {
+        foreach(var torretas in TorretaBasica.TodasTorretas)
+        {
+            if (torretas == null) continue;
+            if(torretas.munInfinita)
+            {
+                torretas.AlternarControleManual();
+            }
+        }
     }
 
 }

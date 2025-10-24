@@ -44,10 +44,7 @@ public class Inimigo : MonoBehaviour
         //spawnDelay = settings.spawnDelay;
 
 
-        if (player != null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         
 
         timeBtwShots = startTimeBtwShots;

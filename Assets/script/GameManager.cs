@@ -27,12 +27,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float decrementoComb;
     public GameObject deathScreen;
     private bool gameover = false;
+    public GameObject winScreen;
+    private bool gameWin = false;
 
     [Header("Waves")]
     public WaveSpawner waveSpawner;
     public float timeBtwWaves;
 
     private int currentWave = 0;
+    public event Action AllWavesCompleted;
+    public BossController bigBoss;
+
+    public RadarWave radarWaveUi;
+
+    [SerializeField] private GameObject botaoModoTiro;
 
 
     [Header("Dados do caminho")]
@@ -40,7 +48,8 @@ public class GameManager : MonoBehaviour
     public Transform endPoint;
     public Slider progressSlider;
 
-    private float totalDistance;
+    private int totalEtapas;
+    private int etapasCompletas;
 
 
     void Awake()
@@ -50,28 +59,60 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if (startPoint != null && submarino != null)
+        if (waveSpawner == null)
         {
-                    totalDistance = Vector3.Distance(startPoint.position, endPoint.position);
-            progressSlider.minValue = 0;
-        progressSlider.maxValue = totalDistance;
+            waveSpawner = FindFirstObjectByType<WaveSpawner>();
         }
+
+        if (bigBoss == null)
+        {
+            bigBoss = FindFirstObjectByType<BossController>();
+        }
+
+        totalEtapas = waveSpawner.waves.Length + 1;
+        progressSlider.minValue = 0f;
+        progressSlider.maxValue = 1f;
+        progressSlider.value = 0f;
+        
+
+        waveSpawner.OnWaveCompleted += OnWaveCompleta;
+        bigBoss.OnBossDefeated += OnBossDerrotado;
+
 
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
             StartCoroutine(StartWaves());
+            AllWavesCompleted += () =>
+            {
+                bigBoss.StartBossFight();
+                botaoModoTiro.SetActive(true);
+            }; 
+            
         }
 
     }
 
     IEnumerator StartWaves()
     {
-        while (currentWave < waveSpawner.waves.Length)
+        
+
+        for (int i = 0; i < waveSpawner.waves.Length; i++)
         {
-            waveSpawner.StartWave(currentWave);
+            radarWaveUi.AtualizarRadar(waveSpawner.waves[i]);
+            bool waveTerminou = false;
+            Action waveHandler = () => waveTerminou = true;
+
+            waveSpawner.OnWaveCompleted += waveHandler;
+            waveSpawner.StartWave(i);
+
+            yield return new WaitUntil(() => waveTerminou);
+            waveSpawner.OnWaveCompleted -= waveHandler;
+
             yield return new WaitForSeconds(timeBtwWaves);
-            currentWave++;
         }
+
+        Debug.Log("Waves finalizadas, começando boss");
+        AllWavesCompleted?.Invoke();
     }
 
 
@@ -81,7 +122,7 @@ public class GameManager : MonoBehaviour
         {
             bordas.position = new Vector2(submarino.position.x, 0);
 
-            numComb.text = QtdComb.ToString();
+            numComb.text = QtdComb.ToString("N0");
             numFerro.text = QtdFerro.ToString();
             numHP.text = submarinoData.hp.ToString();
 
@@ -127,16 +168,27 @@ public class GameManager : MonoBehaviour
                 submarinoData.hp = 0;
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
-                Destroy(submarinoData.gameObject);
+            if(submarinoData != null)
+            {
+                Destroy(submarinoData.gameObject); 
+            }
             }
 
         }
 
-        if (startPoint != null && submarino != null)
+        
+        if(currentWave >= waveSpawner.waves.Length)
         {
-        float distanceTraveled = Vector3.Distance(startPoint.position, submarino.position);
-
-        progressSlider.value = distanceTraveled;
+            Time.timeScale = 0f;
+            winScreen.SetActive(true);
+            gameWin = true;  
+            customCursor.gameObject.SetActive(false);
+            Cursor.visible = true;
+            if(submarinoData != null)
+            {
+                Destroy(submarinoData.gameObject); 
+            }
+            
         }
 
 
@@ -206,6 +258,37 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    private void OnWaveCompleta()
+    {
+        etapasCompletas++;
+        AtualizarSlider();
+    }
+
+    private void OnBossDerrotado()
+    {
+        etapasCompletas++;
+        AtualizarSlider();
+        botaoModoTiro.SetActive(false);
+    }
+
+    private void AtualizarSlider()
+    {
+        float progresso = (float)etapasCompletas / totalEtapas;
+        progressSlider.value = progresso;
+    }
+
+    public void AlternarModoTiro()
+    {
+        foreach(var torretas in TorretaBasica.TodasTorretas)
+        {
+            if (torretas == null) continue;
+            if(torretas.munInfinita)
+            {
+                torretas.AlternarControleManual();
+            }
+        }
     }
 
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
 
 
 public class Torretalançachama : MonoBehaviour
@@ -28,6 +30,8 @@ public class Torretalançachama : MonoBehaviour
     public int munMax;
     private int munAtual;
     [SerializeField] private float munGasta;
+
+    [SerializeField] bool podeAtirar = true;
     
 
     [Header("UI")]
@@ -35,11 +39,25 @@ public class Torretalançachama : MonoBehaviour
     private Slider ammoSlider;
 
     private float timeUntilFire;
+    [Header("Interação PEM")]
+    public static List<Torretalançachama> TodasTorretasChama = new List<Torretalançachama>();
+    
+    private bool desativadoPEM = false;
+    private float tempoRotaçãoDesativada;
+    private Quaternion rotaçãoNormal;
+    private Quaternion rotaçãoPEM;
+    private SpriteRenderer[] spriteRenderers;
+    private Color corNormal;
+    private Color corDesativado;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        TodasTorretasChama.Add(this);
+        tempoRotaçãoDesativada = 1.5f;
+
+
         torretaBuild = GetComponent<Building>();
 
         enemyMask = settings.enemyMask;
@@ -58,16 +76,35 @@ public class Torretalançachama : MonoBehaviour
             ammoSlider.maxValue = munMax;
             ammoSlider.value = munAtual;
         }
+
+
+        rotaçãoNormal = turretRotationPoint.rotation;
+        rotaçãoPEM = Quaternion.Euler(0, 0, -180);
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        if(spriteRenderers.Length > 0)
+        {
+            corNormal = spriteRenderers[0].color;
+            corDesativado = new Color(corNormal.r * 0.5f, corNormal.g * 0.5f, corNormal.b * 0.5f, corNormal.a * 0.8f);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (desativadoPEM || !podeAtirar) return;
+
         if (munAtual <= 0)
         {
             if (torretaBuild.originTile != null)
                 torretaBuild.originTile.isOccupied = false;
             Destroy(gameObject);
+            return;
+        }
+
+        if (!podeAtirar)
+        {
+            efeitoChama.SetActive(false);
             return;
         }
 
@@ -99,13 +136,57 @@ public class Torretalançachama : MonoBehaviour
         }
 
         if (target == null)
-            {
-                FindTarget();
-                return;
-            }
+        {
+            FindTarget();
+            return;
+        }
         RotateTowardsTarget();
-        
 
+
+    }
+
+    public void DesativarTorretaPEM()
+    {
+        if (desativadoPEM) return;
+
+        desativadoPEM = true;
+        podeAtirar = false;
+        efeitoChama.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(RotacionarETrocarCor(rotaçãoPEM, corDesativado));
+    }
+
+    public void ReativarTorreta()
+    {
+        if (!desativadoPEM) return;
+        desativadoPEM = false;
+        StopAllCoroutines();
+        StartCoroutine(RotacionarETrocarCor(rotaçãoNormal, corNormal, reativando: true));
+    }
+    
+
+    IEnumerator RotacionarETrocarCor(Quaternion alvoRot, Color corAlvo, bool reativando = false)
+    {
+        float t = 0;
+        Quaternion inicioRot = turretRotationPoint.localRotation;
+        Color corInicial = spriteRenderers[0].color;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / tempoRotaçãoDesativada;
+            turretRotationPoint.localRotation = Quaternion.Lerp(inicioRot, alvoRot, t);
+
+            foreach (var sr in spriteRenderers)
+            {
+                sr.color = Color.Lerp(corInicial, corAlvo, t);
+            }
+            yield return null;
+        }
+        
+        if(reativando)
+        {
+            podeAtirar = true;
+        }
     }
 
 
@@ -130,7 +211,7 @@ public class Torretalançachama : MonoBehaviour
         return Vector2.Distance(target.position, transform.position) <= targetingRange;
     }
 
-    
+
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;
@@ -138,5 +219,10 @@ public class Torretalançachama : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(firingPoint.position, raioChama);
+    }
+
+    private void OnDestroy()
+    {
+        TodasTorretasChama.Remove(this);
     }
 }

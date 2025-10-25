@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 1232761116805732525}
   - component: {fileID: 5577869450679567921}
   - component: {fileID: -7425286808470548956}
+  - component: {fileID: 8895125905314381899}
   m_Layer: 0
   m_Name: Basica
   m_TagString: Torreta
@@ -181,7 +182,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.81592715, y: -0.02164704, z: 0}
-  m_LocalScale: {x: 0.5367942, y: 1.082352, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 558621409138680979}
@@ -261,12 +262,17 @@ MonoBehaviour:
     m_Bits: 64
   balaPrefab: {fileID: 3038097420431131993, guid: 36ea224256043374280fdd313407f837, type: 3}
   firingPoint: {fileID: 5138256532615241328}
-  torretaBuild: {fileID: 0}
   targetingRange: 6.4
   rotationSpeed: 200
   bps: 1
-  tempoDeVida: 25
   danoTorreta: 0
+  munMax: 0
+  munAtual: 0
+  munInfinita: 0
+  modoManual: 0
+  podeAtirar: 1
+  "tempoRota\xE7\xE3oDesativada": 15
+  ammoUIPrefab: {fileID: 0}
 --- !u!114 &5577869450679567921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,3 +316,49 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &8895125905314381899
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971306376598169753}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

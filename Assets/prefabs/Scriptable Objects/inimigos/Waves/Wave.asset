@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e14f0382d2e8d4687c99413f7cb1ee, type: 3}
+  m_Name: Wave
+  m_EditorClassIdentifier: 
+  inimigosWave:
+  - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
+    spawnDelay: 0
+    customPos: {x: 0, y: 0}
+    lado: 1
+    tipoInimigo: 0
+  - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
+    spawnDelay: 1
+    customPos: {x: 0, y: 0}
+    lado: 1
+    tipoInimigo: 0
+  - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
+    spawnDelay: 1
+    customPos: {x: 0, y: 0}
+    lado: 1
+    tipoInimigo: 0
+  - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
+    spawnDelay: 5
+    customPos: {x: 0, y: 0}
+    lado: 0
+    tipoInimigo: 0
+  - inimigo: {fileID: 11400000, guid: 7f1ae4b041573b54d88408b24919f782, type: 2}
+    spawnDelay: 5
+    customPos: {x: 0, y: 5}
+    lado: 1
+    tipoInimigo: 3

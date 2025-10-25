@@ -1,3 +1,5 @@
+
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bala : MonoBehaviour
@@ -8,13 +10,11 @@ public class Bala : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private Transform alvo;
 
-
-
-
-
     [Header("Atributos")]
     [SerializeField] private float balaVelocidade = 5f;
     public int danoBala = 1;
+
+    private Vector2? direcaoManual = null;
 
     public enum TipoDeBala
     {
@@ -43,29 +43,50 @@ public class Bala : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!alvo)
+        Vector2 direcao;
+        if(direcaoManual != null)
+        {
+            direcao = direcaoManual.Value;
+        }else if(alvo)
+        {
+             direcao = (alvo.position - transform.position).normalized;
+        }
+        else
         {
             return;
         }
-        Vector2 direction = (alvo.position - transform.position).normalized;
+        
 
-        rb.linearVelocity = direction * balaVelocidade;
+        rb.linearVelocity = direcao * balaVelocidade;
 
 
+    }
+    public void SetDirection(Vector2 dir)
+    {
+        direcaoManual = dir.normalized;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        /*if (other.gameObject.GetComponent<Inimigo>().tipos.Equals(Inimigo.Tipos.Grande) && tipos == DanoExtra.sniper)
-        {
-            danoBala *= 2;
-        }*/
 
-        Inimigo inimigo = other.gameObject.GetComponent<Inimigo>();
-        if (inimigo != null)
+        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+        if(damageable == null)
         {
-            inimigo.TomaDano(danoBala);
+            damageable = other.gameObject.gameObject.GetComponentInParent<IDamageable>();
         }
+        if (damageable != null)
+        {
+            damageable.TomaDano(danoBala);
+        }
+        else
+        {
+            Inimigo inimigo = other.gameObject.GetComponent<Inimigo>();
+            if (inimigo != null)
+            {
+                inimigo.TomaDano(danoBala);
+            }
+        }
+
 
         //OnHit(other);
         switch (tipo)

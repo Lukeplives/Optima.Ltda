@@ -47,14 +47,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FundoBase
+    uniqueID: 395178421
+    locked: 0
+  - name: Tras
+    uniqueID: 2297694499
+    locked: 0
+  - name: Meio
+    uniqueID: 3319788441
+    locked: 0
+  - name: Frente
+    uniqueID: 4188592513
+    locked: 0
   - name: Defesas
     uniqueID: 3676718727
     locked: 0
-  - name: UI
-    uniqueID: 842894981
-    locked: 0
   - name: Player
     uniqueID: 291810787
+    locked: 0
+  - name: Inimigos
+    uniqueID: 1276351373
+    locked: 0
+  - name: UI
+    uniqueID: 842894981
     locked: 0
   m_RenderingLayers:
   - Default

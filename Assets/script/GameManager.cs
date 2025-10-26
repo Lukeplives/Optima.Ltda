@@ -44,8 +44,6 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Dados do caminho")]
-    public Transform startPoint;
-    public Transform endPoint;
     public Slider progressSlider;
 
     private int totalEtapas;
@@ -168,6 +166,7 @@ public class GameManager : MonoBehaviour
                 submarinoData.hp = 0;
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
+                deathScreen.SetActive(true);
             if(submarinoData != null)
             {
                 Destroy(submarinoData.gameObject); 

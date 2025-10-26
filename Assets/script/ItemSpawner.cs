@@ -52,8 +52,13 @@ public class ItemSpawner : MonoBehaviour
         int indexItem = Random.Range(0, itensDisponíveis.Length);
 
         float y = Random.Range(minAltura, maxAltura);
-        Vector3 posicaoSpawn = new Vector3(posX + player.position.x, y, posZ);
+        if(player != null)
+        {
+            Vector3 posicaoSpawn = new Vector3(posX + player.position.x, y, posZ);
+            Instantiate(itensDisponíveis[indexItem], posicaoSpawn, Quaternion.identity);
+        }
 
-        Instantiate(itensDisponíveis[indexItem], posicaoSpawn, Quaternion.identity);
+
+        
     }
 }

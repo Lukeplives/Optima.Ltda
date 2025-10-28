@@ -16,6 +16,9 @@ public class Inimigo : MonoBehaviour
 
     public InimigoSettings.tipoInimigo tipoInimigo;
 
+    private float alturaAtaque;
+    private bool travarAltura = false;
+
     [Header("Referencias")]
 
     public GameObject projetil;
@@ -60,7 +63,32 @@ public class Inimigo : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (player != null)
+        if (player == null) return;
+
+        float distancia = Vector2.Distance(transform.position, player.position);
+
+        if (distancia > stoppingDistance)
+        {
+            Vector2 posAlvo = player.position;
+
+            if (travarAltura)
+            {
+                posAlvo.y = alturaAtaque;
+            }
+            transform.position = Vector2.MoveTowards(transform.position, posAlvo, speed * Time.deltaTime);
+        }
+        else
+        {
+            if (!travarAltura)
+            {
+                alturaAtaque = transform.position.y;
+                travarAltura = true;
+            }
+
+            transform.position = new Vector2(transform.position.x, alturaAtaque);
+            Atacar();
+        }
+        /*if (player != null)
         {
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
         {
@@ -70,7 +98,31 @@ public class Inimigo : MonoBehaviour
         else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
         {
             transform.position = this.transform.position;
-            if (timeBtwShots <= 0)
+            
+        }
+        else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+        }
+        }*/
+    }
+
+    public virtual void TomaDano(int dano)
+    {
+        hitPoints -= dano;
+
+        if (hitPoints <= 0)
+        {
+
+            onDeath?.Invoke();
+            GetComponent<LootBag>().InstanciaItem(transform.position);
+            Destroy(gameObject);
+        }
+    } 
+    
+    protected virtual void Atacar()
+    {
+        if (timeBtwShots <= 0)
             {
                 Instantiate(projetil, transform.position, Quaternion.identity);
                 timeBtwShots = startTimeBtwShots;
@@ -79,26 +131,7 @@ public class Inimigo : MonoBehaviour
             {
                 timeBtwShots -= Time.deltaTime;
             }
-        }
-        else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-        }
-        }
     }
-    
-    public virtual void TomaDano(int dano)
-    {
-        hitPoints -= dano;
-
-        if (hitPoints <= 0)
-        {
-            
-            onDeath?.Invoke();
-            GetComponent<LootBag>().InstanciaItem(transform.position);
-            Destroy(gameObject);
-        }
-    } 
 
     
 }

@@ -80,6 +80,16 @@ public class TorretaBasica : MonoBehaviour
 
         tempoRotaçãoDesativada = 1.5f;
 
+        if(torretaBuild != null && torretaBuild.originTile != null && !munInfinita)
+        {
+            SpriteRenderer tileSprite = torretaBuild.originTile.GetComponent<SpriteRenderer>();
+            SpriteRenderer torretaSprite = GetComponent<SpriteRenderer>();
+            if(tileSprite != null && torretaSprite != null)
+            {
+                torretaSprite.sprite = tileSprite.sprite;
+            }
+        }
+
 
         if (ammoUIPrefab != null)
         {
@@ -98,11 +108,12 @@ public class TorretaBasica : MonoBehaviour
         rotaçãoNormal = turretRotationPoint.rotation;
         rotaçãoPEM = Quaternion.Euler(0, 0, -180);
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        if(spriteRenderers.Length > 0)
+        if (spriteRenderers.Length > 0)
         {
             corNormal = spriteRenderers[0].color;
             corDesativado = new Color(corNormal.r * 0.5f, corNormal.g * 0.5f, corNormal.b * 0.5f, corNormal.a * 0.8f);
         }
+        
         
     }
 

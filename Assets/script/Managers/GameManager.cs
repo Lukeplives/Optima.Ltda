@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     public GameObject deathScreen;
     private bool gameover = false;
     public GameObject winScreen;
-    private bool gameWin = false;
+    public GameObject pauseScreen;
+    bool isPaused;
 
     [Header("Waves")]
     public WaveSpawner waveSpawner;
@@ -118,6 +119,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            QtdComb += 1000;
+            QtdFerro += 1000;
+        }
         if (submarinoData != null)
         {
 
@@ -160,7 +166,7 @@ public class GameManager : MonoBehaviour
             {
                 QtdComb = 0;
             }
-            
+
 
 
             if (submarinoData.hp <= 0 || QtdComb <= 0)
@@ -169,33 +175,58 @@ public class GameManager : MonoBehaviour
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
                 deathScreen.SetActive(true);
-            if(submarinoData != null)
-            {
-                Destroy(submarinoData.gameObject); 
+                if (submarinoData != null)
+                {
+                    Destroy(submarinoData.gameObject);
+                }
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
 
         }
 
-        if(waveSpawner != null)
+        if (waveSpawner != null)
         {
-            if(currentWave >= waveSpawner.waves.Length)
+            if (currentWave >= waveSpawner.waves.Length)
             {
                 Time.timeScale = 0f;
                 winScreen.SetActive(true);
-                gameWin = true;  
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
-                if(submarinoData != null)
+                if (submarinoData != null)
                 {
-                    Destroy(submarinoData.gameObject); 
+                    Destroy(submarinoData.gameObject);
                 }
-            
+
             }
         }
-        
 
 
+
+    }
+
+    void PauseGame()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0f; // Pausa o jogo
+        isPaused = true;
+    }
+    
+        public void ResumeGame()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f; // Retoma o jogo
+        isPaused = false;
     }
 
     public void BuyBuilding(Building building)

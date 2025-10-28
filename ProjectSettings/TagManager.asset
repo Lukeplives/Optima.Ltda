@@ -77,6 +77,9 @@ TagManager:
   - name: Itens
     uniqueID: 3740776193
     locked: 0
+  - name: "Ch\xE3o Frente"
+    uniqueID: 1895706867
+    locked: 0
   - name: UI
     uniqueID: 842894981
     locked: 0

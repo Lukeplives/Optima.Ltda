@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Submarino")]
     private Building buildingToPlace;
     public GameObject grid;
-    public Transform submarino, bordas;
+    public Transform submarino;
     public Submarino submarinoData;
     public CustomCursor customCursor;
     public Tile[] tiles;
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     {
         if (submarinoData != null)
         {
-            bordas.position = new Vector2(submarino.position.x, 0);
+
 
             numComb.text = QtdComb.ToString("N0");
             numFerro.text = QtdFerro.ToString();

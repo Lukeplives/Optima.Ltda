@@ -59,14 +59,23 @@ TagManager:
   - name: Frente
     uniqueID: 4188592513
     locked: 0
-  - name: Defesas
-    uniqueID: 3676718727
-    locked: 0
   - name: Player
     uniqueID: 291810787
     locked: 0
   - name: Inimigos
     uniqueID: 1276351373
+    locked: 0
+  - name: Boss
+    uniqueID: 1897759663
+    locked: 0
+  - name: Balas
+    uniqueID: 1991996709
+    locked: 0
+  - name: Defesas
+    uniqueID: 3676718727
+    locked: 0
+  - name: Itens
+    uniqueID: 3740776193
     locked: 0
   - name: UI
     uniqueID: 842894981

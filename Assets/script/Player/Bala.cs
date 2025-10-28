@@ -44,17 +44,21 @@ public class Bala : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 direcao;
-        if(direcaoManual != null)
+        if (direcaoManual != null)
         {
             direcao = direcaoManual.Value;
-        }else if(alvo)
+        }
+        else if (alvo)
         {
-             direcao = (alvo.position - transform.position).normalized;
+            direcao = (alvo.position - transform.position).normalized;
         }
         else
         {
             return;
         }
+        
+        float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angulo);
         
 
         rb.linearVelocity = direcao * balaVelocidade;

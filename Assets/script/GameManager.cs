@@ -57,28 +57,30 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if (waveSpawner == null)
-        {
-            waveSpawner = FindFirstObjectByType<WaveSpawner>();
-        }
-
-        if (bigBoss == null)
-        {
-            bigBoss = FindFirstObjectByType<BossController>();
-        }
-
-        totalEtapas = waveSpawner.waves.Length + 1;
-        progressSlider.minValue = 0f;
-        progressSlider.maxValue = 1f;
-        progressSlider.value = 0f;
         
-
-        waveSpawner.OnWaveCompleted += OnWaveCompleta;
-        bigBoss.OnBossDefeated += OnBossDerrotado;
-
-
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
+            if (waveSpawner == null)
+            {
+                waveSpawner = FindFirstObjectByType<WaveSpawner>();
+            }
+
+            if (bigBoss == null)
+            {
+                bigBoss = FindFirstObjectByType<BossController>();
+            }
+
+            
+            totalEtapas = waveSpawner.waves.Length + 1;
+            progressSlider.minValue = 0f;
+            progressSlider.maxValue = 1f;
+            progressSlider.value = 0f;
+            
+
+            waveSpawner.OnWaveCompleted += OnWaveCompleta;
+            bigBoss.OnBossDefeated += OnBossDerrotado;
+
+
             StartCoroutine(StartWaves());
             AllWavesCompleted += () =>
             {
@@ -175,20 +177,23 @@ public class GameManager : MonoBehaviour
 
         }
 
-        
-        if(currentWave >= waveSpawner.waves.Length)
+        if(waveSpawner != null)
         {
-            Time.timeScale = 0f;
-            winScreen.SetActive(true);
-            gameWin = true;  
-            customCursor.gameObject.SetActive(false);
-            Cursor.visible = true;
-            if(submarinoData != null)
+            if(currentWave >= waveSpawner.waves.Length)
             {
-                Destroy(submarinoData.gameObject); 
-            }
+                Time.timeScale = 0f;
+                winScreen.SetActive(true);
+                gameWin = true;  
+                customCursor.gameObject.SetActive(false);
+                Cursor.visible = true;
+                if(submarinoData != null)
+                {
+                    Destroy(submarinoData.gameObject); 
+                }
             
+            }
         }
+        
 
 
     }
@@ -198,7 +203,15 @@ public class GameManager : MonoBehaviour
         if (QtdFerro >= building.custoRec && QtdComb >= building.custoComb)
         {
             customCursor.gameObject.SetActive(true);
-            customCursor.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;
+            SpriteRenderer armaSprite = building.ArmaSprite;
+            if (armaSprite != null)
+            {
+                customCursor.GetComponent<SpriteRenderer>().sprite = armaSprite.sprite;
+            }
+            else
+            {
+                customCursor.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;
+            }
             Cursor.visible = false;
 
 

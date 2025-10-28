@@ -7043,7 +7043,7 @@ Transform:
   m_GameObject: {fileID: 4377579498959361027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.64, y: -0.37, z: 0}
+  m_LocalPosition: {x: 0.016, y: 0.682, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7236,6 +7236,7 @@ MonoBehaviour:
   custoRec: 20
   custoComb: 5
   originTile: {fileID: 0}
+  torretaSprite: {fileID: 0}
 --- !u!1 &4730828269418809456
 GameObject:
   m_ObjectHideFlags: 0
@@ -7742,13 +7743,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5525004526328676327}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.20000005, y: -0.36, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.014, y: 0.244, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8523196654565907400}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!222 &5934754213158530002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9315,12 +9316,12 @@ Transform:
   m_GameObject: {fileID: 3549044032320297659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.026, y: -0.377, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5880988448065667622}
   - {fileID: 3946881785627795755}
+  - {fileID: 5880988448065667622}
   m_Father: {fileID: 5709190828718813190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8542113323434858923

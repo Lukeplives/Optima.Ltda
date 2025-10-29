@@ -229,11 +229,12 @@ public class Torretalançachama : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        /*
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(firingPoint.position, raioChama);
+        Gizmos.DrawWireSphere(firingPoint.position, raioChama);*/
     }
 
     private void OnDestroy()

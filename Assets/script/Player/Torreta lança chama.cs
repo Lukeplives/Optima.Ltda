@@ -54,6 +54,11 @@ public class Torretalançachama : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(raioChama <= 0)
+        {
+            Debug.Log("Valor do raio da chama muito baixo");
+            raioChama = 1.5f;
+        }
         TodasTorretasChama.Add(this);
         tempoRotaçãoDesativada = 1.5f;
 
@@ -131,8 +136,7 @@ public class Torretalançachama : MonoBehaviour
                 Inimigo inimigo = hit.GetComponent<Inimigo>();
                 if (inimigo != null)
                 {
-
-                    inimigo.TomaDano((int)(danoPorSegundo * Time.deltaTime));
+                    inimigo.TomaDano(Mathf.CeilToInt(danoPorSegundo * Time.deltaTime));
                 }
             }
 

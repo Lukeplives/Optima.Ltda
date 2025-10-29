@@ -110,7 +110,6 @@ public class Inimigo : MonoBehaviour
     public virtual void TomaDano(int dano)
     {
         hitPoints -= dano;
-
         if (hitPoints <= 0)
         {
 

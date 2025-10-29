@@ -64,19 +64,19 @@ public class Item : MonoBehaviour
         switch(settings.tipo)
         {
             case ItemSettings.TipoItem.Ferro:
-                Debug.Log("Coletou ferro");
+                
                 gameManager.QtdFerro += upFerro;    
                 Destroy(gameObject);
             break;
 
             case ItemSettings.TipoItem.Gas:
-                Debug.Log("Coletou gasolina");
+                
                 gameManager.QtdComb += upGas;
                 Destroy(gameObject);
             break;
 
             case ItemSettings.TipoItem.Peça:
-                Debug.Log("Coletou peças");
+                
                 player.hp += 40;
                 player.peçasNum++;
                 Destroy(gameObject);

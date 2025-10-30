@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -618248569
-  m_SortingLayer: 1
+  m_SortingLayer: 9
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1782739710362068920, guid: 9e9aa02094cb6c44d84ee034f350630e, type: 3}
+  m_Sprite: {fileID: 236651694518987940, guid: fd69f7f26f7d6d5458de2910073eb32a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -229,7 +229,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -618248569
-  m_SortingLayer: 1
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -4080735812515489134, guid: 1bd400930ab59b54d83bfac3ba409d4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -270,7 +270,6 @@ MonoBehaviour:
   munInfinita: 0
   modoManual: 0
   podeAtirar: 1
-  "tempoRota\xE7\xE3oDesativada": 15
   ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
 --- !u!114 &5577869450679567921
 MonoBehaviour:
@@ -288,6 +287,7 @@ MonoBehaviour:
   custoRec: 20
   custoComb: 5
   originTile: {fileID: 0}
+  torretaSprite: {fileID: 2176079442576094627}
 --- !u!50 &-7425286808470548956
 Rigidbody2D:
   serializedVersion: 5

@@ -68,6 +68,17 @@ public class Torretalançachama : MonoBehaviour
 
         munAtual = munMax;
 
+        if(torretaBuild != null && torretaBuild.originTile != null)
+        {
+            SpriteRenderer tileSprite = torretaBuild.originTile.GetComponent<SpriteRenderer>();
+            SpriteRenderer torretaSprite = GetComponent<SpriteRenderer>();
+            if(tileSprite != null && torretaSprite != null)
+            {
+                torretaSprite.sprite = tileSprite.sprite;
+            }
+        }
+
+
         if (ammoUIPrefab != null)
         {
             GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);

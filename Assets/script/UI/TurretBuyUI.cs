@@ -22,6 +22,8 @@ public class TurretBuyUI : MonoBehaviour
             gameManager = FindFirstObjectByType<GameManager>();
         }
 
+        gameManager.OnTileStateChanged += AtualizarEstado;
+
     }
 
 
@@ -39,7 +41,25 @@ public class TurretBuyUI : MonoBehaviour
         gameManager.QtdFerro >= torretaSettings.custoRec &&
         gameManager.QtdComb >= torretaSettings.custoComb;
 
-        botao.interactable = recursosSuficientes;
+        bool existemTilesLivres = false;
+        foreach(Tile tile in gameManager.tiles)
+        {
+            if(!tile.isOccupied)
+            {
+                existemTilesLivres = true;
+                break;
+            }
+        }
+
+        botao.interactable = recursosSuficientes && existemTilesLivres;
         imagem.color = recursosSuficientes ? corAtiva : corBloqueada;
+    }
+
+    void OnDestroy()
+    {
+        if(gameManager != null)
+        {
+            gameManager.OnTileStateChanged -= AtualizarEstado;
+        }
     }
 }

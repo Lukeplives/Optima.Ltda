@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     private int totalEtapas;
     private int etapasCompletas;
 
+    public event Action OnTileStateChanged;
+
 
     void Awake()
     {
@@ -150,7 +152,7 @@ public class GameManager : MonoBehaviour
                     Building newTorreta = Instantiate(buildingToPlace, nearestTile.transform.position, quaternion.identity, submarino);
                     newTorreta.originTile = nearestTile;
                     buildingToPlace = null;
-                    nearestTile.isOccupied = true;
+                    nearestTile.SetOccupied(true);
                     customCursor.gameObject.SetActive(false);
                     grid.SetActive(false);
                     Cursor.visible = true;
@@ -324,14 +326,19 @@ public class GameManager : MonoBehaviour
 
     public void AlternarModoTiro()
     {
-        foreach(var torretas in TorretaBasica.TodasTorretas)
+        foreach (var torretas in TorretaBasica.TodasTorretas)
         {
             if (torretas == null) continue;
-            if(torretas.munInfinita)
+            if (torretas.munInfinita)
             {
                 torretas.AlternarControleManual();
             }
         }
+    }
+    
+    public void NotificarMudançaTile()
+    {
+        OnTileStateChanged?.Invoke();
     }
 
 }

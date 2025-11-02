@@ -54,6 +54,11 @@ public class Torretalançachama : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(raioChama <= 0)
+        {
+            Debug.Log("Valor do raio da chama muito baixo");
+            raioChama = 1.5f;
+        }
         TodasTorretasChama.Add(this);
         tempoRotaçãoDesativada = 1.5f;
 
@@ -67,6 +72,17 @@ public class Torretalançachama : MonoBehaviour
         tempoDeVida = settings.tempoDeVida;
 
         munAtual = munMax;
+
+        if(torretaBuild != null && torretaBuild.originTile != null)
+        {
+            SpriteRenderer tileSprite = torretaBuild.originTile.GetComponent<SpriteRenderer>();
+            SpriteRenderer torretaSprite = GetComponent<SpriteRenderer>();
+            if(tileSprite != null && torretaSprite != null)
+            {
+                torretaSprite.sprite = tileSprite.sprite;
+            }
+        }
+
 
         if (ammoUIPrefab != null)
         {
@@ -120,8 +136,7 @@ public class Torretalançachama : MonoBehaviour
                 Inimigo inimigo = hit.GetComponent<Inimigo>();
                 if (inimigo != null)
                 {
-
-                    inimigo.TomaDano((int)(danoPorSegundo * Time.deltaTime));
+                    inimigo.TomaDano(Mathf.CeilToInt(danoPorSegundo * Time.deltaTime));
                 }
             }
 
@@ -214,11 +229,12 @@ public class Torretalançachama : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        /*
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(firingPoint.position, raioChama);
+        Gizmos.DrawWireSphere(firingPoint.position, raioChama);*/
     }
 
     private void OnDestroy()

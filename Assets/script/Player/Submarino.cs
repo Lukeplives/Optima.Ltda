@@ -25,6 +25,11 @@ public class Submarino : MonoBehaviour
             GameManager.Instance.PlayerDead(gameObject);
         }
 
+        if(Input.GetKeyDown(KeyCode.F6))
+        {
+            hp += 1000;
+        }
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

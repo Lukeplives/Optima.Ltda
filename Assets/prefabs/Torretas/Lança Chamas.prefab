@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -618248569
-  m_SortingLayer: 1
+  m_SortingLayer: 9
   m_SortingOrder: 1
   m_Sprite: {fileID: 6180863289041739692, guid: a3053e2325ce0144d8996a0e3c4a7b91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 5568890438805367640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.54, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -178,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 7214526811336476951}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.53, z: 0}
+  m_LocalPosition: {x: 0, y: 0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -225,8 +225,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1991996709
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.5280086, b: 0, a: 0.21176471}
@@ -317,7 +317,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -618248569
-  m_SortingLayer: 1
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -4080735812515489134, guid: 1bd400930ab59b54d83bfac3ba409d4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -349,13 +349,14 @@ MonoBehaviour:
     m_Bits: 64
   firingPoint: {fileID: 5138256532615241328}
   efeitoChama: {fileID: 7214526811336476951}
-  raioChama: 0
+  raioChama: 0.85
   danoPorSegundo: 2
   tempoDeVida: 0
   targetingRange: 1.5
   rotationSpeed: 5
   munMax: 900
   munGasta: 2
+  podeAtirar: 1
   ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
 --- !u!114 &5577869450679567921
 MonoBehaviour:
@@ -373,6 +374,7 @@ MonoBehaviour:
   custoRec: 20
   custoComb: 5
   originTile: {fileID: 0}
+  torretaSprite: {fileID: 2176079442576094627}
 --- !u!50 &-7425286808470548956
 Rigidbody2D:
   serializedVersion: 5

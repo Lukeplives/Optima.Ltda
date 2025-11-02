@@ -18,15 +18,16 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOccupied == true)
-        {
-            rend.color = redColor;
-        }
-        else
-        {
-            rend.color = greenColor;
-        }
 
+        rend.color = isOccupied ? redColor : greenColor;
+
+    }
+
+    public void SetOccupied(bool ocupado)
+    {
+        isOccupied = ocupado;
+
+        GameManager.Instance?.NotificarMudançaTile();
     }
 
 

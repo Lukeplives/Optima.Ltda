@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   custoRec: 45
   custoComb: 3
-  targetingRange: 6.8
+  targetingRange: 9
   rotationSpeed: 200
   bps: 0.5
   tempoDeVida: 30
   danoTorreta: 25
   munMax: 30
+  munInfinita: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

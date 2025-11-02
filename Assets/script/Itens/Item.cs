@@ -25,6 +25,10 @@ public class Item : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
 
         recurso = settings.tipo;
+        upGas = settings.upGas;
+        upFerro = settings.upFerro;
+        upPeças = settings.upPeças;
+        tipo = settings.tipo;
        
     }
 
@@ -32,10 +36,10 @@ public class Item : MonoBehaviour
     {
         settings = newSettings;
 
-        upGas = settings.upGas;
+        /*upGas = settings.upGas;
         upFerro = settings.upFerro;
         upPeças = settings.upPeças;
-        tipo = settings.tipo;
+        tipo = settings.tipo;*/
 
         if (spriteRenderer != null && settings.lootsprite != null)
         {
@@ -60,16 +64,19 @@ public class Item : MonoBehaviour
         switch(settings.tipo)
         {
             case ItemSettings.TipoItem.Ferro:
+                
                 gameManager.QtdFerro += upFerro;    
                 Destroy(gameObject);
             break;
 
             case ItemSettings.TipoItem.Gas:
+                
                 gameManager.QtdComb += upGas;
                 Destroy(gameObject);
             break;
 
             case ItemSettings.TipoItem.Peça:
+                
                 player.hp += 40;
                 player.peçasNum++;
                 Destroy(gameObject);

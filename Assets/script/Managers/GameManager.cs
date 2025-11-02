@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Submarino")]
     private Building buildingToPlace;
     public GameObject grid;
-    public Transform submarino, bordas;
+    public Transform submarino;
     public Submarino submarinoData;
     public CustomCursor customCursor;
     public Tile[] tiles;
@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     public GameObject deathScreen;
     private bool gameover = false;
     public GameObject winScreen;
-    private bool gameWin = false;
+    public GameObject pauseScreen;
+    bool isPaused;
 
     [Header("Waves")]
     public WaveSpawner waveSpawner;
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     private int totalEtapas;
     private int etapasCompletas;
 
+    public event Action OnTileStateChanged;
+
 
     void Awake()
     {
@@ -57,28 +60,30 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if (waveSpawner == null)
-        {
-            waveSpawner = FindFirstObjectByType<WaveSpawner>();
-        }
-
-        if (bigBoss == null)
-        {
-            bigBoss = FindFirstObjectByType<BossController>();
-        }
-
-        totalEtapas = waveSpawner.waves.Length + 1;
-        progressSlider.minValue = 0f;
-        progressSlider.maxValue = 1f;
-        progressSlider.value = 0f;
         
-
-        waveSpawner.OnWaveCompleted += OnWaveCompleta;
-        bigBoss.OnBossDefeated += OnBossDerrotado;
-
-
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
+            if (waveSpawner == null)
+            {
+                waveSpawner = FindFirstObjectByType<WaveSpawner>();
+            }
+
+            if (bigBoss == null)
+            {
+                bigBoss = FindFirstObjectByType<BossController>();
+            }
+
+            
+            totalEtapas = waveSpawner.waves.Length + 1;
+            progressSlider.minValue = 0f;
+            progressSlider.maxValue = 1f;
+            progressSlider.value = 0f;
+            
+
+            waveSpawner.OnWaveCompleted += OnWaveCompleta;
+            bigBoss.OnBossDefeated += OnBossDerrotado;
+
+
             StartCoroutine(StartWaves());
             AllWavesCompleted += () =>
             {
@@ -116,9 +121,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            QtdComb += 1000;
+            QtdFerro += 1000;
+        }
         if (submarinoData != null)
         {
-            bordas.position = new Vector2(submarino.position.x, 0);
+
 
             numComb.text = QtdComb.ToString("N0");
             numFerro.text = QtdFerro.ToString();
@@ -142,7 +152,7 @@ public class GameManager : MonoBehaviour
                     Building newTorreta = Instantiate(buildingToPlace, nearestTile.transform.position, quaternion.identity, submarino);
                     newTorreta.originTile = nearestTile;
                     buildingToPlace = null;
-                    nearestTile.isOccupied = true;
+                    nearestTile.SetOccupied(true);
                     customCursor.gameObject.SetActive(false);
                     grid.SetActive(false);
                     Cursor.visible = true;
@@ -158,7 +168,7 @@ public class GameManager : MonoBehaviour
             {
                 QtdComb = 0;
             }
-            
+
 
 
             if (submarinoData.hp <= 0 || QtdComb <= 0)
@@ -167,30 +177,58 @@ public class GameManager : MonoBehaviour
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
                 deathScreen.SetActive(true);
-            if(submarinoData != null)
-            {
-                Destroy(submarinoData.gameObject); 
+                if (submarinoData != null)
+                {
+                    Destroy(submarinoData.gameObject);
+                }
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
 
         }
 
-        
-        if(currentWave >= waveSpawner.waves.Length)
+        if (waveSpawner != null)
         {
-            Time.timeScale = 0f;
-            winScreen.SetActive(true);
-            gameWin = true;  
-            customCursor.gameObject.SetActive(false);
-            Cursor.visible = true;
-            if(submarinoData != null)
+            if (currentWave >= waveSpawner.waves.Length)
             {
-                Destroy(submarinoData.gameObject); 
+                Time.timeScale = 0f;
+                winScreen.SetActive(true);
+                customCursor.gameObject.SetActive(false);
+                Cursor.visible = true;
+                if (submarinoData != null)
+                {
+                    Destroy(submarinoData.gameObject);
+                }
+
             }
-            
         }
 
 
+
+    }
+
+    void PauseGame()
+    {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0f; // Pausa o jogo
+        isPaused = true;
+    }
+    
+        public void ResumeGame()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f; // Retoma o jogo
+        isPaused = false;
     }
 
     public void BuyBuilding(Building building)
@@ -198,7 +236,15 @@ public class GameManager : MonoBehaviour
         if (QtdFerro >= building.custoRec && QtdComb >= building.custoComb)
         {
             customCursor.gameObject.SetActive(true);
-            customCursor.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;
+            SpriteRenderer armaSprite = building.ArmaSprite;
+            if (armaSprite != null)
+            {
+                customCursor.GetComponent<SpriteRenderer>().sprite = armaSprite.sprite;
+            }
+            else
+            {
+                customCursor.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;
+            }
             Cursor.visible = false;
 
 
@@ -280,14 +326,19 @@ public class GameManager : MonoBehaviour
 
     public void AlternarModoTiro()
     {
-        foreach(var torretas in TorretaBasica.TodasTorretas)
+        foreach (var torretas in TorretaBasica.TodasTorretas)
         {
             if (torretas == null) continue;
-            if(torretas.munInfinita)
+            if (torretas.munInfinita)
             {
                 torretas.AlternarControleManual();
             }
         }
+    }
+    
+    public void NotificarMudançaTile()
+    {
+        OnTileStateChanged?.Invoke();
     }
 
 }

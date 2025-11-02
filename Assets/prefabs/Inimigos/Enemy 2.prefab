@@ -108,7 +108,7 @@ MonoBehaviour:
   stoppingDistance: 2
   retreatDistance: 5
   hitPoints: 2
-  startTimeBtwShots: 0.5
+  startTimeBtwShots: 2
   spawnDelay: 0
   tipoInimigo: 0
   projetil: {fileID: 6435250657019572736, guid: dc16ed038d8403549b4391ff82b6de52, type: 3}

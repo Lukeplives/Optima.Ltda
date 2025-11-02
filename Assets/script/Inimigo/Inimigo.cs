@@ -19,6 +19,8 @@ public class Inimigo : MonoBehaviour
     private float alturaAtaque;
     private bool travarAltura = false;
 
+    private bool morreu = false;
+
     [Header("Referencias")]
 
     public GameObject projetil;
@@ -109,11 +111,18 @@ public class Inimigo : MonoBehaviour
 
     public virtual void TomaDano(int dano)
     {
+        if (morreu) return;
         hitPoints -= dano;
         if (hitPoints <= 0)
         {
+            morreu = true;
 
             onDeath?.Invoke();
+            RadarWave radar = FindFirstObjectByType<RadarWave>();
+            if(radar != null)
+            {
+                radar.RemoverInimigo(tipoInimigo);
+            }
             GetComponent<LootBag>().InstanciaItem(transform.position);
             Destroy(gameObject);
         }

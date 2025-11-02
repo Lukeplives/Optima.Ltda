@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
 
     [Header("UI/Dados")]
 
-    [SerializeField] TextMeshProUGUI numFerro, numHP, numComb;
+    [SerializeField] TextMeshProUGUI numFerro;
+    [SerializeField] TextMeshProUGUI numComb;
     public int QtdFerro;
     public float QtdComb;
     [SerializeField] private float decrementoComb;
@@ -132,7 +133,7 @@ public class GameManager : MonoBehaviour
 
             numComb.text = QtdComb.ToString("N0");
             numFerro.text = QtdFerro.ToString();
-            numHP.text = submarinoData.hp.ToString();
+            
 
             if (Input.GetMouseButton(0) && buildingToPlace != null)
             {
@@ -171,9 +172,8 @@ public class GameManager : MonoBehaviour
 
 
 
-            if (submarinoData.hp <= 0 || QtdComb <= 0)
+            if (QtdComb <= 0)
             {
-                submarinoData.hp = 0;
                 customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
                 deathScreen.SetActive(true);
@@ -335,10 +335,20 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
     public void NotificarMudançaTile()
     {
         OnTileStateChanged?.Invoke();
+    }
+    
+    public void DanoAoPlayer(float dano)
+    {
+        QtdComb -= dano;
+        if(QtdComb <= 0)
+        {
+            QtdComb = 0;
+            PlayerDead(submarinoData.gameObject);
+        }
     }
 
 }

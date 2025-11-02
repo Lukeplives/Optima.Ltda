@@ -42,6 +42,7 @@ public class Projetil : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            GameManager.Instance.DanoAoPlayer(dano);
             DestroyProjetil();
         }
     }

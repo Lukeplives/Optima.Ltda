@@ -75,7 +75,7 @@ public class WaveSpawner : MonoBehaviour
                 {
                     RemoverInimigo(inimigoNovo);
 
-                    radarUI.RemoverInimigo(inimigoComponent.tipoInimigo);
+                    //radarUI.RemoverInimigo(inimigoComponent.tipoInimigo);
 
                 } ;
                 inimigoComponent.Initialize(spawnData.inimigo);

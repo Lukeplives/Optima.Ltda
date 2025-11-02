@@ -9,6 +9,8 @@ public class InimigoKamikaze : Inimigo
     public GameObject explosionEffect;
     [SerializeField] private int danoExplosão;
 
+    private bool wasDestroyed;
+
     protected override void Start()
     {
         base.Start();
@@ -29,7 +31,7 @@ public class InimigoKamikaze : Inimigo
             Submarino playerScript = other.GetComponent<Submarino>();
             if (playerScript != null)
             {
-                playerScript.hp -= danoExplosão;
+                GameManager.Instance.DanoAoPlayer(danoExplosão);
             }
 
             Explodir();
@@ -43,10 +45,19 @@ public class InimigoKamikaze : Inimigo
     }
 
     private void Explodir()
-    {   if (explosionEffect != null)
+    {
+        if (wasDestroyed) return;
+
+        wasDestroyed = true;
+        if (explosionEffect != null)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        }
 
+        RadarWave radar = FindFirstObjectByType<RadarWave>();
+        if(radar != null)
+        {
+            radar.RemoverInimigo(tipoInimigo);
         }
         Destroy(gameObject);
     }

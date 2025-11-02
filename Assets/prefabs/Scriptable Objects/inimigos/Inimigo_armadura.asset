@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Inimigo_armadura
   m_EditorClassIdentifier: 
   prefabInimigo: {fileID: 4701457152990384429, guid: 56e2354d9e7948c4fbe8d2435c09a35c, type: 3}
-  spawnDelay: 0
-  spawnPosition: {x: 10, y: 0}
+  lado: 0
+  tipo: 2
   speed: 0.75
   stoppingDistance: 2.5
   retreatDistance: 1.25

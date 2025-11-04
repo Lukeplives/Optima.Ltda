@@ -67,19 +67,21 @@ public class RadarWave : MonoBehaviour
     
     public void RemoverInimigo(InimigoSettings.tipoInimigo tipo)
     {
+        
         switch (tipo)
         {
             case InimigoSettings.tipoInimigo.Terrestre:
-                totalTerrestre--;
+                totalTerrestre = Mathf.Max(0,totalTerrestre - 1);
                 break;
             case InimigoSettings.tipoInimigo.Voador:
-                totalVoador--;
+                totalVoador = Mathf.Max(0, totalVoador -1);
                 break;
             case InimigoSettings.tipoInimigo.Grande:
-                totalGrande--;
+                totalGrande = Mathf.Max(0, totalGrande - 1);
+                
                 break;
             case InimigoSettings.tipoInimigo.Kamikaze:
-                totalKamikaze--;
+                totalKamikaze = Mathf.Max(0, totalKamikaze - 1);
                 break;
         }
         AtualizarUI();

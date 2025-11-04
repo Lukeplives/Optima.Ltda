@@ -19,6 +19,8 @@ public class Inimigo : MonoBehaviour
     private float alturaAtaque;
     private bool travarAltura = false;
 
+    private bool morreu = false;
+
     [Header("Referencias")]
 
     public GameObject projetil;
@@ -88,49 +90,53 @@ public class Inimigo : MonoBehaviour
             transform.position = new Vector2(transform.position.x, alturaAtaque);
             Atacar();
         }
-        /*if (player != null)
-        {
-            if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
-        }
-        else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
-        {
-            transform.position = this.transform.position;
-            
-        }
-        else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-        }
-        }*/
+        OlharPlayer();
     }
 
     public virtual void TomaDano(int dano)
     {
+        if (morreu) return;
         hitPoints -= dano;
         if (hitPoints <= 0)
         {
+            morreu = true;
 
             onDeath?.Invoke();
+            RadarWave radar = FindFirstObjectByType<RadarWave>();
+            if(radar != null)
+            {
+                radar.RemoverInimigo(tipoInimigo);
+            }
             GetComponent<LootBag>().InstanciaItem(transform.position);
             Destroy(gameObject);
         }
-    } 
-    
+    }
+
     protected virtual void Atacar()
     {
         if (timeBtwShots <= 0)
-            {
-                Instantiate(projetil, transform.position, Quaternion.identity);
-                timeBtwShots = startTimeBtwShots;
-            }
-            else
-            {
-                timeBtwShots -= Time.deltaTime;
-            }
+        {
+            Instantiate(projetil, transform.position, Quaternion.identity);
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
     }
-
     
+    void OlharPlayer()
+    {
+        if (player == null) return;
+        
+        if(player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        } else
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
 }

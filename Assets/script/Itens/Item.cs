@@ -75,12 +75,7 @@ public class Item : MonoBehaviour
                 Destroy(gameObject);
             break;
 
-            case ItemSettings.TipoItem.Peça:
-                
-                player.hp += 40;
-                player.peçasNum++;
-                Destroy(gameObject);
-            break;
+
         }
 
     }

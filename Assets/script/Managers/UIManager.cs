@@ -1,0 +1,76 @@
+using TMPro;
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    [Header("Referências de HUD")]
+    public TextMeshProUGUI ferroText;
+    public TextMeshProUGUI combustivelText;
+
+    [Header("Painéis")]
+    public GameObject winPanel;
+    public GameObject pausePanel;
+    public GameObject gameOverPanel;
+
+    [Header("Configurações")]
+    public KeyCode pauseKey = KeyCode.Escape;
+
+    public bool isPaused = false;
+    
+    void Start()
+    {
+        AtualizarRecursosHUD();
+        MostrarWin(false);
+        MostrarPause(false);
+        MostrarGameOver(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(pauseKey))
+        {
+            AlternarPause();
+        }
+    }
+
+    public void AtualizarRecursosHUD()
+    {
+        ferroText.text = GameManager.Instance.QtdFerro.ToString();
+        combustivelText.text = GameManager.Instance.QtdComb.ToString("N0");
+
+    }
+
+    public void MostrarWin(bool ativo)
+    {
+        winPanel.SetActive(ativo);
+    }
+
+    public void MostrarPause(bool ativo)
+    {
+        pausePanel.SetActive(ativo);
+    }
+
+    public void MostrarGameOver(bool ativo)
+    {
+        gameOverPanel.SetActive(ativo);
+    }
+
+    public void AlternarPause()
+    {
+        isPaused = !isPaused;
+
+        MostrarPause(isPaused);
+        Time.timeScale = isPaused ? 0f : 1f;
+        Cursor.visible = isPaused;
+    }
+    
+    public void ExibirGameOver()
+    {
+        MostrarPause(false);
+        MostrarWin(false);
+        MostrarGameOver(true);
+
+        Time.timeScale = 0f;
+    }
+}

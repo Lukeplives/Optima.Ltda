@@ -11,27 +11,16 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [Header("Submarino")]
-    private Building buildingToPlace;
-    public GameObject grid;
-    public Transform submarino;
-    public Submarino submarinoData;
-    public CustomCursor customCursor;
-    public Tile[] tiles;
 
+    [Header("Submarino")]
+    public Submarino submarinoData;
+    
     [Header("UI/Dados")]
 
-    [SerializeField] TextMeshProUGUI numFerro;
-    [SerializeField] TextMeshProUGUI numComb;
     public int QtdFerro;
     public float QtdComb;
     [SerializeField] private float decrementoComb;
-    public GameObject deathScreen;
-    private bool gameover = false;
-    public GameObject winScreen;
-    public GameObject pauseScreen;
-    bool isPaused;
-
+    public bool gameover;
     [Header("Waves")]
     public WaveSpawner waveSpawner;
     public float timeBtwWaves;
@@ -52,6 +41,10 @@ public class GameManager : MonoBehaviour
     private int etapasCompletas;
 
     public event Action OnTileStateChanged;
+
+    [Header("SubManagers")]
+    public BuildManager buildManager;
+    public UIManager uiManager;
 
 
     void Awake()
@@ -126,41 +119,10 @@ public class GameManager : MonoBehaviour
         {
             QtdComb += 1000;
             QtdFerro += 1000;
+            uiManager.AtualizarRecursosHUD();
         }
         if (submarinoData != null)
         {
-
-
-            numComb.text = QtdComb.ToString("N0");
-            numFerro.text = QtdFerro.ToString();
-            
-
-            if (Input.GetMouseButton(0) && buildingToPlace != null)
-            {
-                Tile nearestTile = null;
-                float shortestDistance = float.MaxValue;
-                foreach (Tile tile in tiles)
-                {
-                    float dist = Vector2.Distance(tile.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                    if (dist < shortestDistance)
-                    {
-                        shortestDistance = dist;
-                        nearestTile = tile;
-                    }
-                }
-                if (nearestTile.isOccupied == false)
-                {
-                    Building newTorreta = Instantiate(buildingToPlace, nearestTile.transform.position, quaternion.identity, submarino);
-                    newTorreta.originTile = nearestTile;
-                    buildingToPlace = null;
-                    nearestTile.SetOccupied(true);
-                    customCursor.gameObject.SetActive(false);
-                    grid.SetActive(false);
-                    Cursor.visible = true;
-                }
-
-
-            }
             if (QtdComb >= 0)
             {
                 QtdComb -= decrementoComb * Time.deltaTime;
@@ -170,13 +132,13 @@ public class GameManager : MonoBehaviour
                 QtdComb = 0;
             }
 
-
+            uiManager.AtualizarRecursosHUD();
 
             if (QtdComb <= 0)
             {
-                customCursor.gameObject.SetActive(false);
+                buildManager.customCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
-                deathScreen.SetActive(true);
+                uiManager.ExibirGameOver();
                 if (submarinoData != null)
                 {
                     Destroy(submarinoData.gameObject);
@@ -185,70 +147,48 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (isPaused)
+                if (uiManager.isPaused)
                 {
-                    ResumeGame();
+                    uiManager.AlternarPause();
                 }
                 else
                 {
-                    PauseGame();
+                    uiManager.AlternarPause();
                 }
             }
 
         }
 
-        if (waveSpawner != null)
+        if (waveSpawner != null && currentWave >= waveSpawner.waves.Length)
         {
-            if (currentWave >= waveSpawner.waves.Length)
+            Time.timeScale = 0f;
+            uiManager.MostrarWin(true);
+            buildManager.customCursor.gameObject.SetActive(false);
+            Cursor.visible = true;
+            if (submarinoData != null)
             {
-                Time.timeScale = 0f;
-                winScreen.SetActive(true);
-                customCursor.gameObject.SetActive(false);
-                Cursor.visible = true;
-                if (submarinoData != null)
-                {
-                    Destroy(submarinoData.gameObject);
-                }
-
+                Destroy(submarinoData.gameObject);
             }
-        }
-    }
 
-    void PauseGame()
-    {
-        pauseScreen.SetActive(true);
-        Time.timeScale = 0f; // Pausa o jogo
-        isPaused = true;
-    }
-    
-        public void ResumeGame()
-    {
-        pauseScreen.SetActive(false);
-        Time.timeScale = 1f; // Retoma o jogo
-        isPaused = false;
+        }
+        
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (uiManager.isPaused)
+                uiManager.AlternarPause();
+            else
+                uiManager.AlternarPause();
+        }
     }
 
     public void BuyBuilding(Building building)
     {
         if (QtdFerro >= building.custoRec && QtdComb >= building.custoComb)
         {
-            customCursor.gameObject.SetActive(true);
-            SpriteRenderer armaSprite = building.ArmaSprite;
-            if (armaSprite != null)
-            {
-                customCursor.GetComponent<SpriteRenderer>().sprite = armaSprite.sprite;
-            }
-            else
-            {
-                customCursor.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;
-            }
-            Cursor.visible = false;
-
-
             QtdFerro -= building.custoRec;
             QtdComb -= building.custoComb;
-            buildingToPlace = building;
-            grid.SetActive(true);
+            buildManager.StartBuilding(building);
         }
     }
 
@@ -260,7 +200,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        deathScreen.SetActive(true);
+        uiManager.MostrarGameOver(true);
     }
 
     void DisablePlayerComponents(GameObject player)
@@ -348,11 +288,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void CurarFerro()
-    {
-        QtdComb += QtdFerro;
-        QtdFerro -= (int)Time.deltaTime;
 
-    }
 
 }

@@ -42,7 +42,7 @@ public class TurretBuyUI : MonoBehaviour
         gameManager.QtdComb >= torretaSettings.custoComb;
 
         bool existemTilesLivres = false;
-        foreach(Tile tile in gameManager.tiles)
+        foreach(Tile tile in GameManager.Instance.buildManager.tiles)
         {
             if(!tile.isOccupied)
             {

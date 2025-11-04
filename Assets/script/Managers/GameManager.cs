@@ -212,9 +212,6 @@ public class GameManager : MonoBehaviour
 
             }
         }
-
-
-
     }
 
     void PauseGame()
@@ -340,15 +337,22 @@ public class GameManager : MonoBehaviour
     {
         OnTileStateChanged?.Invoke();
     }
-    
+
     public void DanoAoPlayer(float dano)
     {
         QtdComb -= dano;
-        if(QtdComb <= 0)
+        if (QtdComb <= 0)
         {
             QtdComb = 0;
             PlayerDead(submarinoData.gameObject);
         }
+    }
+    
+    public void CurarFerro()
+    {
+        QtdComb += QtdFerro;
+        QtdFerro -= (int)Time.deltaTime;
+
     }
 
 }

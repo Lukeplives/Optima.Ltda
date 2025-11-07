@@ -58,7 +58,7 @@ public class Item : MonoBehaviour
 
     }
 
-     void OnMouseDown()
+     /*void OnMouseDown()
     {
 
         switch(settings.tipo)
@@ -77,6 +77,25 @@ public class Item : MonoBehaviour
 
 
         }
+
+    }*/
+
+    public void Coletar()
+    {
+        switch (settings.tipo)
+        {
+            case ItemSettings.TipoItem.Ferro:
+
+                gameManager.QtdFerro += upFerro;
+                break;
+
+            case ItemSettings.TipoItem.Gas:
+
+                gameManager.QtdComb += upGas;
+                break;
+        }
+        gameManager.uiManager.AtualizarRecursosHUD();
+        Destroy(gameObject);
 
     }
 }

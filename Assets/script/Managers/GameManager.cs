@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public float QtdComb;
     [SerializeField] private float decrementoComb;
     public bool gameover;
+
+    [SerializeField] private LayerMask layerItens;
     
     public event Action OnTileStateChanged;
 
@@ -94,6 +96,8 @@ public class GameManager : MonoBehaviour
             else
                 uiManager.AlternarPause();
         }
+
+        DetectarCliqueItem();
     }
     
 
@@ -195,6 +199,25 @@ public class GameManager : MonoBehaviour
         {
             QtdComb = 0;
             PlayerDead(submarinoData.gameObject);
+        }
+    }
+
+    private void DetectarCliqueItem()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, layerItens);
+
+            if(hit.collider != null)
+            {
+                Item item = hit.collider.GetComponent<Item>();
+
+                if(item != null)
+                {
+                    item.Coletar();
+                }
+            }
         }
     }
     

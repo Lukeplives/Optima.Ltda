@@ -835,7 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e9160077697ed4cab74f1e69be37da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420032}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.75
 --- !u!212 &214685129
 SpriteRenderer:
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e9160077697ed4cab74f1e69be37da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420032}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.25
 --- !u!212 &397666306
 SpriteRenderer:
@@ -2987,7 +2987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e9160077697ed4cab74f1e69be37da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420032}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.5
 --- !u!212 &914583592
 SpriteRenderer:
@@ -4962,7 +4962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e9160077697ed4cab74f1e69be37da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420032}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.17
 --- !u!1 &1813515879
 GameObject:
@@ -5727,7 +5727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e9160077697ed4cab74f1e69be37da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420032}
+  cam: {fileID: 519420028}
   parallaxEffect: 1
 --- !u!212 &1884211529
 SpriteRenderer:
@@ -7947,6 +7947,9 @@ MonoBehaviour:
   QtdComb: 1000
   decrementoComb: 1
   gameover: 0
+  layerItens:
+    serializedVersion: 2
+    m_Bits: 512
   buildManager: {fileID: 1338817010}
   uiManager: {fileID: 1407190270}
   waveManager: {fileID: 1561560511}

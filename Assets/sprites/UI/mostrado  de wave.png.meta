@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2cdb461d43eb0864bb661761233f37a8
+guid: 03397e2e0a8b768439baa0eec99e1c49
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4984607860732634766
-    second: Ativo 2_0
+      213: -8328637663818747089
+    second: mostrado  de wave_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ativo 2_0
+      name: mostrado  de wave_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 77
-        height: 77
+        width: 701
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e86a6939072ec2540800000000000000
-      internalID: 4984607860732634766
+      spriteID: f23f429fb2cba6c80800000000000000
+      internalID: -8328637663818747089
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ativo 2_0: 4984607860732634766
+      mostrado  de wave_0: -8328637663818747089
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

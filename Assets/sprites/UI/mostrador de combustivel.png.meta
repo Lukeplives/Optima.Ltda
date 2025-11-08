@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 2cdb461d43eb0864bb661761233f37a8
+guid: 0cc75b1b6d3008e4da4431a443440455
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4984607860732634766
-    second: Ativo 2_0
+      213: -8899545610738371316
+    second: mostrador de combustivel_0
+  - first:
+      213: -6737757578369466993
+    second: mostrador de combustivel_1
+  - first:
+      213: 1640878325310114428
+    second: mostrador de combustivel_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +106,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ativo 2_0
+      name: mostrador de combustivel_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 77
-        height: 77
+        x: 29
+        y: 3
+        width: 195
+        height: 131
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e86a6939072ec2540800000000000000
-      internalID: 4984607860732634766
+      spriteID: c057d893b667e7480800000000000000
+      internalID: -8899545610738371316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mostrador de combustivel_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 184
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8d779e3e2dae72a0800000000000000
+      internalID: -6737757578369466993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mostrador de combustivel_2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 0
+        width: 195
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a4fb3a42295c610800000000000000
+      internalID: 1640878325310114428
       vertices: []
       indices: 
       edges: []
@@ -125,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 642821c9d39d9574ea1e55b7a0401dd5
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ativo 2_0: 4984607860732634766
+      mostrador de combustivel_0: -8899545610738371316
+      mostrador de combustivel_1: -6737757578369466993
+      mostrador de combustivel_2: 1640878325310114428
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 185d281dd07ed214389c83d35ca8a520
+guid: a026e50c63da20d41aa58384278b3bfe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3281641373619304044
-    second: pronto_chama_0
+      213: -2475843868366640839
+    second: agua_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 82
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pronto_chama_0
+      name: agua_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 411
-        height: 651
+        width: 1500
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 499423dbe844572d0800000000000000
-      internalID: -3281641373619304044
+      spriteID: 9396daa8e1904add0800000000000000
+      internalID: -2475843868366640839
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pronto_chama_0: -3281641373619304044
+      agua_1_0: -2475843868366640839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

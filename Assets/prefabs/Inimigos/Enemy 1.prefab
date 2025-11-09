@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6352207730423665705}
   - component: {fileID: 5304890220059795179}
   - component: {fileID: 1676058613574829424}
+  - component: {fileID: 6655050793035663172}
   - component: {fileID: -5457432657510802628}
   - component: {fileID: 8318623253215222661}
   - component: {fileID: 6881578884213485069}
@@ -115,6 +116,22 @@ MonoBehaviour:
   prefabInimigo: {fileID: 4701457152990384429}
   spawnPosition: {x: 0, y: 0}
   player: {fileID: 6083878722191991859, guid: 038e8b2ca970c414e88bbbcd19418454, type: 3}
+--- !u!114 &6655050793035663172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701457152990384429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3d5335151fce944bb18014fd6378ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 5304890220059795179}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashTime: 0.1
 --- !u!114 &-5457432657510802628
 MonoBehaviour:
   m_ObjectHideFlags: 0

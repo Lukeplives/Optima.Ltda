@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public int QtdFerro;
     public float QtdComb;
+
+    public int ferroCritico = 15;
+    public float combCritico = 500;
     [SerializeField] private float decrementoComb;
     public bool gameover;
 
@@ -114,6 +117,7 @@ public class GameManager : MonoBehaviour
         }
 
         uiManager.AtualizarRecursosHUD();
+        uiManager.AtualizarIndicadores(QtdFerro, QtdComb);
     }
 
     public void BuyBuilding(Building building)
@@ -122,6 +126,10 @@ public class GameManager : MonoBehaviour
         {
             QtdFerro -= building.custoRec;
             QtdComb -= building.custoComb;
+
+            uiManager.AtualizarRecursosHUD();
+            uiManager.AtualizarIndicadores(QtdFerro, QtdComb);
+
             buildManager.StartBuilding(building);
         }
     }

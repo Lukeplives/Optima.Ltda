@@ -10,6 +10,7 @@ public class Inimigo : MonoBehaviour
     [SerializeField] private float stoppingDistance;
     [SerializeField] private float retreatDistance;
     public int hitPoints;
+    private FeedbackDamage feedbackDamage;
      private float timeBtwShots;
     [SerializeField] private float startTimeBtwShots;
     public float spawnDelay;
@@ -32,6 +33,11 @@ public class Inimigo : MonoBehaviour
     public Transform player;
 
     public event Action onDeath;
+
+    void Awake()
+    {
+        feedbackDamage = GetComponent<FeedbackDamage>();
+    }
     protected virtual void Start()
     {
         speed = settings.speed;
@@ -98,6 +104,7 @@ public class Inimigo : MonoBehaviour
     {
         if (morreu) return;
         hitPoints -= dano;
+        feedbackDamage?.Flash();
         if (hitPoints <= 0)
         {
             morreu = true;

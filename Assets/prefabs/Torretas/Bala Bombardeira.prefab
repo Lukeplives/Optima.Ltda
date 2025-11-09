@@ -106,7 +106,7 @@ MonoBehaviour:
   balaVelocidade: 5
   danoBala: 1
   tipo: 1
-  "raioExplos\xE3o": 0.5
+  "raioExplos\xE3o": 1.25
   "danoExplos\xE3o": 10
   enemyMask:
     serializedVersion: 2

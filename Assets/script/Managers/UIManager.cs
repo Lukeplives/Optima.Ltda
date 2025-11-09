@@ -1,11 +1,24 @@
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("Referências de HUD")]
     public TextMeshProUGUI ferroText;
     public TextMeshProUGUI combustivelText;
+    [Header("Sprite recursos")]
+    public Image ferroIcone;
+    public Image combustivelIcone;
+
+    [Header("Sprites de Estado ferro")]
+    public Sprite ferroNormal;
+    public Sprite ferroBaixo;
+
+    [Header("Sprites de Estado Combústivel")]
+
+    public Sprite combNormal;
+    public Sprite combBaixo;
+
 
     [Header("Painéis")]
     public GameObject winPanel;
@@ -16,6 +29,7 @@ public class UIManager : MonoBehaviour
     public KeyCode pauseKey = KeyCode.Escape;
 
     public bool isPaused = false;
+    
     
     void Start()
     {
@@ -39,6 +53,12 @@ public class UIManager : MonoBehaviour
         ferroText.text = GameManager.Instance.QtdFerro.ToString();
         combustivelText.text = GameManager.Instance.QtdComb.ToString("N0");
 
+    }
+
+    public void AtualizarIndicadores(float ferro, float combustivel)
+    {
+        ferroIcone.sprite = ferro <= GameManager.Instance.ferroCritico ? ferroBaixo : ferroNormal;
+        combustivelIcone.sprite = combustivel <= GameManager.Instance.combCritico ? combBaixo : combNormal;
     }
 
     public void MostrarWin(bool ativo)

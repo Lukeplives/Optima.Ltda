@@ -112,6 +112,7 @@ public class Bala : MonoBehaviour
         {
 
             Inimigo inimigo = hit.GetComponent<Inimigo>();
+            Debug.Log("inimigo tomou dano de explosão");
             inimigo.TomaDano(danoExplosão);
         }
 
@@ -120,11 +121,6 @@ public class Bala : MonoBehaviour
             Instantiate(efeitoExplosao, transform.position, Quaternion.identity);
         }
     }
-
-    /*protected virtual void OnHit(Collision2D other)
-    {
-
-    }*/
 
     private void OnDrawGizmosSelected()
     {

@@ -15,6 +15,8 @@ public class BossController : MonoBehaviour
     public int atualHP;
     public int fase = 0;
 
+    private FeedbackDamage feedbackDamage;
+
 
     [Header("Configs PEM")]
     [SerializeField] float tempoPEMAtivado;
@@ -46,6 +48,7 @@ public class BossController : MonoBehaviour
     {
         atualHP = maxHP;
         player = FindFirstObjectByType<Submarino>();
+        feedbackDamage = GetComponent<FeedbackDamage>();
 
     }
     void Update()
@@ -73,6 +76,7 @@ public class BossController : MonoBehaviour
     public void TomaDano(int qtdDano)
     {
         atualHP -= qtdDano;
+        feedbackDamage.Flash();
         if (atualHP <= 0)
         {
             atualHP = 0;

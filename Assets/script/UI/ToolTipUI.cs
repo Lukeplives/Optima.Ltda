@@ -1,34 +1,35 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class ToolTipUI : MonoBehaviour
 {
-    [SerializeField] private GameObject toolTipObject;
-    [SerializeField] private TextMeshProUGUI tooltipText;
+
+
+    public static ToolTipUI Instance;
 
     void Awake()
     {
-        toolTipObject.SetActive(true);
+        if(Instance != null && Instance != this )
+        {
+            Destroy(this.gameObject);
+        } else
+        {
+            Instance = this;
+        }
     }
-
-    public void Show(string message, Vector3 position)
+    void Start()
     {
-        toolTipObject.SetActive(true);
-        tooltipText.text = message;
-        
-        toolTipObject.transform.position = position;
-    }
 
-    public void Hide()
-    {
-        toolTipObject.SetActive(false);
     }
+    
+
+
+
 
     void Update()
     {
-        if(toolTipObject.activeSelf)
-        {
-            toolTipObject.transform.position = Input.mousePosition + new Vector3(10, -10, 0);
-        }
+
+        
     }
 }

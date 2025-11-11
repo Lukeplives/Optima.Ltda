@@ -55,11 +55,11 @@ public class TorretaBasica : MonoBehaviour
     private Slider ammoSlider;
 
 
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+   //     Handles.color = Color.cyan;
+   //     Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+   // }
     void Start()
     {
         torretaBuild = GetComponent<Building>();

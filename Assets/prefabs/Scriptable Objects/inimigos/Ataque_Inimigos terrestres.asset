@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ataque_Inimigos terrestres
   m_EditorClassIdentifier: 
   speed: 2
-  dano: 2
+  dano: 5

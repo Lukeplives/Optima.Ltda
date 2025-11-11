@@ -261,7 +261,7 @@ MonoBehaviour:
     m_Bits: 64
   balaPrefab: {fileID: 3038097420431131993, guid: b892cdf09db06214d98a4acdb5b1b7d5, type: 3}
   firingPoint: {fileID: 5138256532615241328}
-  targetingRange: 6.4
+  targetingRange: 6.6
   rotationSpeed: 200
   bps: 1
   danoTorreta: 0

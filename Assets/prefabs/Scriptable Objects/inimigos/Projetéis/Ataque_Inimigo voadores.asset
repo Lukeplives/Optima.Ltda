@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d280ab9cc1fb9242bab4a5f793f831b, type: 3}
   m_Name: Ataque_Inimigo voadores
   m_EditorClassIdentifier: 
-  speed: 2
-  dano: 25
+  speed: 4
+  dano: 2

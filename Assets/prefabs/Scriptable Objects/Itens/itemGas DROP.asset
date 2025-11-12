@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootsprite: {fileID: 8928031033918332290, guid: 9094471b6d790fc409599eb5acb21e77, type: 3}
   lootname: gasolina
-  dropChance: 60
+  dropChance: 10
   upGas: 5
   upFerro: 0
   "upPe\xE7as": 0

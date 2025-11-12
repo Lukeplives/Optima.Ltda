@@ -16,12 +16,12 @@ MonoBehaviour:
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     spawnDelay: 0
     customPos: {x: 0, y: 0}
-    lado: 0
+    lado: 1
     tipoInimigo: 0
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     spawnDelay: 1
     customPos: {x: 0, y: 0}
-    lado: 0
+    lado: 1
     tipoInimigo: 0
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     spawnDelay: 0.2
@@ -31,12 +31,12 @@ MonoBehaviour:
   - inimigo: {fileID: 11400000, guid: b94730e79901c1a45b7fc843b40307a2, type: 2}
     spawnDelay: 2
     customPos: {x: 10, y: 0}
-    lado: 0
+    lado: 1
     tipoInimigo: 2
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     spawnDelay: 0.5
     customPos: {x: 10, y: 0}
-    lado: 0
+    lado: 1
     tipoInimigo: 0
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     spawnDelay: 0.2
@@ -46,7 +46,7 @@ MonoBehaviour:
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     spawnDelay: 2
     customPos: {x: 10, y: 0}
-    lado: 0
+    lado: 1
     tipoInimigo: 0
   - inimigo: {fileID: 11400000, guid: b94730e79901c1a45b7fc843b40307a2, type: 2}
     spawnDelay: 0

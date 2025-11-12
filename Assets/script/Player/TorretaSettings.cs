@@ -5,6 +5,7 @@ public class TorretaSettings : ScriptableObject
 {
 
     [Header("Atributos")]
+    public string nomeTorreta;
     public int custoRec;
     public int custoComb;
     public float targetingRange = 5f;

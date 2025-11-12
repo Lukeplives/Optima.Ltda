@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f153db375557546a151f316ec0ea5d, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
+  nomeTorreta: Sniper
   custoRec: 45
   custoComb: 3
   targetingRange: 9

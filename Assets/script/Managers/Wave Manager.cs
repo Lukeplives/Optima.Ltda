@@ -17,7 +17,7 @@ public class WaveManager : MonoBehaviour
     public bool wavesComecaram;
     private int currentWave = 0;
     private int totalEtapas;
-    private int etapasCompletas;
+    public int etapasCompletas;
 
 
     public event Action AllWavesCompleted;

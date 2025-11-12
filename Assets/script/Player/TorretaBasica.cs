@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class TorretaBasica : MonoBehaviour
+public class TorretaBasica : MonoBehaviour, ITooltipInfo
 {
     public TorretaSettings settings;
     [Header("Referencias de Obj")]
@@ -20,6 +20,7 @@ public class TorretaBasica : MonoBehaviour
 
 
     [Header("Atributos")]
+    public string nomeTorreta;
     public float targetingRange = 5f;
     public float rotationSpeed = 5f;
     public float bps = 1f; //Balas por segundo
@@ -65,6 +66,7 @@ public class TorretaBasica : MonoBehaviour
         torretaBuild = GetComponent<Building>();
         enemyMask = settings.enemyMask;
         balaPrefab = settings.balaPrefab;
+        nomeTorreta = settings.nomeTorreta;
 
 
         danoTorreta = settings.danoTorreta;
@@ -296,4 +298,8 @@ public class TorretaBasica : MonoBehaviour
     void OnEnable() => TodasTorretas.Add(this);
     void OnDisable() => TodasTorretas.Remove(this);
 
+    public string GetTooltipText()
+    {
+        return $"{nomeTorreta}\nDano: {danoTorreta}\nQtd. de Munição: {munMax}\nCusto: combustível {settings.custoComb}, ferro {settings.custoRec}";
+    }
 }

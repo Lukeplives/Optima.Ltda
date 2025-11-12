@@ -5,9 +5,16 @@ public class ToolTipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     [TextArea]
     public string message;
+    public bool usarStatusTorreta = false;
 
+
+    void Awake()
+    {
+
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
+
         GameManager.Instance.hoverManager.ShowToolTip(message);
     }
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 
-public class Torretalançachama : MonoBehaviour
+public class Torretalançachama : MonoBehaviour, ITooltipInfo
 {
     [Header("Referencias de OBJ")]
     public TorretaSettings settings;
@@ -22,7 +22,7 @@ public class Torretalançachama : MonoBehaviour
     [Header("Atributos")]
 
     [SerializeField] private float raioChama;
-    [SerializeField] private float danoPorSegundo;
+    public float danoPorSegundo;
     [SerializeField] private float tempoDeVida;
     public float targetingRange = 5f;
     public float rotationSpeed = 5f;
@@ -240,5 +240,10 @@ public class Torretalançachama : MonoBehaviour
     private void OnDestroy()
     {
         TodasTorretasChama.Remove(this);
+    }
+
+    public string GetTooltipText()
+    {
+        return $"Torreta lança chamas\nDano por segundo: {danoPorSegundo}\nQtd. de Munição: {munMax}\nCusto: combustível {settings.custoComb}, ferro {settings.custoRec}";
     }
 }

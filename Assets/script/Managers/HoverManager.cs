@@ -32,10 +32,43 @@ public class HoverManager : MonoBehaviour
             null,
             out anchoredPos
             );
+            // Começa com o offset padrão
+            Vector2 finalOffset = toolTipOffset;
 
-            anchoredPos += toolTipOffset;
+            // Pega os tamanhos
+            Vector2 tooltipSize = tooltipRect.sizeDelta;
+            Vector2 canvasSize = canvasRect.sizeDelta;
 
+            // Se estiver muito próximo da borda direita, inverte o lado
+            if (anchoredPos.x + tooltipSize.x / 2 + finalOffset.x > canvasSize.x / 2)
+                finalOffset.x *= -1; // Inverte horizontalmente
+
+            // Se estiver muito próximo da borda inferior, empurra pra cima
+            if (anchoredPos.y - tooltipSize.y / 2 + finalOffset.y < -canvasSize.y / 2)
+                finalOffset.y = Mathf.Abs(finalOffset.y);
+
+            // Aplica offset
+            anchoredPos += finalOffset;
+
+            // Clampa pra evitar sair da tela
+            anchoredPos.x = Mathf.Clamp(anchoredPos.x, -canvasSize.x / 2 + tooltipSize.x / 2, canvasSize.x / 2 - tooltipSize.x / 2);
+            anchoredPos.y = Mathf.Clamp(anchoredPos.y, -canvasSize.y / 2 + tooltipSize.y / 2, canvasSize.y / 2 - tooltipSize.y / 2);
+
+            // Atualiza posição final
             tooltipRect.anchoredPosition = anchoredPos;
+
+
+            /*anchoredPos += toolTipOffset;
+
+            
+            Vector2 tooltipSize = tooltipRect.sizeDelta;
+            Vector2 canvasSize = canvasRect.sizeDelta;
+
+            
+            anchoredPos.x = Mathf.Clamp(anchoredPos.x, -canvasSize.x / 2 + tooltipSize.x / 2, canvasSize.x / 2 - tooltipSize.x / 2);
+            anchoredPos.y = Mathf.Clamp(anchoredPos.y, -canvasSize.y / 2 + tooltipSize.y / 2, canvasSize.y / 2 - tooltipSize.y / 2);
+
+            tooltipRect.anchoredPosition = anchoredPos;*/
 
         }
     }

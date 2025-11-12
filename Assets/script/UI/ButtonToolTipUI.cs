@@ -1,29 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonToolTipUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonToolTipUI : MonoBehaviour
 {
-    [TextArea] public string toolTipMessage = "Trocar modo de tiro";
-    private ToolTipUI tooltip;
-
-    void Start()
+    public string message;
+    void OnMouseEnter()
     {
-        tooltip = FindFirstObjectByType<ToolTipUI>();
+        GameManager.Instance.hoverManager.ShowToolTip(message);
     }
-    public void OnPointerEnter(PointerEventData eventData)
+    void OnMouseExit()
     {
-        if(tooltip != null)
-        {
-            tooltip.Show(toolTipMessage, Input.mousePosition);
-        }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if(tooltip != null)
-        {
-            tooltip.Hide();
-        }
+        GameManager.Instance.hoverManager.HideToolTip();
     }
 
 

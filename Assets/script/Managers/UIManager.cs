@@ -25,8 +25,12 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject gameOverPanel;
 
+
+
+
     [Header("Configurações")]
     public KeyCode pauseKey = KeyCode.Escape;
+    
 
     public bool isPaused = false;
     
@@ -37,6 +41,8 @@ public class UIManager : MonoBehaviour
         MostrarWin(false);
         MostrarPause(false);
         MostrarGameOver(false);
+
+
     }
 
     // Update is called once per frame
@@ -46,6 +52,11 @@ public class UIManager : MonoBehaviour
         {
             AlternarPause();
         }
+
+
+
+       
+        
     }
 
     public void AtualizarRecursosHUD()
@@ -84,7 +95,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = isPaused ? 0f : 1f;
         Cursor.visible = isPaused;
     }
-    
+
     public void ExibirGameOver()
     {
         MostrarPause(false);
@@ -93,4 +104,6 @@ public class UIManager : MonoBehaviour
 
         Time.timeScale = 0f;
     }
+    
+
 }

@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public BuildManager buildManager;
     public UIManager uiManager;
     public WaveManager waveManager;
+    public HoverManager hoverManager;
 
 
     void Awake()

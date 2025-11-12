@@ -25,14 +25,7 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject gameOverPanel;
 
-    [Header("Tooltip")]
-    [SerializeField] private GameObject toolTipObject;
-    [SerializeField] private TextMeshProUGUI tooltipText;
-    public Canvas toolTipCanva;
-    public Vector2 toolTipOffset = new Vector2(15f, -15f); 
 
-    public RectTransform canvasRect;
-    public RectTransform tooltipRect;
 
 
     [Header("Configurações")]
@@ -49,8 +42,7 @@ public class UIManager : MonoBehaviour
         MostrarPause(false);
         MostrarGameOver(false);
 
-        canvasRect = canvasRect.GetComponent<RectTransform>();
-        tooltipRect = toolTipObject.GetComponent<RectTransform>();
+
     }
 
     // Update is called once per frame
@@ -63,23 +55,7 @@ public class UIManager : MonoBehaviour
 
 
 
-        if (toolTipObject.activeSelf)
-        {
-            Vector2 mousePos = Input.mousePosition;
-            Vector2 anchoredPos;
-
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasRect,
-            mousePos,
-            null,
-            out anchoredPos
-            );
-            
-            anchoredPos += toolTipOffset;
-
-            tooltipRect.anchoredPosition = anchoredPos;
-
-        }
+       
         
     }
 
@@ -129,16 +105,5 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
     }
     
-        public void ShowToolTip(string message)
-    {
-        toolTipObject.SetActive(true);
-        tooltipText.text = message;
-        
-        
-    }
 
-    public void HideToolTip()
-    {
-        toolTipObject.SetActive(false);
-    }
 }

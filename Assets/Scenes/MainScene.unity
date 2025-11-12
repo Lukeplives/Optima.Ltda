@@ -456,7 +456,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -470,7 +470,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 121689319}
   m_FillRect: {fileID: 0}
   m_HandleRect: {fileID: 121689318}
@@ -1833,9 +1833,9 @@ GameObject:
   - component: {fileID: 511170006}
   - component: {fileID: 511170005}
   - component: {fileID: 511170004}
-  - component: {fileID: 511170007}
   - component: {fileID: 511170008}
   - component: {fileID: 511170009}
+  - component: {fileID: 511170010}
   m_Layer: 5
   m_Name: AutoMode switch
   m_TagString: Untagged
@@ -1956,19 +1956,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511170002}
   m_CullTransparentMesh: 1
---- !u!114 &511170007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511170002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f62491841871574e83c416d94fe6b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Alternar modo de tiro
 --- !u!61 &511170008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2042,6 +2029,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &511170010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511170002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672462b19f987174a84bc97036bc4494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Alternar modo de tiro
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,6 +3033,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 814818986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &784694041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 784694042}
+  - component: {fileID: 784694043}
+  m_Layer: 0
+  m_Name: Hover Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &784694042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784694041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1073702263943600994}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &784694043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784694041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0a2c99aea7c4408cd7eed657159b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolTipObject: {fileID: 1128569025}
+  tooltipText: {fileID: 1852218377}
+  toolTipCanva: {fileID: 354403240}
+  toolTipOffset: {x: 15, y: -15}
+  canvasRect: {fileID: 354403237}
+  tooltipRect: {fileID: 1128569028}
 --- !u!1 &814818984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,12 +4518,6 @@ MonoBehaviour:
   winPanel: {fileID: 25530961191702301}
   pausePanel: {fileID: 2119905859}
   gameOverPanel: {fileID: 7750232968037845474}
-  toolTipObject: {fileID: 1128569025}
-  tooltipText: {fileID: 1852218377}
-  toolTipCanva: {fileID: 354403240}
-  toolTipOffset: {x: 1, y: 1}
-  canvasRect: {fileID: 354403237}
-  tooltipRect: {fileID: 1128569028}
   pauseKey: 27
   isPaused: 0
 --- !u!114 &1407190271
@@ -7328,6 +7372,7 @@ Transform:
   - {fileID: 1338817011}
   - {fileID: 1407190269}
   - {fileID: 1561560512}
+  - {fileID: 784694042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1126771131323396890
@@ -8183,6 +8228,7 @@ MonoBehaviour:
   buildManager: {fileID: 1338817010}
   uiManager: {fileID: 1407190270}
   waveManager: {fileID: 1561560511}
+  hoverManager: {fileID: 784694043}
 --- !u!224 &3638607888072264053
 RectTransform:
   m_ObjectHideFlags: 0

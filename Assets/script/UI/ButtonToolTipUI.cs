@@ -6,11 +6,11 @@ public class ButtonToolTipUI : MonoBehaviour
     public string message;
     void OnMouseEnter()
     {
-        GameManager.Instance.uiManager.ShowToolTip(message);
+        GameManager.Instance.hoverManager.ShowToolTip(message);
     }
     void OnMouseExit()
     {
-        GameManager.Instance.uiManager.HideToolTip();
+        GameManager.Instance.hoverManager.HideToolTip();
     }
 
 

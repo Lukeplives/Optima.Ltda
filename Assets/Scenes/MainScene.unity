@@ -3057,6 +3057,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703804577}
   m_CullTransparentMesh: 1
+--- !u!1 &770568976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770568977}
+  - component: {fileID: 770568978}
+  m_Layer: 0
+  m_Name: Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770568977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770568976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1073702263943600994}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &770568978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770568976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7151047cfd844894c8779c452be04a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: BalaPadrao
+    prefab: {fileID: 3038097420431131993, guid: 36ea224256043374280fdd313407f837, type: 3}
+    size: 15
+  - tag: BalaExplosiva
+    prefab: {fileID: 3038097420431131993, guid: b892cdf09db06214d98a4acdb5b1b7d5, type: 3}
+    size: 15
+  - tag: BalaSniper
+    prefab: {fileID: 3038097420431131993, guid: 2d1775ffedf1cfc4e8d4052c085cd728, type: 3}
+    size: 15
+  - tag: InimigoTerrestre
+    prefab: {fileID: 4701457152990384429, guid: 9e794424095eb7e47b8999d7ded42a1f, type: 3}
+    size: 10
+  - tag: InimigoVoador
+    prefab: {fileID: 4701457152990384429, guid: 3d1d8afbe34aa2d43a486737e96d2686, type: 3}
+    size: 10
+  - tag: InimigoGrande
+    prefab: {fileID: 4701457152990384429, guid: 56e2354d9e7948c4fbe8d2435c09a35c, type: 3}
+    size: 10
+  - tag: InimigoKamikaze
+    prefab: {fileID: 4701457152990384429, guid: 47f5f116f3bc602498a87ff441de5b2d, type: 3}
+    size: 20
+  - tag: ItemFerro
+    prefab: {fileID: 373794347663381789, guid: 9e6abc8b05da87d40a3b81e1ca3471ae, type: 3}
+    size: 15
+  - tag: ItemComb
+    prefab: {fileID: 373794347663381789, guid: 9f1f102ea1c9c9947ab4d98923b4e262, type: 3}
+    size: 15
+  - tag: ItemCombDROP
+    prefab: {fileID: 6488188299671690963, guid: 87d11cab9fd331f42b9054a0722ebaa7, type: 3}
+    size: 15
+  - tag: ItemFerroDROP
+    prefab: {fileID: 6488188299671690963, guid: 87d11cab9fd331f42b9054a0722ebaa7, type: 3}
+    size: 15
+  - tag: TorretaMetralhadora
+    prefab: {fileID: 7971306376598169753, guid: 326268e469a4dba46badcbe6a2feb2ba, type: 3}
+    size: 5
+  - tag: TorretaSniper
+    prefab: {fileID: 7971306376598169753, guid: eaec5914e55cf51449c1713727ca14df, type: 3}
+    size: 5
+  - tag: TorretaExplosiva
+    prefab: {fileID: 7971306376598169753, guid: 410c773d0328fd242bb59e5bf2cbcb36, type: 3}
+    size: 5
+  - tag: TorretaLancaChama
+    prefab: {fileID: 7971306376598169753, guid: 8aec5da77449ad846bca7aa6a74777ed, type: 3}
+    size: 5
 --- !u!1 &777110108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,6 +4381,11 @@ MonoBehaviour:
   - {fileID: 958177143224202760}
   - {fileID: 3993547455717543417}
   - {fileID: 6424519913928182473}
+  prefabsTorretas:
+  - {fileID: 5577869450679567921, guid: 326268e469a4dba46badcbe6a2feb2ba, type: 3}
+  - {fileID: 5577869450679567921, guid: eaec5914e55cf51449c1713727ca14df, type: 3}
+  - {fileID: 5577869450679567921, guid: 410c773d0328fd242bb59e5bf2cbcb36, type: 3}
+  - {fileID: 5577869450679567921, guid: 8aec5da77449ad846bca7aa6a74777ed, type: 3}
 --- !u!4 &1338817011
 Transform:
   m_ObjectHideFlags: 0
@@ -4702,6 +4797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51dca14082f3d446988da0c692c3b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorImage: {fileID: 0}
 --- !u!4 &1519237792
 Transform:
   m_ObjectHideFlags: 0
@@ -7416,6 +7512,7 @@ Transform:
   - {fileID: 1407190269}
   - {fileID: 1561560512}
   - {fileID: 784694042}
+  - {fileID: 770568977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1126771131323396890
@@ -8594,6 +8691,7 @@ MonoBehaviour:
   custoComb: 5
   originTile: {fileID: 0}
   torretaSprite: {fileID: 0}
+  tagTorreta: 0
 --- !u!222 &4777280579969657791
 CanvasRenderer:
   m_ObjectHideFlags: 0

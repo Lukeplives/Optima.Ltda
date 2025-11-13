@@ -16,6 +16,8 @@ public class Item : MonoBehaviour
 
 
     public ItemSettings.TipoItem recurso;
+
+    public ObjectPool.PoolTag poolTag;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -29,17 +31,14 @@ public class Item : MonoBehaviour
         upFerro = settings.upFerro;
         upPeças = settings.upPeças;
         tipo = settings.tipo;
+
+        poolTag = settings.tagPool;
        
     }
 
     public void Initialize(ItemSettings newSettings)
     {
         settings = newSettings;
-
-        /*upGas = settings.upGas;
-        upFerro = settings.upFerro;
-        upPeças = settings.upPeças;
-        tipo = settings.tipo;*/
 
         if (spriteRenderer != null && settings.lootsprite != null)
         {
@@ -58,27 +57,6 @@ public class Item : MonoBehaviour
 
     }
 
-     /*void OnMouseDown()
-    {
-
-        switch(settings.tipo)
-        {
-            case ItemSettings.TipoItem.Ferro:
-                
-                gameManager.QtdFerro += upFerro;    
-                Destroy(gameObject);
-            break;
-
-            case ItemSettings.TipoItem.Gas:
-                
-                gameManager.QtdComb += upGas;
-                Destroy(gameObject);
-            break;
-
-
-        }
-
-    }*/
 
     public void Coletar()
     {
@@ -95,7 +73,7 @@ public class Item : MonoBehaviour
                 break;
         }
         gameManager.uiManager.AtualizarRecursosHUD();
-        Destroy(gameObject);
+        ObjectPool.Instance.Despawn(gameObject);
 
     }
 }

@@ -23,6 +23,8 @@ public class ItemSettings : ScriptableObject
 
     public TipoItem tipo;
 
+    public ObjectPool.PoolTag tagPool;
+
 
 
 }

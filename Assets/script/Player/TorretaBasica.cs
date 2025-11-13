@@ -15,6 +15,8 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     public GameObject balaPrefab;
     [SerializeField] private Transform firingPoint;
     private Building torretaBuild;
+    private ObjectPool.PoolTag tagBala;
+ 
 
 
 
@@ -67,6 +69,8 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         enemyMask = settings.enemyMask;
         balaPrefab = settings.balaPrefab;
         nomeTorreta = settings.nomeTorreta;
+        tagBala = settings.tagBala;
+
 
 
         danoTorreta = settings.danoTorreta;
@@ -186,7 +190,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     private void Shoot()
     {
         if (!munInfinita && munAtual <= 0 || !podeAtirar) { return; }
-        GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
+        GameObject balaObj = ObjectPool.Instance.SpawnFromPool(tagBala, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
 
         balaScript.danoBala = danoTorreta;

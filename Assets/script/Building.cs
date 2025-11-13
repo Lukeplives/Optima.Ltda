@@ -7,8 +7,11 @@ public class Building : MonoBehaviour
     public int custoComb;
     public Tile originTile;
 
-    [SerializeField] private SpriteRenderer torretaSprite;
+    public SpriteRenderer torretaSprite;
     public SpriteRenderer ArmaSprite => torretaSprite;
+
+    public BuildManager.TipoTorreta tagTorreta;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +20,7 @@ public class Building : MonoBehaviour
 
         custoComb = torretaSettings.custoComb;
         custoRec = torretaSettings.custoRec;
+        tagTorreta = torretaSettings.tagTorreta;
 
         
     }

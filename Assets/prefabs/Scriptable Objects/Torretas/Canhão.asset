@@ -22,6 +22,8 @@ MonoBehaviour:
   danoTorreta: 50
   munMax: 20
   munInfinita: 0
+  tagBala: 1
+  tagTorreta: 2
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,13 +11,28 @@ public class BuildManager : MonoBehaviour
     public Tile[] tiles;
 
     private Building buildingToPlace;
-    void Start()
+    public List<Building> prefabsTorretas;
+
+    public enum TipoTorreta
     {
-        
+        TorretaMetralhadora,
+        TorretaSniper,
+        TorretaExplosiva,
+        TorretaLancaChama
     }
 
-    // Update is called once per frame
-    void Update()
+    private Dictionary<TipoTorreta, ObjectPool.PoolTag> mapaTorretaParaPool;
+    void Awake()
+    {
+        mapaTorretaParaPool = new Dictionary<TipoTorreta, ObjectPool.PoolTag>()
+        {
+            {TipoTorreta.TorretaMetralhadora , ObjectPool.PoolTag.TorretaMetralhadora},
+            {TipoTorreta.TorretaSniper, ObjectPool.PoolTag.TorretaSniper },
+            {TipoTorreta.TorretaExplosiva, ObjectPool.PoolTag.TorretaExplosiva},
+            {TipoTorreta.TorretaLancaChama, ObjectPool.PoolTag.TorretaLancaChama},
+        };
+    }
+    /*void Update()
     {
         if (Input.GetMouseButton(0) && buildingToPlace != null)
         {
@@ -45,9 +61,71 @@ public class BuildManager : MonoBehaviour
 
 
         }
+    }*/
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && buildingToPlace != null)
+        {
+            ConstruirTorreta();
+        }
+    }
+
+    public void ConstruirTorreta()
+    {
+        Tile nearestTile = null;
+        float shortestDistance = float.MaxValue;
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        foreach (Tile tile in tiles)
+        {
+            float dist = Vector2.Distance(tile.transform.position, mouseWorldPos);
+            if (dist < shortestDistance)
+            {
+                shortestDistance = dist;
+                nearestTile = tile;
+            }
+        }
+
+        if (nearestTile == null || nearestTile.isOccupied) return;
+
+        TipoTorreta tipo = buildingToPlace.tagTorreta;
+        ObjectPool.PoolTag poolTag = mapaTorretaParaPool[tipo];
+
+        GameObject novaTorreta = ObjectPool.Instance.SpawnFromPool(tag.ToString(), nearestTile.transform.position, Quaternion.identity);
+
+        if (novaTorreta != null)
+        {
+            novaTorreta.transform.SetParent(submarino);
+        }
+
+        Building scriptTorreta = novaTorreta.GetComponent<Building>();
+        if (scriptTorreta != null)
+        {
+            scriptTorreta.originTile = nearestTile;
+        }
+
+        nearestTile.isOccupied = true;
+        buildingToPlace = null;
+
+        grid.SetActive(false);
+        customCursor.gameObject.SetActive(false);
+        Cursor.visible = true;
+
+        GameManager.Instance.NotificarMudançaTile();
+    }
+
+    public void SelecionarTorreta(Building torretaPrefab)
+    {
+        buildingToPlace = torretaPrefab;
+        grid.SetActive(true);
+        customCursor.AtivarCursor(torretaPrefab.ArmaSprite.sprite);
+        Cursor.visible = false;
     }
     
-    public void StartBuilding(Building building)
+    
+
+    /*public void StartBuilding(Building building)
     {
         buildingToPlace = building;
         customCursor.gameObject.SetActive(true);
@@ -64,5 +142,5 @@ public class BuildManager : MonoBehaviour
 
         Cursor.visible = false;
         grid.SetActive(true);
-    }
+    }*/
 }

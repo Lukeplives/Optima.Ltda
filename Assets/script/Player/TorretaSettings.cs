@@ -18,6 +18,9 @@ public class TorretaSettings : ScriptableObject
     public int munMax;
     public bool munInfinita;
 
+    public ObjectPool.PoolTag tagBala;
+    public BuildManager.TipoTorreta tagTorreta;
+
 
     [Header("Referencias de Obj")]
 

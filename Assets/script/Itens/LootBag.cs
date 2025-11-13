@@ -28,15 +28,18 @@ public class LootBag : MonoBehaviour
     public void InstanciaItem(Vector3 SpawnPosition)
     {
         ItemSettings itemDroppado = GetItemDropado();
-        if (itemDroppado != null)
-        {
-            GameObject itemGameObject = Instantiate(prefabDropada, SpawnPosition, Quaternion.identity);
-            Item itemScript = itemGameObject.GetComponent<Item>();
-            if(itemScript != null)
-            {
-                itemScript.Initialize(itemDroppado);
-            }
+        if (itemDroppado == null) return;
 
+        GameObject itemGameObject = null;
+        string pooltag = itemDroppado.tagPool.ToString();
+        
+        itemGameObject = ObjectPool.Instance.SpawnFromPool(pooltag, SpawnPosition, Quaternion.identity);
+        Item itemScript = itemGameObject.GetComponent<Item>();
+        if(itemScript != null)
+        {
+            itemScript.Initialize(itemDroppado);
         }
+
+        
     }
 }

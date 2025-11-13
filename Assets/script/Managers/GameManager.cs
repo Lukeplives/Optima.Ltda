@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
             uiManager.AtualizarRecursosHUD();
             uiManager.AtualizarIndicadores(QtdFerro, QtdComb);
 
-            buildManager.StartBuilding(building);
+            buildManager.SelecionarTorreta(building);
         }
     }
 

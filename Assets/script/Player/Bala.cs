@@ -102,7 +102,7 @@ public class Bala : MonoBehaviour
 
         }
 
-        Destroy(gameObject);
+        ObjectPool.Instance.Despawn(gameObject);
     }
 
     private void Explodir()
@@ -133,7 +133,7 @@ public class Bala : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        ObjectPool.Instance.Despawn(gameObject);
     }
 
 }

@@ -11,7 +11,6 @@ public class BuildManager : MonoBehaviour
     public Tile[] tiles;
 
     private Building buildingToPlace;
-    public List<Building> prefabsTorretas;
 
     public enum TipoTorreta
     {
@@ -89,10 +88,20 @@ public class BuildManager : MonoBehaviour
 
         if (nearestTile == null || nearestTile.isOccupied) return;
 
-        TipoTorreta tipo = buildingToPlace.tagTorreta;
-        ObjectPool.PoolTag poolTag = mapaTorretaParaPool[tipo];
+        if(buildingToPlace == null)
+        {
+            Debug.LogWarning("nenhuma torreta selecionada");
+            return;
+        }
 
-        GameObject novaTorreta = ObjectPool.Instance.SpawnFromPool(tag.ToString(), nearestTile.transform.position, Quaternion.identity);
+        TipoTorreta tipo = buildingToPlace.tagTorreta;
+        if (!mapaTorretaParaPool.TryGetValue(tipo, out ObjectPool.PoolTag poolTag))
+        {
+        Debug.LogWarning($"Nenhum pool mapeado para tipo {tipo}");
+        return;
+        }
+
+        GameObject novaTorreta = ObjectPool.Instance.SpawnFromPool(poolTag, nearestTile.transform.position, Quaternion.identity);
 
         if (novaTorreta != null)
         {
@@ -103,6 +112,15 @@ public class BuildManager : MonoBehaviour
         if (scriptTorreta != null)
         {
             scriptTorreta.originTile = nearestTile;
+        }
+
+        var torretaComponent = novaTorreta.GetComponent<TorretaBasica>();
+        if (torretaComponent != null)
+        {
+           
+            torretaComponent.enabled = true;
+            torretaComponent.munAtual = torretaComponent.munMax;
+            
         }
 
         nearestTile.isOccupied = true;

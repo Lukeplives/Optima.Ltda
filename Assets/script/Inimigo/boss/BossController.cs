@@ -115,7 +115,7 @@ public class BossController : MonoBehaviour
             StopCoroutine(pemCoroutine);
         }
         OnBossDefeated?.Invoke();
-        Destroy(gameObject);
+        ObjectPool.Instance.Despawn(gameObject);
         if(controleManualTorreta != null)
         {
             controleManualTorreta.AtivarControle(false);

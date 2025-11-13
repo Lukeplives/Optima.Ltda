@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InimigoKamikaze : Inimigo
@@ -6,7 +7,7 @@ public class InimigoKamikaze : Inimigo
 
 
     [Header("Kamikaze configs")]
-    public GameObject explosionEffect;
+    private ObjectPool.PoolTag kamikazeEffectTag = ObjectPool.PoolTag.KamikazeExplosao;
     [SerializeField] private int danoExplosão;
 
     private bool wasDestroyed;
@@ -49,16 +50,22 @@ public class InimigoKamikaze : Inimigo
         if (wasDestroyed) return;
 
         wasDestroyed = true;
-        if (explosionEffect != null)
+        if (kamikazeEffectTag.IsUnityNull())
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            ObjectPool.Instance.SpawnFromPool(kamikazeEffectTag, transform.position, Quaternion.identity);
         }
 
         RadarWave radar = FindFirstObjectByType<RadarWave>();
-        if(radar != null)
+        if (radar != null)
         {
             radar.RemoverInimigo(tipoInimigo);
         }
-        Destroy(gameObject);
+        ObjectPool.Instance.Despawn(gameObject);
+    }
+    
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        wasDestroyed = false;
     }
 }

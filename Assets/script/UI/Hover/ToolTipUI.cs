@@ -12,7 +12,7 @@ public class ToolTipUI : MonoBehaviour
     {
         if(Instance != null && Instance != this )
         {
-            Destroy(this.gameObject);
+            ObjectPool.Instance.Despawn(this.gameObject);
         } else
         {
             Instance = this;

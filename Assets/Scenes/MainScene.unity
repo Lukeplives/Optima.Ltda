@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &49275153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3147,6 +3147,24 @@ MonoBehaviour:
   - tag: TorretaLancaChama
     prefab: {fileID: 7971306376598169753, guid: 8aec5da77449ad846bca7aa6a74777ed, type: 3}
     size: 5
+  - tag: ProjetilTerrestre
+    prefab: {fileID: 6435250657019572736, guid: ad72eaf276b1e6f4b8894a945c7dcc86, type: 3}
+    size: 10
+  - tag: ProjetilVoador
+    prefab: {fileID: 6435250657019572736, guid: dc16ed038d8403549b4391ff82b6de52, type: 3}
+    size: 10
+  - tag: ProjetilGrande
+    prefab: {fileID: 6435250657019572736, guid: e3784967d86ebda4a8d82b372de1b05c, type: 3}
+    size: 10
+  - tag: KamikazeExplosao
+    prefab: {fileID: 7036893170297572015, guid: fc3cef650aaadc9408103ec7922a4e9b, type: 3}
+    size: 20
+  - tag: ExplosaoEffect
+    prefab: {fileID: 4096482172088701005, guid: b196fca9f07afcd49a9fd2aac7cd632a, type: 3}
+    size: 15
+  - tag: AmmoUI
+    prefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
+    size: 6
 --- !u!1 &777110108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,7 +3262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &814818985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4318,9 +4336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0dc9ae34caf0b14fb390439ad2b64d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "itensDispon\xEDveis":
-  - {fileID: 373794347663381789, guid: 9e6abc8b05da87d40a3b81e1ca3471ae, type: 3}
-  - {fileID: 373794347663381789, guid: 9f1f102ea1c9c9947ab4d98923b4e262, type: 3}
+  "itensDispon\xEDveis": 0700000009000000
   minDelay: 3
   maxDelay: 7
   minAltura: 0.5
@@ -4381,11 +4397,6 @@ MonoBehaviour:
   - {fileID: 958177143224202760}
   - {fileID: 3993547455717543417}
   - {fileID: 6424519913928182473}
-  prefabsTorretas:
-  - {fileID: 5577869450679567921, guid: 326268e469a4dba46badcbe6a2feb2ba, type: 3}
-  - {fileID: 5577869450679567921, guid: eaec5914e55cf51449c1713727ca14df, type: 3}
-  - {fileID: 5577869450679567921, guid: 410c773d0328fd242bb59e5bf2cbcb36, type: 3}
-  - {fileID: 5577869450679567921, guid: 8aec5da77449ad846bca7aa6a74777ed, type: 3}
 --- !u!4 &1338817011
 Transform:
   m_ObjectHideFlags: 0
@@ -4797,7 +4808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51dca14082f3d446988da0c692c3b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorImage: {fileID: 0}
+  cursorImage: {fileID: 1519237793}
 --- !u!4 &1519237792
 Transform:
   m_ObjectHideFlags: 0
@@ -5412,7 +5423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac5f2c7539daa44b999c0a510effa14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSpawner: {fileID: 49275153}
+  waveSpawner: {fileID: 814818985}
   bigBoss: {fileID: 1485038568}
   radarWaveUi: {fileID: 1249306385}
   botaoModoTiro: {fileID: 511170002}
@@ -9314,6 +9325,7 @@ MonoBehaviour:
   munInfinita: 1
   modoManual: 0
   podeAtirar: 1
+  inicializado: 0
   ammoUIPrefab: {fileID: 0}
 --- !u!114 &7065174787873437400
 MonoBehaviour:

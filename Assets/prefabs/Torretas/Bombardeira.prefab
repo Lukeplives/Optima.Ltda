@@ -261,6 +261,7 @@ MonoBehaviour:
     m_Bits: 64
   balaPrefab: {fileID: 3038097420431131993, guid: b892cdf09db06214d98a4acdb5b1b7d5, type: 3}
   firingPoint: {fileID: 5138256532615241328}
+  nomeTorreta: 
   targetingRange: 6.6
   rotationSpeed: 200
   bps: 1
@@ -288,6 +289,7 @@ MonoBehaviour:
   custoComb: 5
   originTile: {fileID: 0}
   torretaSprite: {fileID: 2176079442576094627}
+  tagTorreta: 2
 --- !u!50 &-7425286808470548956
 Rigidbody2D:
   serializedVersion: 5

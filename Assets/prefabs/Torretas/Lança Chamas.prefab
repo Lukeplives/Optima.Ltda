@@ -375,6 +375,7 @@ MonoBehaviour:
   custoComb: 5
   originTile: {fileID: 0}
   torretaSprite: {fileID: 2176079442576094627}
+  tagTorreta: 3
 --- !u!50 &-7425286808470548956
 Rigidbody2D:
   serializedVersion: 5

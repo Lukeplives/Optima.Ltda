@@ -5,5 +5,6 @@ public class ProjetilSettings : ScriptableObject
 {
     public float speed;
     public int dano;
+    
 
 }

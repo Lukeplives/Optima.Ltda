@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CustomCursor : MonoBehaviour
 {
-    public Image cursorImage;
+    public SpriteRenderer cursorImage;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,5 +22,10 @@ public class CustomCursor : MonoBehaviour
     {
         cursorImage.sprite = sprite;
         gameObject.SetActive(true);
+    }
+
+    public void DesativarCursor()
+    {
+        gameObject.SetActive(false);
     }
 }

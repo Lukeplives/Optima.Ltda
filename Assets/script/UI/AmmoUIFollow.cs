@@ -16,7 +16,7 @@ public class AmmoUIFollow : MonoBehaviour
     {
         if (torreta == null)
         {
-            Destroy(gameObject);
+            ObjectPool.Instance.Despawn(gameObject);
             return;
         }
 

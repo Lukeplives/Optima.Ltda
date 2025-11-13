@@ -48,12 +48,14 @@ public class Bala : MonoBehaviour
         {
             direcao = direcaoManual.Value;
         }
-        else if (alvo)
+        else if (alvo != null && alvo.gameObject.activeInHierarchy)
         {
             direcao = (alvo.position - transform.position).normalized;
         }
         else
         {
+            alvo = null;
+            ObjectPool.Instance.Despawn(gameObject);
             return;
         }
         
@@ -72,7 +74,9 @@ public class Bala : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-
+        if (!other.gameObject.activeInHierarchy)
+            return;
+    
         IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
         if(damageable == null)
         {
@@ -118,7 +122,8 @@ public class Bala : MonoBehaviour
 
         if (efeitoExplosao != null)
         {
-            Instantiate(efeitoExplosao, transform.position, Quaternion.identity);
+            //Instantiate(efeitoExplosao, transform.position, Quaternion.identity);
+            ObjectPool.Instance.SpawnFromPool(ObjectPool.PoolTag.ExplosaoEffect, transform.position, Quaternion.identity);
         }
     }
 
@@ -134,6 +139,12 @@ public class Bala : MonoBehaviour
     private void OnBecameInvisible()
     {
         ObjectPool.Instance.Despawn(gameObject);
+    }
+    private void OnDisable()
+    {
+        alvo = null;
+        direcaoManual = null;
+        rb.linearVelocity = Vector2.zero;
     }
 
 }

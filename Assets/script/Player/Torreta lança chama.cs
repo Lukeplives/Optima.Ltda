@@ -86,7 +86,8 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
 
         if (ammoUIPrefab != null)
         {
-            GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            //GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            GameObject uiObject = ObjectPool.Instance.SpawnFromPool(ObjectPool.PoolTag.AmmoUI, transform.position + Vector3.up, Quaternion.identity);
             uiObject.transform.SetParent(transform);
             ammoSlider = uiObject.GetComponentInChildren<Slider>();
             ammoSlider.maxValue = munMax;
@@ -114,7 +115,7 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
         {
             if (torretaBuild.originTile != null)
                 torretaBuild.originTile.isOccupied = false;
-            Destroy(gameObject);
+            ObjectPool.Instance.Despawn(gameObject);
             return;
         }
 
@@ -223,6 +224,10 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
     }
     private bool CheckTargetIsInRange()
     {
+        if (target == null || !target.gameObject.activeInHierarchy)
+        {
+            return false;
+        }   
         return Vector2.Distance(target.position, transform.position) <= targetingRange;
     }
 
@@ -237,7 +242,7 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
         Gizmos.DrawWireSphere(firingPoint.position, raioChama);
     }*/
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         TodasTorretasChama.Remove(this);
     }

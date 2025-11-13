@@ -32,7 +32,7 @@ public class Projetil : MonoBehaviour
 
         if (transform.position.x == target.x && transform.position.y == target.y)
         {
-            DestroyProjetil();
+                DestroyProjetil();
         }
         }
         
@@ -49,6 +49,6 @@ public class Projetil : MonoBehaviour
 
     void DestroyProjetil()
     {
-        Destroy(gameObject);
+        ObjectPool.Instance.Despawn(gameObject);
     }
 }

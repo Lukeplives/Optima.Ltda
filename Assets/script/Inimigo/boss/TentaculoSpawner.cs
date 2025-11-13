@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TentaculoSpawner : BossPart
@@ -42,7 +43,11 @@ public class TentaculoSpawner : BossPart
         {
             if (inimigoToSpawn != null && spawnPoint != null)
             {
-                GameObject inimigoSpawnado = Instantiate(inimigoToSpawn.prefabInimigo, spawnPoint.position, Quaternion.identity);
+                GameObject inimigoSpawnado = null;
+                if(!inimigoToSpawn.tipoPool.IsUnityNull())
+                {
+                    inimigoSpawnado = ObjectPool.Instance.SpawnFromPool(inimigoToSpawn.tipoPool, spawnPoint.position, Quaternion.identity);
+                }
                 var inimigoComponent = inimigoSpawnado.GetComponent<Inimigo>();
                 if (inimigoComponent != null)
                 {

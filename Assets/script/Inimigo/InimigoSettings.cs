@@ -20,6 +20,8 @@ public class InimigoSettings : ScriptableObject
     public SpawnSide lado;
     public tipoInimigo tipo;
 
+    public ObjectPool.PoolTag tipoPool;
+
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;

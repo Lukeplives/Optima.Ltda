@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class ZonadeExplosão : MonoBehaviour
@@ -5,10 +6,13 @@ public class ZonadeExplosão : MonoBehaviour
     private Collider2D col;
     [SerializeField] private int exploDano;
     public float exploDuração = 0.2f;
+    private float exploTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         col = GetComponent<Collider2D>();
+        
     }
 
     // Update is called once per frame
@@ -22,8 +26,18 @@ public class ZonadeExplosão : MonoBehaviour
         if (collision.CompareTag("Inimigo"))
         {
             collision.GetComponent<Inimigo>().TomaDano(exploDano);
-            Destroy(gameObject, exploDuração);
+            exploTimer -= Time.deltaTime;
+            if (exploTimer <= 0)
+            {
+                ObjectPool.Instance.Despawn(gameObject);
+            }
+
         }
-        
+
+    }
+
+    void OnEnable()
+    {
+        exploTimer = exploDuração;
     }
 }

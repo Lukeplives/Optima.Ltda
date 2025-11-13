@@ -15,6 +15,7 @@ MonoBehaviour:
   prefabInimigo: {fileID: 4701457152990384429, guid: 56e2354d9e7948c4fbe8d2435c09a35c, type: 3}
   lado: 0
   tipo: 2
+  tipoPool: 5
   speed: 0.75
   stoppingDistance: 2.5
   retreatDistance: 1.25

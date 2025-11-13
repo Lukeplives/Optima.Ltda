@@ -40,6 +40,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     private Transform target;
 
     public bool podeAtirar = true;
+    public bool inicializado = false;
     [Header("Interação PEM")]
     public static List<TorretaBasica> TodasTorretas = new List<TorretaBasica>();
     
@@ -99,7 +100,8 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
 
         if (ammoUIPrefab != null)
         {
-            GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            //GameObject uiObject = Instantiate(ammoUIPrefab, transform.position + Vector3.up, Quaternion.identity);
+            GameObject uiObject = ObjectPool.Instance.SpawnFromPool(ObjectPool.PoolTag.AmmoUI, transform.position + Vector3.up, Quaternion.identity);
             uiObject.transform.SetParent(transform);
 
 
@@ -222,7 +224,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
                     torretaBuild.originTile = null;
 
                 }
-                Destroy(gameObject);
+                ObjectPool.Instance.Despawn(gameObject);
             }
         }
     }
@@ -245,11 +247,22 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
 
     private bool CheckTargetIsInRange()
     {
+        if (target == null || !target.gameObject.activeInHierarchy)
+        {
+            return false;
+        }   
         return Vector2.Distance(target.position, transform.position) <= targetingRange;
     }
-
-    private void OnDestroy()
+    private void Onable()
     {
+        inicializado = true;
+        TodasTorretas.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        if (!inicializado) return;
+        TodasTorretas.Remove(this);
         if (torretaBuild.originTile != null)
         {
             torretaBuild.originTile.isOccupied = false;
@@ -299,8 +312,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         }
     }
 
-    void OnEnable() => TodasTorretas.Add(this);
-    void OnDisable() => TodasTorretas.Remove(this);
+    
 
     public string GetTooltipText()
     {

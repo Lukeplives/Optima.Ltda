@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [Header("Itens possiveis de spawnar")]
-    [SerializeField] private GameObject[] itensDisponíveis;
+    [SerializeField] private ObjectPool.PoolTag[] itensDisponíveis;
 
     [Header("Intervalo de tempo entre spawns (segundos)")]
     [SerializeField] private float minDelay = 5f;
@@ -50,12 +50,14 @@ public class ItemSpawner : MonoBehaviour
         }
 
         int indexItem = Random.Range(0, itensDisponíveis.Length);
+        ObjectPool.PoolTag tagSelecionada = itensDisponíveis[indexItem];
 
         float y = Random.Range(minAltura, maxAltura);
         if(player != null)
         {
             Vector3 posicaoSpawn = new Vector3(posX + player.position.x, y, posZ);
-            Instantiate(itensDisponíveis[indexItem], posicaoSpawn, Quaternion.identity);
+            GameObject itemSpawnado = ObjectPool.Instance.SpawnFromPool(tagSelecionada, posicaoSpawn, Quaternion.identity);
+            //Instantiate(itensDisponíveis[indexItem], posicaoSpawn, Quaternion.identity);
         }
 
 

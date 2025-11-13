@@ -28,7 +28,14 @@ public class ObjectPool : MonoBehaviour
         TorretaMetralhadora,
         TorretaSniper,
         TorretaExplosiva,
-        TorretaLancaChama
+        TorretaLancaChama,
+        ProjetilTerrestre,
+        ProjetilVoador,
+        ProjetilGrande,
+        KamikazeExplosao,
+        ExplosaoEffect,
+        TiroEffect,
+        AmmoUI
     }
     void Awake()
     {

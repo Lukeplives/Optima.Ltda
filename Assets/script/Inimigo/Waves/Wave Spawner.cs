@@ -50,6 +50,26 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    private string GetPoolTag(InimigoSettings.tipoInimigo tipo)
+    {
+        switch(tipo)
+        {
+            case InimigoSettings.tipoInimigo.Terrestre:
+                return ObjectPool.PoolTag.InimigoTerrestre.ToString();
+
+            case InimigoSettings.tipoInimigo.Voador:
+                return ObjectPool.PoolTag.InimigoVoador.ToString();
+                
+            case InimigoSettings.tipoInimigo.Grande:
+                return ObjectPool.PoolTag.InimigoGrande.ToString();
+            case InimigoSettings.tipoInimigo.Kamikaze:
+                return ObjectPool.PoolTag.InimigoKamikaze.ToString();
+            default:
+                Debug.LogWarning("Tipo de inimigo sem pool configurada");
+                return null;
+        }
+    }
+
     IEnumerator SpawnWave(WaveData wave)
     {
         radarUI.AtualizarRadar(wave);
@@ -59,13 +79,16 @@ public class WaveSpawner : MonoBehaviour
         {
 
             Vector2 spawnPos = CalcularSpawnPosition(spawnData.lado, spawnData.customPos);
-            if(spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Voador || spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Kamikaze)
+            if (spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Voador || spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Kamikaze)
             {
                 float alturaAleatoria = UnityEngine.Random.Range(minAltura, maxAltura);
                 spawnPos.y += alturaAleatoria;
             }
-            
-            GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
+
+            //GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
+            string pooltag = GetPoolTag(spawnData.inimigo.tipo);
+            GameObject inimigoNovo = ObjectPool.Instance.SpawnFromPool(pooltag, spawnPos, Quaternion.identity);
+            if (inimigoNovo == null) yield break;
 
             inimigosVivos.Add(inimigoNovo);
             Inimigo inimigoComponent = inimigoNovo.GetComponent<Inimigo>();
@@ -75,7 +98,7 @@ public class WaveSpawner : MonoBehaviour
                 {
                     RemoverInimigo(inimigoNovo);
 
-                    //radarUI.RemoverInimigo(inimigoComponent.tipoInimigo);
+                    radarUI.RemoverInimigo(inimigoComponent.tipoInimigo);
 
                 } ;
                 inimigoComponent.Initialize(spawnData.inimigo);

@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
                 uiManager.ExibirGameOver();
                 if (submarinoData != null)
                 {
-                    Destroy(submarinoData.gameObject);
+                    ObjectPool.Instance.Despawn(submarinoData.gameObject);
                 }
             }
 

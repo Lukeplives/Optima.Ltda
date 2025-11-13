@@ -104,6 +104,8 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
             corNormal = spriteRenderers[0].color;
             corDesativado = new Color(corNormal.r * 0.5f, corNormal.g * 0.5f, corNormal.b * 0.5f, corNormal.a * 0.8f);
         }
+
+        CriarAmmoUI();
     }
 
     // Update is called once per frame
@@ -114,7 +116,10 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
         if (munAtual <= 0)
         {
             if (torretaBuild.originTile != null)
+            {
                 torretaBuild.originTile.isOccupied = false;
+                torretaBuild.originTile = null;
+            }
             ObjectPool.Instance.Despawn(gameObject);
             return;
         }
@@ -160,6 +165,17 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
 
 
     }
+
+    private void CriarAmmoUI()
+{
+    if (ammoUIPrefab == null) return;
+
+    GameObject uiObject = ObjectPool.Instance.SpawnFromPool(ObjectPool.PoolTag.AmmoUI, transform.position + Vector3.up, Quaternion.identity);
+    uiObject.transform.SetParent(transform);
+    ammoSlider = uiObject.GetComponentInChildren<Slider>();
+    ammoSlider.maxValue = munMax;
+    ammoSlider.value = munAtual;
+}
 
     public void DesativarTorretaPEM()
     {
@@ -246,6 +262,22 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
     {
         TodasTorretasChama.Remove(this);
     }
+    private bool inicializado = false;
+
+private void OnEnable()
+{
+    if (!inicializado)
+    {
+        inicializado = true;
+        TodasTorretasChama.Add(this);
+    }
+    
+    munAtual = munMax;
+    if (ammoSlider != null) ammoSlider.value = munAtual;
+    if (efeitoChama != null) efeitoChama.SetActive(false);
+    podeAtirar = true;
+    desativadoPEM = false;
+}
 
     public string GetTooltipText()
     {

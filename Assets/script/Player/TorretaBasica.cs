@@ -16,10 +16,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     [SerializeField] private Transform firingPoint;
     private Building torretaBuild;
     private ObjectPool.PoolTag tagBala;
- 
-
-
-
+    
 
     [Header("Atributos")]
     public string nomeTorreta;
@@ -57,6 +54,10 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     public GameObject ammoUIPrefab;
 
     private Slider ammoSlider;
+
+    [Header("Efeito Tiro")]
+    public GameObject efeitoTiro;
+    [SerializeField] float tempotiro;
 
 
     //private void OnDrawGizmosSelected()
@@ -192,6 +193,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     private void Shoot()
     {
         if (!munInfinita && munAtual <= 0 || !podeAtirar) { return; }
+        StartCoroutine(FlashEfeitoTiro());
         GameObject balaObj = ObjectPool.Instance.SpawnFromPool(tagBala, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
 
@@ -207,7 +209,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         {
             balaScript.SetTarget(target); 
         }
-       
+        
         if (!munInfinita)
         {
             munAtual--;
@@ -257,6 +259,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     {
         inicializado = true;
         TodasTorretas.Add(this);
+        efeitoTiro.SetActive(false);
     }
 
     private void OnDisable()
@@ -312,7 +315,12 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         }
     }
 
-    
+    private IEnumerator FlashEfeitoTiro()
+    {
+        efeitoTiro.SetActive(true);
+        yield return new WaitForSeconds(tempotiro);
+        efeitoTiro.SetActive(false);
+    }
 
     public string GetTooltipText()
     {

@@ -17,7 +17,8 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     private Building torretaBuild;
 
 
-
+    public GameObject flashEffect;
+    [SerializeField] private float tempoFlash = 0.1f;
 
     [Header("Atributos")]
     public string nomeTorreta;
@@ -188,6 +189,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         if (!munInfinita && munAtual <= 0 || !podeAtirar) { return; }
         GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
+        
 
         balaScript.danoBala = danoTorreta;
         if(modoManual && munInfinita)
@@ -201,12 +203,14 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         {
             balaScript.SetTarget(target); 
         }
+        
        
         if (!munInfinita)
         {
             munAtual--;
 
             ammoSlider.value = munAtual;
+            
 
 
 
@@ -221,6 +225,8 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
                 Destroy(gameObject);
             }
         }
+
+        StartCoroutine(FlashEfeitoTiro());
     }
 
     private void FindTarget()
@@ -301,5 +307,12 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
     public string GetTooltipText()
     {
         return $"{nomeTorreta}\nDano: {danoTorreta}\nQtd. de Munição: {munMax}\nCusto: combustível {settings.custoComb}, ferro {settings.custoRec}";
+    }
+
+    private IEnumerator FlashEfeitoTiro()
+    {
+        flashEffect.SetActive(true);
+        yield return new WaitForSeconds(tempoFlash);
+        flashEffect.SetActive(false);
     }
 }

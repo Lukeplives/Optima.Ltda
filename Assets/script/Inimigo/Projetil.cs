@@ -16,8 +16,6 @@ public class Projetil : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (player != null)
         {
-
-
             target = new Vector2(player.position.x, player.position.y);
         }
 
@@ -29,6 +27,7 @@ public class Projetil : MonoBehaviour
         if (player != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            RotateTowardsTarget();
 
         if (transform.position.x == target.x && transform.position.y == target.y)
         {
@@ -45,6 +44,14 @@ public class Projetil : MonoBehaviour
             GameManager.Instance.DanoAoPlayer(dano);
             DestroyProjetil();
         }
+    }
+
+    void RotateTowardsTarget()
+    {
+        if (target == Vector2.zero) return;
+
+        float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
     }
 
     void DestroyProjetil()

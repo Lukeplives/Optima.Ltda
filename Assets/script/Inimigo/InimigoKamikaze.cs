@@ -22,6 +22,8 @@ public class InimigoKamikaze : Inimigo
         if (player == null) { return; }
 
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+        OlharPlayer();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -60,5 +62,19 @@ public class InimigoKamikaze : Inimigo
             radar.RemoverInimigo(tipoInimigo);
         }
         Destroy(gameObject);
+    }
+
+        void OlharPlayer()
+    {
+        if (player == null) return;
+        
+        if(player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        } else
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 }

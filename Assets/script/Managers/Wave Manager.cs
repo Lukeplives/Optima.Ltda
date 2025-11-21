@@ -49,6 +49,16 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(StartWaves());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F10))
+    {
+        Debug.Log("CHEAT: Pulando waves e iniciando BOSS");
+
+        StartCoroutine(CheatIrParaBoss());
+    }
+    }
+
     IEnumerator StartWaves()
     {
         wavesComecaram = true;
@@ -102,5 +112,37 @@ public class WaveManager : MonoBehaviour
     public bool TodasWavesConcluidas()
     {
         return wavesComecaram && currentWave >= waveSpawner.waves.Length;
+    }
+
+    IEnumerator CheatIrParaBoss()
+    {
+        var inimigos = FindObjectsOfType<Inimigo>();
+        var inimigosKamikaze = FindObjectsOfType<InimigoKamikaze>();
+        foreach(var i in inimigos)
+        {
+            Destroy(i.gameObject);
+        }
+
+        foreach(var k in inimigosKamikaze)
+        {
+            Destroy(k.gameObject);
+        }
+
+        
+
+        etapasCompletas = waveSpawner.waves.Length;
+        
+        AtualizarSlider();
+
+        StopAllCoroutines();
+
+        yield return null;
+
+        Debug.Log("CHEAT: Boss iniciado");
+
+        AllWavesCompleted?.Invoke();
+        bigBoss.StartBossFight();
+
+        botaoModoTiro.SetActive(true);
     }
 }

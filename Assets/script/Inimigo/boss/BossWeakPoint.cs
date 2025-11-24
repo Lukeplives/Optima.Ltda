@@ -20,7 +20,6 @@ public class BossWeakPoint : BossPart, IDamageable
         {
             boss.DanoPontoFraco(qtdDano);
             boss.TomaDano(qtdDano);
-            Debug.Log("Tomou dano");
         }
     }
 }

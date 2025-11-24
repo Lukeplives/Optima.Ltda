@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class TorretaBasica : MonoBehaviour
+public class TorretaBasica : MonoBehaviour, ITooltipInfo
 {
     public TorretaSettings settings;
     [Header("Referencias de Obj")]
@@ -17,9 +17,11 @@ public class TorretaBasica : MonoBehaviour
     private Building torretaBuild;
 
 
-
+    public GameObject flashEffect;
+    [SerializeField] private float tempoFlash = 0.1f;
 
     [Header("Atributos")]
+    public string nomeTorreta;
     public float targetingRange = 5f;
     public float rotationSpeed = 5f;
     public float bps = 1f; //Balas por segundo
@@ -65,6 +67,7 @@ public class TorretaBasica : MonoBehaviour
         torretaBuild = GetComponent<Building>();
         enemyMask = settings.enemyMask;
         balaPrefab = settings.balaPrefab;
+        nomeTorreta = settings.nomeTorreta;
 
 
         danoTorreta = settings.danoTorreta;
@@ -186,6 +189,7 @@ public class TorretaBasica : MonoBehaviour
         if (!munInfinita && munAtual <= 0 || !podeAtirar) { return; }
         GameObject balaObj = Instantiate(balaPrefab, firingPoint.position, Quaternion.identity);
         Bala balaScript = balaObj.GetComponent<Bala>();
+        
 
         balaScript.danoBala = danoTorreta;
         if(modoManual && munInfinita)
@@ -199,12 +203,14 @@ public class TorretaBasica : MonoBehaviour
         {
             balaScript.SetTarget(target); 
         }
+        
        
         if (!munInfinita)
         {
             munAtual--;
 
             ammoSlider.value = munAtual;
+            
 
 
 
@@ -219,6 +225,8 @@ public class TorretaBasica : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        StartCoroutine(FlashEfeitoTiro());
     }
 
     private void FindTarget()
@@ -296,4 +304,15 @@ public class TorretaBasica : MonoBehaviour
     void OnEnable() => TodasTorretas.Add(this);
     void OnDisable() => TodasTorretas.Remove(this);
 
+    public string GetTooltipText()
+    {
+        return $"{nomeTorreta}\nDano: {danoTorreta}\nQtd. de Munição: {munMax}\nCustos:\n- Combustível: {settings.custoComb}\n- Ferro: {settings.custoRec}";
+    }
+
+    private IEnumerator FlashEfeitoTiro()
+    {
+        flashEffect.SetActive(true);
+        yield return new WaitForSeconds(tempoFlash);
+        flashEffect.SetActive(false);
+    }
 }

@@ -23,6 +23,8 @@ public class WaveSpawner : MonoBehaviour
     [Header("Altura dos inimigos voadores")]
     public float minAltura = 3f;
     public float maxAltura = 7f;
+    [Header("Altura dos inimigos grandes")]
+    public float alturaGrande = 2f;
 
     [Header("UI Radar")]
     [SerializeField] RadarWave radarUI;
@@ -63,6 +65,9 @@ public class WaveSpawner : MonoBehaviour
             {
                 float alturaAleatoria = UnityEngine.Random.Range(minAltura, maxAltura);
                 spawnPos.y += alturaAleatoria;
+            } else if(spawnData.inimigo.tipo == InimigoSettings.tipoInimigo.Grande)
+            {
+                spawnPos.y = alturaGrande;
             }
             
             GameObject inimigoNovo = Instantiate(spawnData.inimigo.prefabInimigo, spawnPos, Quaternion.identity);
@@ -78,6 +83,8 @@ public class WaveSpawner : MonoBehaviour
                     //radarUI.RemoverInimigo(inimigoComponent.tipoInimigo);
 
                 } ;
+
+
                 inimigoComponent.Initialize(spawnData.inimigo);
             }
 

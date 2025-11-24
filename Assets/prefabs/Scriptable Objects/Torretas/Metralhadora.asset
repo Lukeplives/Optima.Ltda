@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f153db375557546a151f316ec0ea5d, type: 3}
   m_Name: Metralhadora
   m_EditorClassIdentifier: 
+  nomeTorreta: Metralhadora
   custoRec: 20
   custoComb: 5
   targetingRange: 5
@@ -20,6 +21,7 @@ MonoBehaviour:
   tempoDeVida: 15
   danoTorreta: 10
   munMax: 30
+  munInfinita: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

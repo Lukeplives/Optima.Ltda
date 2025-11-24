@@ -34,9 +34,12 @@ public class Inimigo : MonoBehaviour
 
     public event Action onDeath;
 
+    private Animator anim;
+
     void Awake()
     {
         feedbackDamage = GetComponent<FeedbackDamage>();
+        anim = GetComponent<Animator>();
     }
     protected virtual void Start()
     {
@@ -71,7 +74,11 @@ public class Inimigo : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (player == null) return;
+        if (player == null)
+        {
+            setWalk(false);   
+            return;
+        } 
 
         float distancia = Vector2.Distance(transform.position, player.position);
 
@@ -84,6 +91,7 @@ public class Inimigo : MonoBehaviour
                 posAlvo.y = alturaAtaque;
             }
             transform.position = Vector2.MoveTowards(transform.position, posAlvo, speed * Time.deltaTime);
+            setWalk(true);
         }
         else
         {
@@ -94,6 +102,8 @@ public class Inimigo : MonoBehaviour
             }
 
             transform.position = new Vector2(transform.position.x, alturaAtaque);
+
+            setWalk(true);
             Atacar();
         }
 
@@ -107,6 +117,7 @@ public class Inimigo : MonoBehaviour
         feedbackDamage?.Flash();
         if (hitPoints <= 0)
         {
+            
             morreu = true;
 
             onDeath?.Invoke();
@@ -124,6 +135,8 @@ public class Inimigo : MonoBehaviour
     {
         if (timeBtwShots <= 0)
         {
+            anim?.SetTrigger("Attack");
+
             Instantiate(projetil, transform.position, Quaternion.identity);
             timeBtwShots = startTimeBtwShots;
         }
@@ -145,5 +158,15 @@ public class Inimigo : MonoBehaviour
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+    }
+
+    void setWalk(bool isWalking)
+    {
+        anim?.SetBool("isWalking", isWalking);
+    }
+
+    protected void DispararOnDeath()
+    {
+        onDeath?.Invoke();
     }
 }

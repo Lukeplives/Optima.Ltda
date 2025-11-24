@@ -2,60 +2,37 @@ using UnityEngine;
 
 public class Projetil : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private Transform player;
-    private Vector2 target;
-    public int dano;
-
     public ProjetilSettings settings;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private Vector2 direction;
+    private Rigidbody2D rb;
+
     void Start()
     {
-        dano = settings.dano;
-        speed = settings.speed;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
+
+        float speed = settings.speed;
+        int dano = settings.dano;
+
+        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
         if (player != null)
         {
-            target = new Vector2(player.position.x, player.position.y);
+            direction = (player.position - transform.position).normalized;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (player != null)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-            RotateTowardsTarget();
-
-        if (transform.position.x == target.x && transform.position.y == target.y)
-        {
-            DestroyProjetil();
-        }
-        }
-        
+        rb.linearVelocity = direction * speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.DanoAoPlayer(dano);
-            DestroyProjetil();
+            GameManager.Instance.DanoAoPlayer(settings.dano);
+            Destroy(gameObject);
         }
-    }
-
-    void RotateTowardsTarget()
-    {
-        if (target == Vector2.zero) return;
-
-        float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
-    }
-
-    void DestroyProjetil()
-    {
-        Destroy(gameObject);
     }
 }

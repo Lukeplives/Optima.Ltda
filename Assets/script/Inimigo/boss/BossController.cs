@@ -10,7 +10,7 @@ public class BossController : MonoBehaviour
     public TentaculoSpawner tentaDireito;
     public BossWeakPoint pontoFraco;
 
-    private List<GameObject> partes;
+    private List<GameObject> partes = new List<GameObject>();
 
     [Header("Configs")]
     public int maxHP = 1500;

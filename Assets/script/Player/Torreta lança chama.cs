@@ -244,6 +244,6 @@ public class Torretalançachama : MonoBehaviour, ITooltipInfo
 
     public string GetTooltipText()
     {
-        return $"Torreta lança chamas\nDano por segundo: {danoPorSegundo}\nQtd. de Munição: {munMax}\nCusto: combustível {settings.custoComb}, ferro {settings.custoRec}";
+        return $"Torreta lança chamas\nDano por segundo: {danoPorSegundo}\nQtd. de Munição: {settings.munMax}\nCusto:\n- Combustível {settings.custoComb}\n- Ferro {settings.custoRec}";
     }
 }

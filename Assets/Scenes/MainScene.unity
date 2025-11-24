@@ -3307,6 +3307,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6769124080884123097, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Size.y
+      value: 2.613935
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769124080884123097, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.0013187
+      objectReference: {fileID: 0}
     - target: {fileID: 7226695951282102610, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -8753,8 +8761,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSettings: {fileID: 11400000, guid: 70a7894a78d37454d9e7aaddf7ef030b, type: 2}
-  custoRec: 20
-  custoComb: 5
   originTile: {fileID: 0}
   torretaSprite: {fileID: 0}
 --- !u!222 &4777280579969657791

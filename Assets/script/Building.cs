@@ -3,8 +3,8 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public TorretaSettings torretaSettings;
-    public int custoRec;
-    public int custoComb;
+    public int custoRec => torretaSettings.custoRec;
+    public int custoComb => torretaSettings.custoComb;
     public Tile originTile;
 
     [SerializeField] private SpriteRenderer torretaSprite;
@@ -15,8 +15,8 @@ public class Building : MonoBehaviour
     void Start()
     {
 
-        custoComb = torretaSettings.custoComb;
-        custoRec = torretaSettings.custoRec;
+        /*custoComb = torretaSettings.custoComb;
+        custoRec = torretaSettings.custoRec;*/
 
         
     }

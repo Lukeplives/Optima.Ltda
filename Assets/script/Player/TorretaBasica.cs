@@ -306,7 +306,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
 
     public string GetTooltipText()
     {
-        return $"{nomeTorreta}\nDano: {danoTorreta}\nQtd. de Munição: {munMax}\nCustos:\n- Combustível: {settings.custoComb}\n- Ferro: {settings.custoRec}";
+        return $"{settings.nomeTorreta}\nDano: {settings.danoTorreta}\nQtd. de Munição: {settings.munMax}\nCustos:\n- Combustível: {settings.custoComb}\n- Ferro: {settings.custoRec}";
     }
 
     private IEnumerator FlashEfeitoTiro()

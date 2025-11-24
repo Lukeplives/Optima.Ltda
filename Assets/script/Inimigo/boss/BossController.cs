@@ -10,10 +10,14 @@ public class BossController : MonoBehaviour
     public TentaculoSpawner tentaDireito;
     public BossWeakPoint pontoFraco;
 
+    private List<GameObject> partes;
+
     [Header("Configs")]
     public int maxHP = 1500;
     public int atualHP;
     public int fase = 0;
+
+    private bool bossAtivo = false;
 
     [Header("Movimentação")]
     public float alturaFixaAcimaDoPlayer = 5f; 
@@ -34,7 +38,7 @@ public class BossController : MonoBehaviour
     
     [Header("PLayer")]
     public ControleManual controleManualTorreta;
-    private Submarino player;
+    public Submarino player;
 
 
     private Coroutine pemCoroutine;
@@ -47,6 +51,15 @@ public class BossController : MonoBehaviour
             danoParaCancelar = 20;
             Debug.Log("O burro esqueceu de setar o dano no inspetor cabeçao");
         }
+
+         foreach (Transform child in transform)
+        {
+            partes.Add(child.gameObject);
+        }
+
+
+        foreach (var parte in partes)
+            parte.SetActive(false);
     }
     void Awake()
     {
@@ -62,25 +75,38 @@ public class BossController : MonoBehaviour
             transform.position = player.transform.position;
         }*/
 
-         if (player == null) return;
-    float targetX = player.transform.position.x;
-    float targetY = player.transform.position.y + alturaFixaAcimaDoPlayer;
-    float targetZ = transform.position.z;
+        if (player == null) return;
+        float targetX = player.transform.position.x;
+        float targetY = transform.position.y;
+        float targetZ = transform.position.z;
 
-    Vector3 targetPos = new Vector3(targetX, targetY, targetZ);
+        Vector3 targetPos = new Vector3(targetX, targetY, targetZ);
 
-    transform.position = Vector3.MoveTowards(
-        transform.position,
-        targetPos,
-        velocidade * Time.deltaTime
-    );
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPos,
+            velocidade * Time.deltaTime
+        );
+
+        if(!bossAtivo)
+        {
+            return;
+        }
         
     }
 
     public void StartBossFight()
     {
         Debug.Log("boss fight iniciada");
-        gameObject.SetActive(true);
+
+        bossAtivo = true;
+        foreach(var parte in partes)
+        {
+            parte.SetActive(true);
+        }
+
+        StartCoroutine(AnimacaoEntrada());
+
         tentaDireito?.StartSpawning();
         tentaEsquerdo?.StartSpawning();      
 
@@ -88,6 +114,33 @@ public class BossController : MonoBehaviour
         {
             controleManualTorreta.AtivarControle(true);
         }  
+    }
+
+    private IEnumerator AnimacaoEntrada()
+    {
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach(var s in sprites)
+        {
+            s.enabled = false;
+        }
+
+        float alturaInicial = 15f;
+        Vector3 pos = transform.position;
+        transform.position = new Vector3(pos.x, pos.y + alturaInicial, pos.z);
+
+        foreach(var s in sprites) s.enabled = true;
+
+        float targetY = player.transform.position.y + alturaFixaAcimaDoPlayer;
+
+        while(transform.position.y > targetY)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                new Vector3(transform.position.x, targetY, transform.position.z),
+                10f * Time.deltaTime
+            );
+            yield return null;
+        }
     }
 
     public void TomaDano(int qtdDano)

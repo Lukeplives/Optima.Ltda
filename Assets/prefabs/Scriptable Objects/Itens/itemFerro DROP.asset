@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da316344269c6724998184e385ef44b3, type: 3}
   m_Name: itemFerro DROP
   m_EditorClassIdentifier: 
-  lootsprite: {fileID: -8870327549414350, guid: c183836ccf4f79b4d8f334f655a8012a, type: 3}
+  lootsprite: {fileID: 21300000, guid: ea08b9c9d5cb92d479494f9a398f5bd2, type: 3}
   lootname: Ferro
   dropChance: 30
   upGas: 0

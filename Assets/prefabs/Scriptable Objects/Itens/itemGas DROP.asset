@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da316344269c6724998184e385ef44b3, type: 3}
   m_Name: itemGas DROP
   m_EditorClassIdentifier: 
-  lootsprite: {fileID: 8928031033918332290, guid: 9094471b6d790fc409599eb5acb21e77, type: 3}
+  lootsprite: {fileID: 21300000, guid: 122e6a16dde6b0045863ffb7c52e8da5, type: 3}
   lootname: gasolina
   dropChance: 10
   upGas: 5

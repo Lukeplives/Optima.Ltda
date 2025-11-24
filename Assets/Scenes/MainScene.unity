@@ -8411,7 +8411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   submarinoData: {fileID: 25636899066505324}
   QtdFerro: 30
-  QtdComb: 500
+  QtdComb: 300
   ferroCritico: 15
   combCritico: 150
   decrementoComb: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nomeTorreta: Metralhadora
   custoRec: 20
-  custoComb: 5
+  custoComb: 15
   targetingRange: 5
   rotationSpeed: 200
   bps: 5

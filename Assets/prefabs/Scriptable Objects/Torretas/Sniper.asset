@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nomeTorreta: Sniper
   custoRec: 45
-  custoComb: 3
+  custoComb: 30
   targetingRange: 9
   rotationSpeed: 200
   bps: 0.5

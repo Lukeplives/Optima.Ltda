@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootsprite: {fileID: 8928031033918332290, guid: 9094471b6d790fc409599eb5acb21e77, type: 3}
   lootname: 
-  dropChance: 0
-  upGas: 10
+  dropChance: 5
+  upGas: 30
   upFerro: 0
   "upPe\xE7as": 0
   tipo: 1

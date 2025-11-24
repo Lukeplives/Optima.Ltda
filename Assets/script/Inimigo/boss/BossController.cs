@@ -15,6 +15,10 @@ public class BossController : MonoBehaviour
     public int atualHP;
     public int fase = 0;
 
+    [Header("Movimentação")]
+    public float alturaFixaAcimaDoPlayer = 5f; 
+    public float velocidade = 5f;
+
     private FeedbackDamage feedbackDamage;
 
 
@@ -53,10 +57,23 @@ public class BossController : MonoBehaviour
     }
     void Update()
     {
-        if(player != null)
+        /*if(player != null)
         {
             transform.position = player.transform.position;
-        }
+        }*/
+
+         if (player == null) return;
+    float targetX = player.transform.position.x;
+    float targetY = player.transform.position.y + alturaFixaAcimaDoPlayer;
+    float targetZ = transform.position.z;
+
+    Vector3 targetPos = new Vector3(targetX, targetY, targetZ);
+
+    transform.position = Vector3.MoveTowards(
+        transform.position,
+        targetPos,
+        velocidade * Time.deltaTime
+    );
         
     }
 

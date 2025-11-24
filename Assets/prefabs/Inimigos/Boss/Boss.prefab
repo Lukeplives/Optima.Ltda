@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3711162347608343409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21474, y: 0.23255, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54,6 +54,8 @@ MonoBehaviour:
   maxHP: 1500
   atualHP: 0
   fase: 0
+  alturaFixaAcimaDoPlayer: 5
+  velocidade: 5
   tempoPEMAtivado: 0
   tempoDeCarga: 0
   danoParaCancelar: 0
@@ -120,7 +122,7 @@ GameObject:
   - component: {fileID: 6935265393880478329}
   - component: {fileID: 8725224997329136224}
   m_Layer: 0
-  m_Name: "tent\xE1culo spawner esquerdo"
+  m_Name: "tent\xE1culo spawner direito"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,8 +137,8 @@ Transform:
   m_GameObject: {fileID: 4675396530573651426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.55, y: 1.96, z: 0}
-  m_LocalScale: {x: 0.888, y: 4.5831, z: 1}
+  m_LocalPosition: {x: 7.55, y: 1.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1710198781115226695}
@@ -186,8 +188,8 @@ SpriteRenderer:
   m_SortingLayerID: 1897759663
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.91210127, a: 1}
+  m_Sprite: {fileID: -4918048806161978811, guid: 4a6de6357b7a98949a8df09de7467f32, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -272,9 +274,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7226695951282102610}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13484, y: 3.9154499, z: 0}
-  m_LocalScale: {x: 15.612626, y: 0.6640799, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 774781471800841723}
@@ -323,8 +325,8 @@ SpriteRenderer:
   m_SortingLayerID: 1897759663
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 87babac258961fa45aa7d89105ed48b6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -368,17 +370,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.09607315, y: 2.6577022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 15, y: 8.44}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 13.955051, y: 3.301168}
   m_EdgeRadius: 0
 --- !u!114 &236355446709557789
 MonoBehaviour:
@@ -407,7 +409,7 @@ GameObject:
   - component: {fileID: 6956698454774713623}
   - component: {fileID: 9015420049469580635}
   m_Layer: 0
-  m_Name: "tent\xE1culo spawner direito"
+  m_Name: "tent\xE1culo spawner esquerdo"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,8 +424,8 @@ Transform:
   m_GameObject: {fileID: 7538586408465133331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.506, y: 1.96, z: 0}
-  m_LocalScale: {x: 0.888, y: 4.5831, z: 1}
+  m_LocalPosition: {x: -7.506, y: 1.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8559767298281422846}
@@ -473,8 +475,8 @@ SpriteRenderer:
   m_SortingLayerID: 1897759663
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.91210127, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 838a2ff9abd50984e8e9fedadce09273, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

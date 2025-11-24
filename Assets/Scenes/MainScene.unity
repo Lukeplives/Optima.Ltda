@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &49275153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3178,7 +3178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &814818985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3228,12 +3228,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 774781471800841723, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774781471800841723, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774781471800841723, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774781471800841723, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 774781471800841723, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25485
+      value: 1.43
       objectReference: {fileID: 0}
     - target: {fileID: 774781471800841723, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3323,6 +3335,10 @@ PrefabInstance:
       propertyPath: controleManualTorreta
       value: 
       objectReference: {fileID: 1876690644}
+    - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: alturaFixaAcimaDoPlayer
+      value: 1.43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4453,7 +4469,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 30.9, y: 260.6}
-  m_SizeDelta: {x: 84, y: 160}
+  m_SizeDelta: {x: 768, y: 432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359138884
 MonoBehaviour:
@@ -4475,7 +4491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7417285123468189196, guid: 8b0a034d1a54321408285932e53b15c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d92005c1380f2549becfdae1ce4eeb3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5284,7 +5300,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 44, y: 93}
-  m_SizeDelta: {x: 109.2, y: 144.4}
+  m_SizeDelta: {x: 510, y: 510}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556392819
 MonoBehaviour:
@@ -5306,7 +5322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2401618203117267750, guid: 97dba826e3c8f444f8a4ef6679626d83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a536b56631b4ba8468f44873322a833e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5359,7 +5375,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -89, y: 81}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 130.4, y: 117.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1558375114
 MonoBehaviour:
@@ -5374,14 +5390,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.7529412, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2205739160104369471, guid: 25fd94b0a04b5e64987e96a30e663210, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5428,7 +5444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac5f2c7539daa44b999c0a510effa14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSpawner: {fileID: 49275153}
+  waveSpawner: {fileID: 814818985}
   bigBoss: {fileID: 1485038568}
   radarWaveUi: {fileID: 1249306385}
   botaoModoTiro: {fileID: 511170002}
@@ -6093,7 +6109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3255402849769659297, guid: 7b4454b213b87b948949ac1aca73d89a, type: 3}
+  m_Sprite: {fileID: -1606779384942468301, guid: 1549f5f7c9302744bb3311b10eec0891, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

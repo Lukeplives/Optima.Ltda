@@ -43,6 +43,7 @@ public class InimigoKamikaze : Inimigo
     public override void TomaDano(int dano)
     {
         base.TomaDano(dano);
+        
         Explodir();
     }
 
@@ -51,6 +52,7 @@ public class InimigoKamikaze : Inimigo
         if (wasDestroyed) return;
 
         wasDestroyed = true;
+        DispararOnDeath();
         if (explosionEffect != null)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);

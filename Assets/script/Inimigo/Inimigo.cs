@@ -164,4 +164,9 @@ public class Inimigo : MonoBehaviour
     {
         anim?.SetBool("isWalking", isWalking);
     }
+
+    protected void DispararOnDeath()
+    {
+        onDeath?.Invoke();
+    }
 }

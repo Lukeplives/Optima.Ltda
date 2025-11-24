@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &49275153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,11 +187,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4155a4de7277a3f448051b6d3323bdcf, type: 2}
   - {fileID: 11400000, guid: e8d0525d66209da4995f545397efb0bc, type: 2}
   - {fileID: 11400000, guid: cecf9b4071b60234baf7ea72b575d6e3, type: 2}
-  - {fileID: 11400000, guid: c90ce1d4d3e328344a1a110ca94ea92e, type: 2}
+  - {fileID: 11400000, guid: fa36f8862d63b21449543e8df2fce388, type: 2}
   offsetHorizontal: 10
   offsetVertical: 0
   minAltura: 3
   maxAltura: 7
+  alturaGrande: 0.65
   radarUI: {fileID: 1249306385}
 --- !u!4 &49275154
 Transform:
@@ -3177,7 +3178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &814818985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3192,11 +3193,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerposition: {fileID: 6083878722518338147}
   waves:
-  - {fileID: 11400000, guid: 4f5d7a002a1d74a409591c1e859b3cc7, type: 2}
+  - {fileID: 11400000, guid: fa36f8862d63b21449543e8df2fce388, type: 2}
   offsetHorizontal: 10
   offsetVertical: 0
   minAltura: 3
   maxAltura: 7
+  alturaGrande: 0.65
   radarUI: {fileID: 1249306385}
 --- !u!4 &814818986
 Transform:
@@ -5426,7 +5428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac5f2c7539daa44b999c0a510effa14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSpawner: {fileID: 814818985}
+  waveSpawner: {fileID: 49275153}
   bigBoss: {fileID: 1485038568}
   radarWaveUi: {fileID: 1249306385}
   botaoModoTiro: {fileID: 511170002}

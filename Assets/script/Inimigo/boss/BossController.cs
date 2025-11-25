@@ -16,6 +16,7 @@ public class BossController : MonoBehaviour
     public int maxHP = 1500;
     public int atualHP;
     public int fase = 0;
+    private bool spawnLiberado = false;
 
     private bool bossAtivo = false;
 
@@ -77,7 +78,7 @@ public class BossController : MonoBehaviour
 
         if (player == null) return;
         float targetX = player.transform.position.x;
-        float targetY = transform.position.y;
+        float targetY = player.transform.position.y + alturaFixaAcimaDoPlayer;
         float targetZ = transform.position.z;
 
         Vector3 targetPos = new Vector3(targetX, targetY, targetZ);
@@ -92,6 +93,15 @@ public class BossController : MonoBehaviour
         {
             return;
         }
+         if (!spawnLiberado && Mathf.Abs(transform.position.y - targetY) < 0.05f)
+        {
+            spawnLiberado = true;
+
+            Debug.Log("Boss alinhou com o player — iniciando spawn!");
+
+            tentaDireito?.StartSpawning();
+            tentaEsquerdo?.StartSpawning();
+        }
         
     }
 
@@ -105,10 +115,7 @@ public class BossController : MonoBehaviour
             parte.SetActive(true);
         }
 
-        StartCoroutine(AnimacaoEntrada());
-
-        tentaDireito?.StartSpawning();
-        tentaEsquerdo?.StartSpawning();      
+        StartCoroutine(AnimacaoEntrada());   
 
         if(controleManualTorreta != null)
         {
@@ -137,7 +144,7 @@ public class BossController : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 new Vector3(transform.position.x, targetY, transform.position.z),
-                10f * Time.deltaTime
+                5f * Time.deltaTime
             );
             yield return null;
         }

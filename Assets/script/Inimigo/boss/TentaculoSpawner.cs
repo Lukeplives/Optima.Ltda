@@ -9,9 +9,11 @@ public class TentaculoSpawner : BossPart
     public float spawnDelay;
     private bool spawning;
     private Coroutine spawnRoutine;
+    private Animator anim;
     protected override void Awake()
     {
         base.Awake();
+        anim = GetComponent<Animator>();
     }
 
     public void SetFase(int fase)
@@ -42,6 +44,9 @@ public class TentaculoSpawner : BossPart
         {
             if (inimigoToSpawn != null && spawnPoint != null)
             {
+                if (anim != null)
+                    anim.SetTrigger("Spawn");
+                    yield return new WaitForSeconds(0.1f);
                 GameObject inimigoSpawnado = Instantiate(inimigoToSpawn.prefabInimigo, spawnPoint.position, Quaternion.identity);
                 var inimigoComponent = inimigoSpawnado.GetComponent<Inimigo>();
                 if (inimigoComponent != null)

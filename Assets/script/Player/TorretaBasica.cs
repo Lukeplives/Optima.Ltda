@@ -236,6 +236,19 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
         {
             target = hits[0].transform;
         }
+    /*foreach (var hit in hits)
+    {
+        // IGNORA boss completamente
+        if (hit.collider.GetComponent<BossController>() != null)
+            continue;
+
+        // ACEITA somente inimigos que possuem o script Inimigo
+        if (hit.collider.TryGetComponent<Inimigo>(out var inimigo))
+        {
+            target = hit.transform;
+            return;
+        }
+    }*/
     }
 
     private void RotateTowardsTarget()

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BotaoIdle
+  m_Name: "Bot\xE3oLigado"
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -3426896297458498047, guid: 000198f4afb1b704c99f65075ef7bdf4, type: 3}
+      value: {fileID: -7017677708425656276, guid: 2faa1a6ac111ca74b8e8acedcc03f06e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -3426896297458498047, guid: 000198f4afb1b704c99f65075ef7bdf4, type: 3}
+    - {fileID: -7017677708425656276, guid: 2faa1a6ac111ca74b8e8acedcc03f06e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

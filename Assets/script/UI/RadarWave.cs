@@ -50,10 +50,10 @@ public class RadarWave : MonoBehaviour
         }
 
         AtualizarUI();
-        voadorUI.SetActive(totalVoador > 0);
+        /*voadorUI.SetActive(totalVoador > 0);
         kamikazeUI.SetActive(totalKamikaze > 0);
         grandeUI.SetActive(totalGrande > 0);
-        terrestreUI.SetActive(totalTerrestre > 0);
+        terrestreUI.SetActive(totalTerrestre > 0);*/
     }
 
     void AtualizarUI()

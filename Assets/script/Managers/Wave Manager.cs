@@ -82,8 +82,12 @@ public class WaveManager : MonoBehaviour
 
 
         bigBoss?.StartBossFight();
+
+        
         Animator botaoAnimador = botaoModoTiro.GetComponent<Animator>();
         ToolTipTrigger botaoToolTip = botaoModoTiro.GetComponent<ToolTipTrigger>();
+        Button botaoComponent = botaoModoTiro.GetComponent<Button>();
+        botaoComponent.interactable = true;
         botaoToolTip.enabled = true;
         botaoAnimador.SetTrigger("ModoTiro");
         

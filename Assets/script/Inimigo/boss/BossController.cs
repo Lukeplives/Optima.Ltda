@@ -19,6 +19,7 @@ public class BossController : MonoBehaviour
     private bool spawnLiberado = false;
 
     private bool bossAtivo = false;
+    private Animator anim;
 
     [Header("Movimentação")]
     public float alturaFixaAcimaDoPlayer = 5f; 
@@ -68,6 +69,7 @@ public class BossController : MonoBehaviour
         player = FindFirstObjectByType<Submarino>();
         feedbackDamage = GetComponent<FeedbackDamage>();
 
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -224,6 +226,8 @@ public class BossController : MonoBehaviour
     {
         golpeCarregando = true;
         danoDuranteCarga = 0;
+        anim.SetBool("CarregandoPEM", true);
+        anim.SetBool("PEMAtivo", false);
         Debug.Log("Boss Carregando o PEM");
 
         float tempo = 0f;
@@ -233,19 +237,25 @@ public class BossController : MonoBehaviour
             {
                 golpeCancelado = true;
                 golpeCarregando = false;
+                anim.SetBool("CarregandoPEM", false);
+                anim.SetBool("PEMAtivo", false);
                 yield break;
             }
             tempo += Time.deltaTime;
             yield return null;
         }
-
         golpeCarregando = false;
+
+        anim.SetBool("CarregandoPEM", false);
+        anim.SetBool("PEMAtivo", true);
+
     }
 
 
     private IEnumerator AtivarPem()
     {
         Debug.Log("PEM ativado");
+        anim.SetBool("PEMAtivo", true);
 
         var torretasTotais = new List<TorretaBasica>(TorretaBasica.TodasTorretas);
 
@@ -290,6 +300,7 @@ public class BossController : MonoBehaviour
                 chamaAtiva.ReativarTorreta();
             }
         }
+        anim.SetBool("PEMAtivo", false);
         Debug.Log("Pem terminou, torretas reativadas");
     }
     

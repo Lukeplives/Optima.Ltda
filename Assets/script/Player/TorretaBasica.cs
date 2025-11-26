@@ -142,6 +142,7 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
 
         Vector2 dir = posicaoMouse - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        angle *= SettingsData.mouseSensitivity;
         turretRotationPoint.rotation = Quaternion.Euler(0, 0, angle-90);
         timeUntilFire += Time.deltaTime;
         if(Input.GetMouseButtonDown(0) && timeUntilFire >= 1f/bps)

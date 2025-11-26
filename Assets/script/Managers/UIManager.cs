@@ -30,9 +30,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Configurações")]
     public KeyCode pauseKey = KeyCode.Escape;
-    
-
     public bool isPaused = false;
+    public Slider volumeSlider;
+    public Slider sensitivitySlider;
     
     
     void Start()
@@ -41,6 +41,11 @@ public class UIManager : MonoBehaviour
         MostrarWin(false);
         MostrarPause(false);
         MostrarGameOver(false);
+        sensitivitySlider.value = SettingsManager.Instance.mouseSensitivity;
+        volumeSlider.value = SettingsManager.Instance.volumeMaster;
+
+        volumeSlider.onValueChanged.AddListener(SettingsManager.Instance.SetVolume);
+        sensitivitySlider.onValueChanged.AddListener(SettingsManager.Instance.SetSensitivity);
 
 
     }
@@ -104,6 +109,8 @@ public class UIManager : MonoBehaviour
 
         Time.timeScale = 0f;
     }
+
+
     
 
 }

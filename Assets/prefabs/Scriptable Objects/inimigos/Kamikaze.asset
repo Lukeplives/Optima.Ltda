@@ -18,6 +18,6 @@ MonoBehaviour:
   speed: 2
   stoppingDistance: 0
   retreatDistance: 0
-  hitPoints: 75
+  hitPoints: 100
   startTimeBtwShots: 0
   projetil: {fileID: 0}

@@ -4071,7 +4071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: maxHP
-      value: 1500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8294254341302883065, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
       propertyPath: player

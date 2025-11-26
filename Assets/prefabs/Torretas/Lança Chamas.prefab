@@ -354,7 +354,7 @@ MonoBehaviour:
   tempoDeVida: 0
   targetingRange: 1.5
   rotationSpeed: 5
-  munMax: 900
+  munMax: 600
   munGasta: 2
   podeAtirar: 1
   ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
@@ -371,8 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torretaSettings: {fileID: 11400000, guid: 48e19646c2625c441b4fb2ab8530214a, type: 2}
-  custoRec: 20
-  custoComb: 5
   originTile: {fileID: 0}
   torretaSprite: {fileID: 2176079442576094627}
 --- !u!50 &-7425286808470548956

@@ -53,3 +53,23 @@ MonoBehaviour:
     customPos: {x: 8, y: 0}
     lado: 0
     tipoInimigo: 1
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 0.5
+    customPos: {x: 8, y: 0}
+    lado: 0
+    tipoInimigo: 1
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 0.5
+    customPos: {x: 8, y: 0}
+    lado: 1
+    tipoInimigo: 1
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 0
+    customPos: {x: 8, y: 0}
+    lado: 1
+    tipoInimigo: 1
+  - inimigo: {fileID: 11400000, guid: 0523a98fcebfb484a9ee03e6a83ff89e, type: 2}
+    spawnDelay: 0
+    customPos: {x: 8, y: 0}
+    lado: 0
+    tipoInimigo: 1

@@ -53,3 +53,13 @@ MonoBehaviour:
     customPos: {x: -10, y: 0}
     lado: 0
     tipoInimigo: 2
+  - inimigo: {fileID: 11400000, guid: b94730e79901c1a45b7fc843b40307a2, type: 2}
+    spawnDelay: 0
+    customPos: {x: -10, y: 0}
+    lado: 0
+    tipoInimigo: 2
+  - inimigo: {fileID: 11400000, guid: b94730e79901c1a45b7fc843b40307a2, type: 2}
+    spawnDelay: 0
+    customPos: {x: -10, y: 0}
+    lado: 1
+    tipoInimigo: 2

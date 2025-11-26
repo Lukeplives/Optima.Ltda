@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inimigosWave:
   - inimigo: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
-    spawnDelay: 0
+    spawnDelay: 0.5
     customPos: {x: 0, y: 0}
     lado: 1
     tipoInimigo: 0

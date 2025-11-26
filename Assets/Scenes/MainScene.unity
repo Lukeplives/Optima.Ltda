@@ -1956,13 +1956,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429075135}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.15746865, z: 0, w: 0.98752403}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.026147565, y: 0.026147565, z: 0.026147565}
+  m_LocalScale: {x: 0.030561805, y: 0.030561805, z: 0.030561805}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1822311846}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 18.12, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -12.57, y: -4.19}
@@ -4105,6 +4105,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -2.61
       objectReference: {fileID: 0}
+    - target: {fileID: 8725224997329136224, guid: 6cc0750cd7349eb46a1ed7a9c9df241b, type: 3}
+      propertyPath: inimigoToSpawn
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c7550a5ecf995941940fa0000632687, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

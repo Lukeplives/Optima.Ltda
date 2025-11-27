@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &49275153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4991,7 +4991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &814818985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8716,7 +8716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac5f2c7539daa44b999c0a510effa14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSpawner: {fileID: 814818985}
+  waveSpawner: {fileID: 49275153}
   bigBoss: {fileID: 1485038568}
   radarWaveUi: {fileID: 1249306385}
   botaoModoTiro: {fileID: 511170002}
@@ -9069,7 +9069,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2119905859}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

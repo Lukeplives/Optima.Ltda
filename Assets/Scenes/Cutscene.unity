@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1646898023}
-  nomeDoVideo: Cutscene.mp4
+  nomeDoVideo: Cutscene2.mp4
   nextScene: MainScene
 --- !u!4 &1930542766
 Transform:

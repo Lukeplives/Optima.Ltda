@@ -1,63 +1,86 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
 {
-    public static SettingsManager Instance;
+    public static SettingsManager instance;
 
-    public float mouseSensitivity;
-    public float volumeMaster;
+    [Header("Audio Mixer")]
+    public AudioMixer mixer;
 
-    private void Awake()
+    [Header("Volumes")]
+    public float masterVolume = 0.5f;
+    public float cutsceneVolume = 0.5f;
+    public float bgmVolume = 0.5f;
+
+
+
+    void Awake()
     {
-         if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            LoadSettings();
-        }
-        else
+        if (instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+        PlayerPrefs.DeleteAll();
+
+        CarregarConfigs();
+        AplicarTodasConfigs();
     }
 
-    public void SetVolume(float value)
-    {
-        SettingsData.volume = value;
-        AudioListener.volume = value;
-        PlayerPrefs.SetFloat("volume", value);
-    }
-
-    public void SetSensitivity(float value)
-    {
-        SettingsData.mouseSensitivity = value;
-        PlayerPrefs.SetFloat("sensitivity", value);
-    }
-
-    public void LoadSettings()
-    {
-        //SettingsData.volume = PlayerPrefs.GetFloat("volume", 1f);
-        //SettingsData.mouseSensitivity = PlayerPrefs.GetFloat("sensitivity", 1f);
-
-        mouseSensitivity = PlayerPrefs.HasKey("mouseSensitivity")
-            ? PlayerPrefs.GetFloat("mouseSensitivity")
-            : 0.5f;
-
-        volumeMaster = PlayerPrefs.HasKey("volumeMaster")
-            ? PlayerPrefs.GetFloat("volumeMaster")
-            : 0.5f;
-
-        AudioListener.volume = SettingsData.volume;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Debug.Log($"{masterVolume}, {cutsceneVolume}, {bgmVolume}");
     }
 
-    // Update is called once per frame
-    void Update()
+
+    // ===== VOLUME =====
+
+    public void SetMasterVolume(float v)
     {
-        
+
+        masterVolume = v;
+        float volume = Mathf.Log10(Mathf.Clamp(v, 0.0001f, 1f)) * 20;
+        mixer.SetFloat("MasterVolume", volume);
+        PlayerPrefs.SetFloat("MasterVolume", v);
+    }
+
+    public void SetCutsceneVolume(float v)
+    {
+
+        cutsceneVolume = v;
+        float volume = Mathf.Log10(Mathf.Clamp(v, 0.0001f, 1f)) * 20;
+        mixer.SetFloat("CutsceneVolume", volume);
+        PlayerPrefs.SetFloat("CutsceneVolume", v);
+    }
+
+    public void SetBGMVolume(float v)
+    {
+
+        bgmVolume = v;
+        float volume = Mathf.Log10(Mathf.Clamp(v, 0.0001f, 1f)) * 20;
+        mixer.SetFloat("BGMVolume", volume);
+        PlayerPrefs.SetFloat("BGMVolume", v);
+    }
+
+
+    // ===== SALVAR/CARREGAR =====
+
+    public void CarregarConfigs()
+    {
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        cutsceneVolume = PlayerPrefs.GetFloat("CutsceneVolume", 0.5f);
+        bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 0.5f);
+    }
+
+    public void AplicarTodasConfigs()
+    {
+        SetMasterVolume(masterVolume);
+        SetCutsceneVolume(cutsceneVolume);
+        SetBGMVolume(bgmVolume);
+
     }
 }

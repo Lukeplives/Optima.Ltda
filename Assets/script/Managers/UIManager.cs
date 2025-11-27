@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject pausePanel;
     public GameObject gameOverPanel;
+    public GameObject optionsPanel;
 
 
 
@@ -31,8 +33,9 @@ public class UIManager : MonoBehaviour
     [Header("Configurações")]
     public KeyCode pauseKey = KeyCode.Escape;
     public bool isPaused = false;
-    public Slider volumeSlider;
-    public Slider sensitivitySlider;
+    public Slider volumeMasterSlider;
+    public Slider volumeBGMSlider;
+    public Slider volumeCutsceneSlider;
     
     
     void Start()
@@ -41,11 +44,28 @@ public class UIManager : MonoBehaviour
         MostrarWin(false);
         MostrarPause(false);
         MostrarGameOver(false);
-        sensitivitySlider.value = SettingsManager.Instance.mouseSensitivity;
-        volumeSlider.value = SettingsManager.Instance.volumeMaster;
 
-        volumeSlider.onValueChanged.AddListener(SettingsManager.Instance.SetVolume);
-        sensitivitySlider.onValueChanged.AddListener(SettingsManager.Instance.SetSensitivity);
+        // desativa eventos para evitar reset no início
+        volumeMasterSlider.onValueChanged.RemoveAllListeners();
+        volumeBGMSlider.onValueChanged.RemoveAllListeners();
+        volumeCutsceneSlider.onValueChanged.RemoveAllListeners();
+
+        // aplica o valor salvo
+        volumeMasterSlider.value = SettingsManager.instance.masterVolume;
+        volumeBGMSlider.value = SettingsManager.instance.bgmVolume;
+        volumeCutsceneSlider.value = SettingsManager.instance.cutsceneVolume;
+
+        // agora reassina os eventos
+        volumeMasterSlider.onValueChanged.AddListener(SettingsManager.instance.SetMasterVolume);
+        volumeBGMSlider.onValueChanged.AddListener(SettingsManager.instance.SetBGMVolume);
+        volumeCutsceneSlider.onValueChanged.AddListener(SettingsManager.instance.SetCutsceneVolume);
+
+        volumeMasterSlider.value = SettingsManager.instance.masterVolume;
+        volumeBGMSlider.value = SettingsManager.instance.bgmVolume;
+        volumeCutsceneSlider.value = SettingsManager.instance.cutsceneVolume;
+
+        Debug.Log($"master {SettingsManager.instance.masterVolume}, bgm {SettingsManager.instance.bgmVolume}, cutscene {SettingsManager.instance.cutsceneVolume}");
+
 
 
     }
@@ -84,7 +104,13 @@ public class UIManager : MonoBehaviour
 
     public void MostrarPause(bool ativo)
     {
+        
+        if(pausePanel.activeSelf)
+        {
+            optionsPanel.SetActive(ativo);
+        }
         pausePanel.SetActive(ativo);
+
     }
 
     public void MostrarGameOver(bool ativo)

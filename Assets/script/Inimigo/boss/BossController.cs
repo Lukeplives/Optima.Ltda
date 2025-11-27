@@ -36,6 +36,12 @@ public class BossController : MonoBehaviour
     public float tempoRecarga;
     private bool golpeCarregando = false;
     private bool golpeCancelado = false;
+    [Header("Efeito PEM")]
+    public Transform bolaPem;
+    public float escalaInicial = 1f;
+    public float escalaFinal = 20f;
+    public float tempoExpandir = 1.5f;
+    public float tempoContrair = 2f;
 
     
     [Header("PLayer")]
@@ -127,6 +133,7 @@ public class BossController : MonoBehaviour
 
     private IEnumerator AnimacaoEntrada()
     {
+        bolaPem.gameObject.SetActive(false);
         SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
         foreach(var s in sprites)
         {
@@ -225,6 +232,11 @@ public class BossController : MonoBehaviour
     private IEnumerator CarregarPem()
     {
         golpeCarregando = true;
+        if (bolaPem != null)
+        {
+            bolaPem.gameObject.SetActive(true);
+            bolaPem.localScale = Vector3.one * escalaInicial;
+        }
         danoDuranteCarga = 0;
         anim.SetBool("CarregandoPEM", true);
         anim.SetBool("PEMAtivo", false);
@@ -254,8 +266,11 @@ public class BossController : MonoBehaviour
 
     private IEnumerator AtivarPem()
     {
+
         Debug.Log("PEM ativado");
+        StartCoroutine(ExpandirPEM());
         anim.SetBool("PEMAtivo", true);
+        StartCoroutine(ResetarPEM());
 
         var torretasTotais = new List<TorretaBasica>(TorretaBasica.TodasTorretas);
 
@@ -300,8 +315,48 @@ public class BossController : MonoBehaviour
                 chamaAtiva.ReativarTorreta();
             }
         }
+        
         anim.SetBool("PEMAtivo", false);
         Debug.Log("Pem terminou, torretas reativadas");
+    }
+
+    private IEnumerator ExpandirPEM()
+    {
+        if (bolaPem == null) yield break;
+
+        float t = 0f;
+        Vector3 escalaInicialVec = Vector3.one * escalaInicial;
+        Vector3 escalaFinalVec = Vector3.one * escalaFinal;
+
+        
+        while (t < tempoExpandir)
+        {
+            t += Time.deltaTime;
+            bolaPem.localScale = Vector3.Lerp(escalaInicialVec, escalaFinalVec, t / tempoExpandir);
+            yield return null;
+        }
+
+        bolaPem.localScale = escalaFinalVec;
+    }
+
+    private IEnumerator ResetarPEM()
+    {
+        if (bolaPem == null) yield break;
+
+        float t = 0f;
+        Vector3 escalaGrande = Vector3.one * escalaFinal;
+        Vector3 escalaPequena = Vector3.one * escalaInicial;
+
+        // Contrai rapidinho
+        while (t < tempoContrair)
+        {
+            t += Time.deltaTime;
+            bolaPem.localScale = Vector3.Lerp(escalaGrande, escalaPequena, t / tempoContrair);
+            yield return null;
+        }
+
+        bolaPem.localScale = escalaPequena;
+        bolaPem.gameObject.SetActive(false);
     }
     
     public void DanoPontoFraco(int dano)

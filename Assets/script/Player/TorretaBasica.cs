@@ -232,24 +232,45 @@ public class TorretaBasica : MonoBehaviour, ITooltipInfo
 
     private void FindTarget()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
+        /*RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
         if (hits.Length > 0)
         {
             target = hits[0].transform;
-        }
-    /*foreach (var hit in hits)
+        }*/
+
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(
+        transform.position,
+        targetingRange,
+        Vector2.zero,
+        0f,
+        enemyMask
+    );
+
+    float menorDistancia = Mathf.Infinity;
+    Transform melhorAlvo = null;
+
+    foreach (var hit in hits)
     {
-        // IGNORA boss completamente
+        // IGNORA BOSS
         if (hit.collider.GetComponent<BossController>() != null)
             continue;
 
-        // ACEITA somente inimigos que possuem o script Inimigo
-        if (hit.collider.TryGetComponent<Inimigo>(out var inimigo))
+        // Aceita SOMENTE inimigos válidos
+        if (!hit.collider.TryGetComponent<Inimigo>(out Inimigo inimigo) &&
+            !hit.collider.TryGetComponent<InimigoKamikaze>(out InimigoKamikaze kamikaze))
+            continue;
+
+        float dist = Vector2.Distance(transform.position, hit.collider.transform.position);
+
+        if (dist < menorDistancia)
         {
-            target = hit.transform;
-            return;
+            menorDistancia = dist;
+            melhorAlvo = hit.collider.transform;
         }
-    }*/
+    }
+
+    target = melhorAlvo;
+
     }
 
     private void RotateTowardsTarget()

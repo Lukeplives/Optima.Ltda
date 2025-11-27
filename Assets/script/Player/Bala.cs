@@ -112,7 +112,6 @@ public class Bala : MonoBehaviour
         {
 
             Inimigo inimigo = hit.GetComponent<Inimigo>();
-            Debug.Log("inimigo tomou dano de explosão");
             inimigo.TomaDano(danoExplosão);
         }
 

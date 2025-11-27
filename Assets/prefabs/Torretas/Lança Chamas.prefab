@@ -377,7 +377,7 @@ MonoBehaviour:
   tempoDeVida: 0
   targetingRange: 1.5
   rotationSpeed: 5
-  munMax: 900
+  munMax: 600
   munGasta: 2
   podeAtirar: 1
   ammoUIPrefab: {fileID: 1681442019049169551, guid: 494674fc40609c94ab9cd49f6eedcf4f, type: 3}
